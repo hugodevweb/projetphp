@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="./style/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+ <body>
+  <header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="./images/logo_inv.png" alt="logo" >
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          <form class="rech">
+                       
+              <div class="search-box">
+                <input class="input" class="search-box__input" type="search" placeholder="ex: RTX 3090">
+                <button class="button" type="submit"><img type="sub" class="loupe" src="./images/loupe.png" alt="loupe" ></button>
+              </div>
+            </div>        
+          
+          </form>
+        </a>
+
+        <a class="navbar-item">
+          Acceuil
+        </a>
+  
+        <a class="navbar-item">
+          Creer une configuration
+        </a>
+
+        <a class="navbar-item">
+          Communauté
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Plus
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              A propos
+            </a>
+           
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Signaler un probleme
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-success">
+              <strong>S'inscrire</strong>
+            </a>
+            <a class="button is-light">
+              Se connecter
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav></header>
+  <div class="container">
+    <div class="notification is-transparent">
+     Ceci est un container
+    </div>
+  </div>
+  
+  <div class="background--custom">
+    <canvas id="canvas" />
+  </div>
+  <script src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js"></script>
+  <script>
+  var gradient = new Gradient();
+  gradient.initGradient("#canvas");
+  </script>
+</body>
+</html>
