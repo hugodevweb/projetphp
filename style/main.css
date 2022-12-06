@@ -4,28 +4,11 @@
       font-family: 'Montserrat', sans-serif;
     
      }
-     .background--custom {
-      background-color: #FFFFFF;
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      overflow: hidden;
-      z-index: -2;
-      top: 0;
-      left: 0;
-    }
-    canvas#canvas {
-      z-index: -1;
-      position: absolute;
-      width: 100%;
-      height: 60%;
-      transform: rotate(-12deg) scale(2) translateY(-56%);
-      --gradient-color-1: #79FF00; 
-      --gradient-color-2: #12910B; 
-      --gradient-color-3: #265A14;  
-      --gradient-color-4: #C4F707;
-      --gradient-speed: 0.000006;
-    }
+     /*couleurs 
+     rgb(162, 201, 91)
+     rgb(129, 151, 76)
+     rgb(126, 172, 82)
+     rgb(66, 145, 62)*/
 
       .search-box {
         display: flex;
@@ -35,6 +18,9 @@
     
         
     }
+     #rech{
+      width: 26vw;
+     }
     .notification {
       margin-top: 10vh;
       background: rgba(254, 254, 254, 0.23);
@@ -46,11 +32,29 @@
         width: 5vw;
 
     }
+    .header-main{
+      background-color:rgb(66, 145, 62) ;
+    }
     .navbar {
-      min-height: 3.25rem;
-      background-color: transparent !important;
-      border: 1px solid white;
+      left: 25vw;
+      background-color:rgb(66, 145, 62) ;
+      
   }
+  .navbar-start {
+  
+    justify-content: flex-start;
+    margin-right: 0;
+}
+.navbar-end {
+  justify-content: flex-start;
+  margin-left: 0;
+}
   .navbar a{
     color: white;
+    
   }
+  .container {
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
