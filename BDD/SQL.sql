@@ -19,153 +19,172 @@
 CREATE DATABASE IF NOT EXISTS `diggit.me` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `diggit.me`;
 
--- Listage de la structure de table diggit.me. alimentation
-CREATE TABLE IF NOT EXISTS `alimentation` (
-  `IdAlime` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdAlime`)
+-- Listage de la structure de table diggit.me. composants
+CREATE TABLE IF NOT EXISTS `composants` (
+  `id_comp` int NOT NULL AUTO_INCREMENT,
+  `price` decimal(10,2) NOT NULL,
+  `rating` tinyint(1) DEFAULT NULL,
+  `brand` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `is_available` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_comp`),
+  CONSTRAINT `composants_chk_1` CHECK ((`rating` between 1 and 5))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Listage de la structure de table diggit.me. alim
+CREATE TABLE IF NOT EXISTS `alim` (
+  `id_alim` int NOT NULL,
+  `wattage` int NOT NULL,
+  `modulable` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_alim`),
+  CONSTRAINT `alim_ibfk_1` FOREIGN KEY (`id_alim`) REFERENCES `composants` (`id_comp`),
+  CONSTRAINT `alim_chk_1` CHECK ((`modulable` between 0 and 2))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.alimentation : ~0 rows (environ)
+-- Listage des données de la table diggit.me.alim : ~0 rows (environ)
 
--- Listage de la structure de table diggit.me. boitier
-CREATE TABLE IF NOT EXISTS `boitier` (
-  `IdBoitier` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdBoitier`)
+-- Listage de la structure de table diggit.me. board
+CREATE TABLE IF NOT EXISTS `board` (
+  `id_board` int NOT NULL,
+  `typesocket` varchar(255) NOT NULL,
+  `nbram` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_board`),
+  CONSTRAINT `board_ibfk_1` FOREIGN KEY (`id_board`) REFERENCES `composants` (`id_comp`)
+
+)
+
+-- Listage des données de la table diggit.me.board : ~0 rows (environ)
+
+-- Listage de la structure de table diggit.me. boiter
+CREATE TABLE IF NOT EXISTS `boiter` (
+  `id_case` int NOT NULL,
+  `type_case` VARCHAR(105) NOT NULL,
+  PRIMARY KEY (`id_case`),
+  CONSTRAINT `boitier_ibfk_1` FOREIGN KEY (`id_case`) REFERENCES `composants` (`id_comp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.boitier : ~0 rows (environ)
-
--- Listage de la structure de table diggit.me. cartegraphique
-CREATE TABLE IF NOT EXISTS `cartegraphique` (
-  `IdCarteG` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdCarteG`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table diggit.me.cartegraphique : ~0 rows (environ)
-
--- Listage de la structure de table diggit.me. cartemere
-CREATE TABLE IF NOT EXISTS `cartemere` (
-  `IdCarteM` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdCarteM`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table diggit.me.cartemere : ~0 rows (environ)
-
--- Listage de la structure de table diggit.me. cartereseau
-CREATE TABLE IF NOT EXISTS `cartereseau` (
-  `IdCarteR` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdCarteR`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table diggit.me.cartereseau : ~0 rows (environ)
+-- Listage des données de la table diggit.me.boiter : ~0 rows (environ)
 
 -- Listage de la structure de table diggit.me. client
 CREATE TABLE IF NOT EXISTS `client` (
-  `Idcompte` int NOT NULL AUTO_INCREMENT,
-  `mail` varchar(50) NOT NULL DEFAULT '0',
-  `pseudo` varchar(50) NOT NULL DEFAULT '0',
-  `statut` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Idcompte`),
-  KEY `Idcompte` (`Idcompte`)
+  `id_client` int NOT NULL AUTO_INCREMENT,
+  `mail` varchar(70) NOT NULL,
+  `pseudo` varchar(50) NOT NULL,
+  `statut` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idclient`),
+  KEY `FK_client_statut` (`statut`),
+  CONSTRAINT `FK_client_statut` FOREIGN KEY (`statut`) REFERENCES `statut` (`statut`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table diggit.me.client : ~0 rows (environ)
 
--- Listage de la structure de table diggit.me. commande
-CREATE TABLE IF NOT EXISTS `commande` (
-  `IdCom` int NOT NULL AUTO_INCREMENT,
-  `IdPan` int NOT NULL DEFAULT '0',
-  `date` date DEFAULT NULL,
-  `montant` int DEFAULT NULL,
-  PRIMARY KEY (`IdCom`),
-  KEY `Idpan` (`IdPan`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.commande : ~0 rows (environ)
-
--- Listage de la structure de table diggit.me. composants
-CREATE TABLE IF NOT EXISTS `composants` (
-  `IdCom` int NOT NULL AUTO_INCREMENT,
-  `prix` int DEFAULT '0',
-  `note` int DEFAULT '0',
-  `marque` varchar(50) DEFAULT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `stock` int DEFAULT NULL,
-  `img` text,
-  PRIMARY KEY (`IdCom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table diggit.me.composants : ~0 rows (environ)
 
--- Listage de la structure de table diggit.me. configuration
-CREATE TABLE IF NOT EXISTS `configuration` (
-  `Idconfig` int NOT NULL AUTO_INCREMENT,
-  `Idclient` int NOT NULL DEFAULT '0',
-  `date` date NOT NULL,
-  PRIMARY KEY (`Idconfig`),
-  KEY `Idclient` (`Idclient`)
+-- Listage de la structure de table diggit.me. configurations
+CREATE TABLE IF NOT EXISTS `configurations` (
+  `id_config` int NOT NULL AUTO_INCREMENT,
+  `idclient` int NOT NULL,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_config`),
+  KEY `client_config` (`idclient`),
+  CONSTRAINT `client_config` FOREIGN KEY (`idclient`) REFERENCES `client` (`idclient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.configuration : ~0 rows (environ)
+CREATE TABLE IF NOT EXISTS `configurations_prebuild` (
+  `id_config_prebuild` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_config_prebuild`),
+  CONSTRAINT `prebuild_ibfk_1` FOREIGN KEY (`id_config_prebuild`) REFERENCES `configurations` (`id_config`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Listage des données de la table diggit.me.configurations : ~0 rows (environ)
+
+-- Listage de la structure de table diggit.me. gpu
+CREATE TABLE IF NOT EXISTS `gpu` (
+  `id_gpu` int NOT NULL,
+  `puissance` decimal(10,2) NOT NULL,
+  `ram` int NOT NULL,
+  PRIMARY KEY (`id_gpu`),
+  CONSTRAINT `gpu_ibfk_1` FOREIGN KEY (`id_gpu`) REFERENCES `composants` (`id_comp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table diggit.me.gpu : ~0 rows (environ)
 
 -- Listage de la structure de table diggit.me. hdd
 CREATE TABLE IF NOT EXISTS `hdd` (
-  `IdHDD` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdHDD`)
+  `id_hdd` int NOT NULL,
+  `rpm` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_hdd`),
+  CONSTRAINT `hdd_ibfk_1` FOREIGN KEY (`id_hdd`) REFERENCES `stockage` (`id_stockage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table diggit.me.hdd : ~0 rows (environ)
 
--- Listage de la structure de table diggit.me. panier
-CREATE TABLE IF NOT EXISTS `panier` (
-  `IdPan` int NOT NULL AUTO_INCREMENT,
-  `Idclient` int NOT NULL DEFAULT '0',
-  `Montant` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`IdPan`),
-  KEY `Idclient` (`Idclient`)
+-- Listage de la structure de table diggit.me. proc
+CREATE TABLE IF NOT EXISTS `cpu` (
+  `id_cpu` int NOT NULL,
+  `puissance` decimal(10,2) NOT NULL,
+  `nbrcore` decimal(2,0) NOT NULL,
+  `conso` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_cpu`),
+  CONSTRAINT `proc_ibfk_1` FOREIGN KEY (`id_cpu`) REFERENCES `composants` (`id_comp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.panier : ~0 rows (environ)
+-- Listage des données de la table diggit.me.proc : ~0 rows (environ)
 
--- Listage de la structure de table diggit.me. processeur
-CREATE TABLE IF NOT EXISTS `processeur` (
-  `IdProce` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdProce`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table diggit.me.processeur : ~0 rows (environ)
-
--- Listage de la structure de table diggit.me. ram
-CREATE TABLE IF NOT EXISTS `ram` (
-  `IdRam` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdRam`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table diggit.me.ram : ~0 rows (environ)
-
--- Listage de la structure de table diggit.me. ssd
+-- Listage de la structure de table diggit.me. sdd
 CREATE TABLE IF NOT EXISTS `ssd` (
-  `IdSSD` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdSSD`)
+  `id_ssd` int NOT NULL,
+  `speed` int NOT NULL,
+  PRIMARY KEY (`id_ssd`),
+  CONSTRAINT `sdd_ibfk_1` FOREIGN KEY (`id_ssd`) REFERENCES `stockage` (`id_comp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.ssd : ~0 rows (environ)
+-- Listage des données de la table diggit.me.sdd : ~0 rows (environ)
+
+-- Listage de la structure de table diggit.me. statut
+CREATE TABLE IF NOT EXISTS `statut` (
+  `statutchar` varchar(50) NOT NULL,
+  `statut` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`statutchar`),
+  KEY `statut` (`statut`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table diggit.me.statut : ~0 rows (environ)
 
 -- Listage de la structure de table diggit.me. stockage
 CREATE TABLE IF NOT EXISTS `stockage` (
-  `IdStock` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IdStock`)
+  `id_stockage` int NOT NULL,
+  `taille` int NOT NULL,
+  PRIMARY KEY (`id_stockage`),
+  CONSTRAINT `stockage_ibfk_1` FOREIGN KEY (`id_stockage`) REFERENCES `composants` (`id_comp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table diggit.me.stockage : ~0 rows (environ)
 
--- Listage de la structure de table diggit.me. ventilation
-CREATE TABLE IF NOT EXISTS `ventilation` (
-  `IpVenti` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`IpVenti`)
+-- Listage de la structure de table diggit.me. vent
+CREATE TABLE IF NOT EXISTS `cooler` (
+  `id_cooler` int NOT NULL,
+  `sondb` decimal(10,2) NOT NULL,
+    `rpm` decimal(10,2) NOT NULL,
+  `largeur` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_cooler`),
+  CONSTRAINT `vent_ibfk_1` FOREIGN KEY (`id_cooler`) REFERENCES `composants` (`id_comp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.ventilation : ~0 rows (environ)
+CREATE TABLE IF NOT EXISTS `vent` (
+   `id_vent` int NOT NULL,
+  PRIMARY KEY (`id_vent`),
+  CONSTRAINT `sdd_ibfk_1` FOREIGN KEY (`id_vent`) REFERENCES `cooler` (`id_cooler`)
+)
+
+  CREATE TABLE IF NOT EXISTS `waterC` (
+   `id_waterC` int NOT NULL,
+  
+  PRIMARY KEY (`id_vent`),
+  CONSTRAINT `sdd_ibfk_1` FOREIGN KEY (`id_waterC`) REFERENCES `cooler` (`id_cooler`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Listage des données de la table diggit.me.vent : ~0 rows (environ)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
