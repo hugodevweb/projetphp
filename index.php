@@ -54,7 +54,7 @@
               <img src="./images/cart.gif" alt="cart">
               
             </span>
-            <span>Panier</span>
+            <span href="">Panier</span>
           </button>
         </div>
       </div>
