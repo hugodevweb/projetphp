@@ -92,7 +92,7 @@
   </div>
     </div>
   </nav>
-
+  </header>
   <!----contenu---->
   <section class="hero " style="background: url('.//images/gradient.gif') center/cover no-repeat;" >
     <div class="hero-body" >
