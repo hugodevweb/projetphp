@@ -156,7 +156,7 @@
 
 
     <div class="field">
-    <label class="label ">Est-il disponible ? :</label>
+    <label class="label "><h3 class="title is-4">Est-il disponible ? :</h3></label>
     <div class="control">
       <label class="radio">
         <input type="radio" name="is_available" value="1">
@@ -170,17 +170,6 @@
   </div>
     <hr>
 
-    <!-- <div id="cpuDiv" style="display:none">
-        <label><b class="is-pulled-left">Puissance:</b></label>
-        <input  class="input" placeholder="Entrez la  puissance" name="cpu_puiss"  required>
-
-        <label><b class="is-pulled-left">Le nombre de Cores:</b></label>
-        <input  class="input" placeholder="Entrez le nombre de cores" name="cpu_nbr_core"  required>
-
-        <label><b class="is-pulled-left">La conssomation:</b></label>
-        <input  class="input" placeholder="Entrez la consommation en W" name="cpu_conso"  required>
-
-    </div> -->
    
 
 <!-- Div qui apparaît si l'option "cooler" est choisie -->
@@ -195,28 +184,85 @@
 </div>
 <!-- Div qui apparaît si l'option "board" est choisie -->
 <div id="board" style="display: none;">
-  <h3>Carte mère</h3>
-  <p>Informations sur la carte mère...</p>
-</div>
+  <h3 class="title is-2">Parametres de la carte mere :</h3>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Type de socket:</b></label>
+  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  required>
+  </div>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
+  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  required>
+  </div>
+ </div>
 <!-- Div qui apparaît si l'option "alim" est choisie -->
 <div id="alim" style="display: none;">
-  <h3>Alimentation</h3>
-  <p>Informations sur l'alimentation...</p>
+  <h3 class="title is-2">Parametres de l'alimentation' :</h3>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Consomation:</b></label>
+  <input  class="input" placeholder="Entrez la consomation en Watts" name="alim_wattage"  required>
+  </div>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Est-elle modulable ?</b></label>
+    
+        <div class="control ">
+            <div id="module" class="select is-pulled-left">
+            <select  id="is_modulable" >
+                <option value="0" selected>Non</option>
+                <option value="2" >Full</option>
+                <option value="1">Semi-modulable</option>
+                
+            </select>
+            </div>
+        </div>
+
+  </div>
 </div>
 <!-- Div qui apparaît si l'option "gpu" est choisie -->
 <div id="gpu" style="display: none;">
-  <h3>Carte Graphique</h3>
-  <p>Informations sur la carte graphique...</p>
+  <h3 class="title is-2">Parametres de la carte graphique :</h3>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Puissance:</b></label>
+  <input  class="input" placeholder="Entrez la  puissance" name="gpu_puiss"  required>
+  </div>
+
+  <div class="field">
+  <label><b class="is-pulled-left">la RAM:</b></label>
+  <input  class="input" placeholder="Entrez la ram du gpu" name="gpu_ram"  required>
+  </div>
+
 </div>
 <!-- Div qui apparaît si l'option "boiter" est choisie -->
 <div id="boiter" style="display: none;">
-  <h3>Le boitier</h3>
-  <p>Informations sur le boitier...</p>
+<h3 class="title is-2">Parametres du boiter :</h3>
+
+<div class="field">
+<label><b class="is-pulled-left">Type de boitier</b></label>
+<input  class="input" placeholder="Entrez la norme du boitier" name="boiter_type_case"  required>
+</div>
+
 </div>
 <!-- Div qui apparaît si l'option "cpu" est choisie -->
 <div id="cpu" style="display: none;">
-  <h3>Le CPU</h3>
-  <p>Informations sur le CPU...</p>
+        <h3 class="title is-2">Parametres du CPU :</h3>
+
+        <div class="field">
+        <label><b class="is-pulled-left">Puissance:</b></label>
+        <input  class="input" placeholder="Entrez la  puissance" name="cpu_puiss"  required>
+        </div>
+
+        <div class="field">
+        <label><b class="is-pulled-left">Le nombre de Cores:</b></label>
+        <input  class="input" placeholder="Entrez le nombre de cores" name="cpu_nbr_core"  required>
+        </div>
+        <div class="field">
+        <label><b class="is-pulled-left">La consomation:</b></label>
+        <input  class="input" placeholder="Entrez la consommation en W" name="cpu_conso"  required>
+        </div>
 </div>
     <button type="submit" class="button is-info is-medium is-fullwidth">Ajouter +</button>
 

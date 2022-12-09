@@ -174,12 +174,16 @@ label>b{
 }
 
 form .field{
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .choixtype{
   margin-right: 3%;
 }
 
+#module{
+  margin-top: 10px;
+  margin-bottom: 3%;
+}
 
 
 

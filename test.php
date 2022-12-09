@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cool Page</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
-    />
+    /> -->
   </head>
   <body>
     <section class="hero is-primary">
@@ -30,6 +30,45 @@
               <a class="panel-block" href="#"> FAQ </a>
             </nav>
           </div>
+          <button>ceci est un bouton</button>
+          <style>
+button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0095ff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  animation: hover-animation 0.2s ease-in-out;
+}
+
+button:active {
+  animation: click-animation 0.2s ease-in-out;
+}
+
+@keyframes hover-animation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes click-animation {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+
+          </style>
           <div class="column">
             <h2 class="title is-2">Welcome to our cool page!</h2>
             <p>
