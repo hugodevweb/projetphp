@@ -171,14 +171,7 @@
     <hr>
 
     <!-- <div id="cpuDiv" style="display:none">
-        <label><b class="is-pulled-left">Puissance:</b></label>
-        <input  class="input" placeholder="Entrez la  puissance" name="cpu_puiss"  required>
-
-        <label><b class="is-pulled-left">Le nombre de Cores:</b></label>
-        <input  class="input" placeholder="Entrez le nombre de cores" name="cpu_nbr_core"  required>
-
-        <label><b class="is-pulled-left">La conssomation:</b></label>
-        <input  class="input" placeholder="Entrez la consommation en W" name="cpu_conso"  required>
+       
 
     </div> -->
    
@@ -216,7 +209,14 @@
 <!-- Div qui apparaît si l'option "cpu" est choisie -->
 <div id="cpu" style="display: none;">
   <h3>Le CPU</h3>
-  <p>Informations sur le CPU...</p>
+  <label><b class="is-pulled-left">Puissance:</b></label>
+        <input  class="input" placeholder="Entrez la  puissance" name="cpu_puiss"  required>
+
+        <label><b class="is-pulled-left">Le nombre de Cores:</b></label>
+        <input  class="input" placeholder="Entrez le nombre de cores" name="cpu_nbr_core"  required>
+
+        <label><b class="is-pulled-left">La conssomation:</b></label>
+        <input  class="input" placeholder="Entrez la consommation en W" name="cpu_conso"  required>
 </div>
     <button type="submit" class="button is-info is-medium is-fullwidth">Ajouter +</button>
 
