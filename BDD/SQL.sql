@@ -139,7 +139,6 @@ CREATE TABLE IF NOT EXISTS `gpu` (
 -- Listage de la structure de table diggit.me. hdd
 CREATE TABLE IF NOT EXISTS `hdd` (
   `id_hdd` int NOT NULL,
-  `rpm` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_hdd`),
   CONSTRAINT `hdd_ibfk_1` FOREIGN KEY (`id_hdd`) REFERENCES `stockage` (`id_stockage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -149,7 +148,6 @@ CREATE TABLE IF NOT EXISTS `hdd` (
 -- Listage de la structure de table diggit.me. ssd
 CREATE TABLE IF NOT EXISTS `ssd` (
   `id_ssd` int NOT NULL,
-  `speed` int NOT NULL,
   PRIMARY KEY (`id_ssd`),
   CONSTRAINT `sdd_ibfk_1` FOREIGN KEY (`id_ssd`) REFERENCES `stockage` (`id_stockage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -170,6 +168,7 @@ CREATE TABLE IF NOT EXISTS `statut` (
 CREATE TABLE IF NOT EXISTS `stockage` (
   `id_stockage` int NOT NULL,
   `taille` int NOT NULL,
+  `vitesse` int DEFAULT NULL,
   PRIMARY KEY (`id_stockage`),
   CONSTRAINT `stockage_ibfk_1` FOREIGN KEY (`id_stockage`) REFERENCES `composants` (`id_comp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

@@ -98,7 +98,7 @@
     <div class="hero-body" >
         <div class="container" >
             <h1 class="title has-text-white">
-                Bienvenu sur digit.me 
+                Bienvenue sur digit.me 
             </h1>
             <h2 class="subtitle has-text-white">
                Votre configurateur de PC personnalisé

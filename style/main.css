@@ -186,7 +186,12 @@ form .field{
 }
 
 
-
+.HDD {
+  display: block;
+}
+.SSD {
+  display: none;
+}
 
 
 

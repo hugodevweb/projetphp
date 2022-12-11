@@ -130,8 +130,8 @@
                 <option value="board">Carte mère</option>
                 <option value="alim">Alimentation</option>
                 <option value="gpu">Carte Graphique</option>
-                <option value="boiter">Le boitier</option>
-                <option value="cpu">cpu</option>
+                <option value="boiter">Un boitier</option>
+                <option value="cpu">Un processeur</option>
             </select>
             </div>
         </div>
@@ -172,19 +172,70 @@
 
    
 
-<!-- Div qui apparaît si l'option "cooler" est choisie -->
-<div id="cooler" style="display: none;">
-  <h3>Refroidissement de CPU</h3>
-  <p>Informations sur le refroidissement de CPU...</p>
-</div>
-<!-- Div qui apparaît si l'option "stockage" est choisie -->
 <div id="stockage" style="display: none;">
-  <h3>Stockage</h3>
-  <p>Informations sur le stockage...</p>
+<div class="field">
+      <label class="label "><h3 class="title is-4">Quel est le type de stockage:</h3></label>
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="stockage_type" value="SSD">
+          Un SSD
+        </label>
+        <label class="radio">
+          <input type="radio" name="stockage_type" value="HDD">
+          Un Disque dur
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label ><b class="is-pulled-left">L'espace de stockage:</b></label>
+      <input  class="input" placeholder="Entrez le stockage en GB" name="stockage_taille"  required>
+    </div>
+
+    <div class="field">
+      <label ><b class="is-pulled-left">La vitesse</b></label>
+      <input  class="input" placeholder="Entrez la vitesse" name="stockage_vitesse"  required>
+    </div>
+
+</div>
+
+
+<!-- Div qui apparaît si l'option "board" est choisie -->
+
+
+<div id="board" style="display: none;">
+  <h3 class="title is-2">paramètres de la carte mere :</h3>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Type de socket:</b></label>
+  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  required>
+  </div>
+
+  <div class="field">
+  <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
+  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  required>
+  </div>
+ </div>
+<!-- Div qui apparaît si l'option "cooler " est choisie -->
+
+<div id="cooler" style="display: none;">
+<div class="field">
+      <label class="label "><h3 class="title is-4">Quel est le type de Refroidissement ?</h3></label>
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="cooler_type" value="vent">
+          Un VentiRad
+        </label>
+        <label class="radio">
+          <input type="radio" name="cooler_type" value="waterC">
+          Un Water Cooling
+        </label>
+      </div>
+    </div>
 </div>
 <!-- Div qui apparaît si l'option "board" est choisie -->
 <div id="board" style="display: none;">
-  <h3 class="title is-2">Parametres de la carte mere :</h3>
+  <h3 class="title is-2">paramètres de la carte mere :</h3>
 
   <div class="field">
   <label><b class="is-pulled-left">Type de socket:</b></label>
@@ -198,7 +249,7 @@
  </div>
 <!-- Div qui apparaît si l'option "alim" est choisie -->
 <div id="alim" style="display: none;">
-  <h3 class="title is-2">Parametres de l'alimentation' :</h3>
+  <h3 class="title is-2">paramètres de l'alimentation' :</h3>
 
   <div class="field">
   <label><b class="is-pulled-left">Consomation:</b></label>
@@ -223,7 +274,7 @@
 </div>
 <!-- Div qui apparaît si l'option "gpu" est choisie -->
 <div id="gpu" style="display: none;">
-  <h3 class="title is-2">Parametres de la carte graphique :</h3>
+  <h3 class="title is-2">paramètres de la carte graphique :</h3>
 
   <div class="field">
   <label><b class="is-pulled-left">Puissance:</b></label>
@@ -238,7 +289,7 @@
 </div>
 <!-- Div qui apparaît si l'option "boiter" est choisie -->
 <div id="boiter" style="display: none;">
-<h3 class="title is-2">Parametres du boiter :</h3>
+<h3 class="title is-2">paramètres du boiter :</h3>
 
 <div class="field">
 <label><b class="is-pulled-left">Type de boitier</b></label>
@@ -248,7 +299,7 @@
 </div>
 <!-- Div qui apparaît si l'option "cpu" est choisie -->
 <div id="cpu" style="display: none;">
-        <h3 class="title is-2">Parametres du CPU :</h3>
+        <h3 class="title is-2">paramètres du CPU :</h3>
 
         <div class="field">
         <label><b class="is-pulled-left">Puissance:</b></label>
@@ -280,8 +331,8 @@
                 <h3>Télécharger notre application</h3>
                 <p>Télécharger notre application maintenant sur Android et IOS</p>
                 <div class="app_logo">
-                    <a href="https://play.google.com/store/search?q=footprint"><img class="playstr" src="Images/playstore.png" ></a>
-                    <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr" src="Images/appstore.png"></a>
+                    <a href="https://play.google.com/store/search?q=footprint"><img class="playstr" src="../images/playstore.png" ></a>
+                    <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr" src="../images/appstore.png"></a>
                 </div>
             </div>
             <div class="footer_col2">
@@ -305,7 +356,7 @@
             </div>         
         </div>
         <hr>
-        <p class="copyright">Copyright 2022 - Foot-Print</p>
+        <p class="copyright">Copyright 2022 - DIGIT.ME</p>
     </div>
  </div>
 </body>
