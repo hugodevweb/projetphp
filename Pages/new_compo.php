@@ -115,7 +115,7 @@
 
   <div id="pres"class="box has-text-centered has-background-white ">
   <h1 style="font-family: 'Montserrat', sans-serif;" class="title is-2">Completer le formulaire ci-dessous:</h1>
-  <form action="./modif_mdp_action.php" method="post">
+  <form action="./new_compo_action.php" method="post">
 
     
     <div class="field">
@@ -123,7 +123,7 @@
         <div class="control ">
         <label for="type" class="choixtype" ><b >Type de composant:</b></label>
             <div class="select">
-            <select  id="type" onchange="showDiv()">
+            <select  name ="type" id="type" onchange="showDiv()">
                 <option value="erreur_choix_composant" selected>Choisir</option>
                 <option value="cooler" >Refroidissement de CPU</option>
                 <option value="stockage">Stockage</option>
@@ -139,19 +139,19 @@
  
  <div class="field">       
     <label for="name"><b class="is-pulled-left">Nom du composant:</b></label>
-    <input  class="input" placeholder="Repetez le nom du composant" name="name" required>
+    <input  class="input" placeholder="Repetez le nom du composant" name="name" >
 </div>
  <div class="field">   
     <label for="price"><b class="is-pulled-left">Prix:</b></label>
-    <input  class="input" placeholder="Entrez le prix du composant" name="prixe" required>
+    <input  class="input" placeholder="Entrez le prix du composant" name="price" >
     </div>
 <div class="field">    
     <label for="brand"><b class="is-pulled-left">Marque:</b></label>
-    <input  class="input" placeholder="Repetez la marque" name="brand" required>
+    <input  class="input" placeholder="Repetez la marque" name="brand" >
     </div>
 <div class="field">
     <label for="rating"><b class="is-pulled-left">La note:</b></label>
-    <input  class="input" placeholder="Entrez la note /5" name="rating"  required>
+    <input  class="input" placeholder="Entrez la note /5" name="rating"  >
     </div>
 
 
@@ -189,12 +189,12 @@
 
     <div class="field">
       <label ><b class="is-pulled-left">L'espace de stockage:</b></label>
-      <input  class="input" placeholder="Entrez le stockage en GB" name="stockage_taille"  required>
+      <input  class="input" placeholder="Entrez le stockage en GB" name="stockage_taille"  >
     </div>
 
     <div class="field">
       <label ><b class="is-pulled-left">La vitesse</b></label>
-      <input  class="input" placeholder="Entrez la vitesse" name="stockage_vitesse"  required>
+      <input  class="input" placeholder="Entrez la vitesse" name="stockage_vitesse"  >
     </div>
 
 </div>
@@ -208,12 +208,12 @@
 
   <div class="field">
   <label><b class="is-pulled-left">Type de socket:</b></label>
-  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  required>
+  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  >
   </div>
 
   <div class="field">
   <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
-  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  required>
+  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  >
   </div>
  </div>
 <!-- Div qui apparaît si l'option "cooler " est choisie -->
@@ -239,12 +239,12 @@
 
   <div class="field">
   <label><b class="is-pulled-left">Type de socket:</b></label>
-  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  required>
+  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  >
   </div>
 
   <div class="field">
   <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
-  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  required>
+  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  >
   </div>
  </div>
 <!-- Div qui apparaît si l'option "alim" est choisie -->
@@ -253,7 +253,7 @@
 
   <div class="field">
   <label><b class="is-pulled-left">Consomation:</b></label>
-  <input  class="input" placeholder="Entrez la consomation en Watts" name="alim_wattage"  required>
+  <input  class="input" placeholder="Entrez la consomation en Watts" name="alim_wattage"  >
   </div>
 
   <div class="field">
@@ -278,12 +278,12 @@
 
   <div class="field">
   <label><b class="is-pulled-left">Puissance:</b></label>
-  <input  class="input" placeholder="Entrez la  puissance" name="gpu_puiss"  required>
+  <input  class="input" placeholder="Entrez la  puissance" name="gpu_puiss"  >
   </div>
 
   <div class="field">
   <label><b class="is-pulled-left">la RAM:</b></label>
-  <input  class="input" placeholder="Entrez la ram du gpu" name="gpu_ram"  required>
+  <input  class="input" placeholder="Entrez la ram du gpu" name="gpu_ram"  >
   </div>
 
 </div>
@@ -293,7 +293,7 @@
 
 <div class="field">
 <label><b class="is-pulled-left">Type de boitier</b></label>
-<input  class="input" placeholder="Entrez la norme du boitier" name="boiter_type_case"  required>
+<input  class="input" placeholder="Entrez la norme du boitier" name="boiter_type_case"  >
 </div>
 
 </div>
@@ -303,16 +303,16 @@
 
         <div class="field">
         <label><b class="is-pulled-left">Puissance:</b></label>
-        <input  class="input" placeholder="Entrez la  puissance" name="cpu_puiss"  required>
+        <input  class="input" placeholder="Entrez la  puissance" name="cpu_puiss"  >
         </div>
 
         <div class="field">
         <label><b class="is-pulled-left">Le nombre de Cores:</b></label>
-        <input  class="input" placeholder="Entrez le nombre de cores" name="cpu_nbr_core"  required>
+        <input  class="input" placeholder="Entrez le nombre de cores" name="cpu_nbr_core"  >
         </div>
         <div class="field">
         <label><b class="is-pulled-left">La consomation:</b></label>
-        <input  class="input" placeholder="Entrez la consommation en W" name="cpu_conso"  required>
+        <input  class="input" placeholder="Entrez la consommation en W" name="cpu_conso"  >
         </div>
 </div>
     <button type="submit" class="button is-info is-medium is-fullwidth">Ajouter +</button>
