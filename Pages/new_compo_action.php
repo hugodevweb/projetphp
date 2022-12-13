@@ -19,8 +19,9 @@ switch($type) {
         $stockage_vitesse = $_POST['stockage_vitesse'];
 		switch($stockage_type){
 			case"SSD":
-				$stmt = $pdo->prepare("INSERT INTO ssd (name, price, brand, rating, is_available, type, taille, vitesse) VALUES (:name, :price, :brand, :rating, :is_available, :type, :taille, :vitesse)");
-				
+				$stmt = $pdo->prepare("
+				INSERT INTO composants_stockage(price,rating,brand,name_comp,img,capacite,type_comp,speed,is_available)
+				VALUES ( :price, :rating, :brand,:name,CONCAT(LAST_INSERT_ID()+1,'/images/'), :taille, :type, :vitesse, :is_available)");
 				
 				$name = $_POST['name'];
 				$price = $_POST['price'];
@@ -42,7 +43,7 @@ switch($type) {
 				$stmt->execute();
 				break;
 			case"HDD":
-				$stmt = $pdo->prepare("INSERT INTO hdd (name, price, brand, rating, is_available, type, taille, vitesse) VALUES (:name, :price, :brand, :rating, :is_available, :type, :taille, :vitesse)");
+				$stmt = $pdo->prepare("INSERT INTO hdd (name, price, brand, rating, is_available, type, taille, vitesse) VALUES (:name, :price, :brand, :rating, :is_available, :type, :taille, :vitesse),");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
