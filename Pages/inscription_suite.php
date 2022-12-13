@@ -33,13 +33,16 @@
                       <input class="input" type="passworld" placeholder="Votre mot de passe">
                     </div>
                 </div>
-                  
-                <a href="../Pages/inscription_suite.php">
-                  <input type="button" class="bouton_inscription_suite" value=" S'inscrire">
-                </a>
+
+
+                    
+                <a href="../Pages/inscription.php">
+        <input type="button" class="bouton_inscription_suite" value=" S'inscrire">
+    </a>
+
+                   
                 </form>
         </div>
-        
         <h2 class="deja_un_compte"> J'ai dejà un <a href="./compte.php"> compte  </a><h2>
 
     </div>

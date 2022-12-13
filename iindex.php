@@ -47,7 +47,7 @@
               <i class="fa fa-user"></i>
               
             </span>
-            <span>Mon compte</span>
+            <a href="./Pages/compte.php">Mon compte</a>
           </button>
           <button class="button is-white">
             <span class="icon has-text-dark">

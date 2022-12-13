@@ -1,39 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link href="./style/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon compte</title>
-</head>
-<body>
-    <h1>Indentifiez Vous :</h1>
+<?php
+ if(isset($_GET['erreur'])){
+ $err = $_GET['erreur'];
+ if($err==1 || $err==2)
+ echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+ }
+ ?>
 
-    <div class="section">
-        <div class="container">
-            <h2>Se connecter</h2>
-                <form action="connexion_action.php" method="get" class="connexion">
-                    <div class="connexion_email">
-                        <input type="email" name="email" placeholder="Votre Email">
-                    </div>
-                    <div class="connexion_motdepasse">
-                        <input type="password" name="passeword" placeholder="Votre mot de passe">
-                    </div>
-                        <a href="./mdp_oublie.html">Mot de passe oublié</a>
-                    <div class="bouton_connexion">
-                        <input type="submit" value="Connexion">
-                    </div>
-                    <br>
-                    <h2>Nouveau client ?</h2>
-                    <div class="bouton_inscription">
-                        <input type="submit" value="Créez un compte">
-                    </div>
-                </form>
-        </div>
-    </div>
 
-</body>
+<html>
+ <head>
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link href="../style/main.css" rel="stylesheet">
+ </head>
+ <body>
+
+ <header>
+    <div class="header-main">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+        <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo" >
+        </a>
+</header>
+
+ <div id="container">
+ 
+ <form action="connexion_action.php" method="POST">
+ <h1>Se connecter</h1>
+ 
+ <div class="field">
+  <label class="label">Votre Email</label>
+  <div class="control">
+    <input class="input" type="email" placeholder="Votre email">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Votre mot de passe</label>
+  <div class="control">
+    <input class="input" type="passworld" placeholder="Votre mot de passe">
+  </div>
+</div>
+
+
+
+ <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
+
+
+ <button class="bouton_connexion"> Connexion </button>
+ </form>
+ </div>
+
+ <div class="container2">
+ <h1>Nouveau client ?</h1>
+ <a href="../Pages/inscription.php">
+        <input type="button" class="bouton_creer_un_compte" value=" Creer un compte">
+    </a>
+
+
+
+ </body>
 </html>
+

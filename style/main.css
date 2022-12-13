@@ -285,3 +285,141 @@ ul{
 .copyright{
   text-align: center;
 }
+ 
+/*-----CSS connexion.php----*/
+
+ #container{
+  width:600px;
+  margin:0 auto;
+  margin-top:5%;
+ }
+
+ form {
+  height: 400px;
+  width:100%;
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+ }
+ #container h1{
+  position: relative;
+  top: 5px;
+  text-align: center;
+  font-size: 40px;
+
+  
+ }
+ #container p{
+  text-align: center;
+  padding: 10px;
+  
+ }
+ 
+
+
+ .bouton_connexion{
+  background-color: #0d84af;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-left: 41%;
+
+ }
+
+ .bouton_connexion:hover {
+  background-color: white;
+  color:#0d84af;
+  border: 1px solid #0d84af;
+  border-radius: 30px;
+ }
+ 
+
+
+.bouton_creer_un_compte{
+    background-color: #0d84af;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-left: 37%;
+
+   }
+
+   
+.bouton_creer_un_compte:hover {
+    background-color: white;
+    color: #0d84af;
+    border: 1px solid #0d84af;
+    border-radius: 30px;
+   }
+
+   .container2{
+      width:600px;
+      margin:0 auto;
+      margin-top:0%;
+      height: 150px;
+      padding: 30px;
+      border: 1px solid #f1f1f1;
+      background: #fff;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+     }
+
+     .container2 h1{
+      text-align: center;
+      font-size: 30px;}
+
+      /*-----CSS inscription.php----*/
+
+      .container_inscription{
+        width:600px;
+        margin:0 auto;
+        margin-top:5%;
+       }
+
+       .container_inscription h1{
+        text-align: center;
+        font-size: 40px;
+        position: relative;
+        bottom: 15px;
+      }      
+
+
+       .container_inscription h1{
+        text-align: center;
+        font-size: 40px;
+       }
+       .container_inscription p{
+        text-align: center;
+        padding: 10px;
+       }
+
+       .bouton_inscription{
+        background-color: #0d84af;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        border-radius: 30px;
+        margin-left: 37%;
+       }
+
+       .bouton_inscription:hover {
+        background-color: white;
+        color: #0d84af;
+        border: 1px solid #0d84af;
+        border-radius: 30px;
+       }
+       
+
+      .deja_un_compte{
+        position: relative;
+        top: 15px;
+        text-align: center;
+      }
