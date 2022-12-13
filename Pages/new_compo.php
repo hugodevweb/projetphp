@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/fondsvg.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../scripts/script.js"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head> 
  <body>
   <!-- -----------Premiere ligne du navbar------ -->
@@ -95,9 +97,11 @@
   </nav>
 </header>
   <!----contenu---->
-  <section class="hero " style="background: url('../images/gradient.gif') center/cover no-repeat;" >
+  <section class="hero">
+  <div class="background--custom">
     <div class="hero-body" >
         <div class="container" >
+          
             <h1 class="title has-text-white">
                 Bonjour //////ADMIN/////
             </h1>
@@ -107,15 +111,16 @@
             <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
         </div>
     </div>
+    </div>
 </section>
 
 <!---------------------ajout composant--------------------------------->
-<div class="hero is-fullheight" style="background: url('../images/banner.jpg') center/cover no-repeat;">
+<div class="hero is-fullheight" style="background: url('../images/fondnewcomp.svg') center/cover no-repeat;">
 
 
   <div id="pres"class="box has-text-centered has-background-white ">
   <h1 style="font-family: 'Montserrat', sans-serif;" class="title is-2">Completer le formulaire ci-dessous:</h1>
-  <form action="./new_compo_action.php" method="post">
+  <form action="./new_compo_action.php" id="form_composants" method="post">
 
     
     <div class="field">
@@ -139,7 +144,7 @@
  
  <div class="field">       
     <label for="name"><b class="is-pulled-left">Nom du composant:</b></label>
-    <input  class="input" placeholder="Repetez le nom du composant" name="name" >
+    <input  class="input" placeholder="Inserer le nom du composant" name="name" >
 </div>
  <div class="field">   
     <label for="price"><b class="is-pulled-left">Prix:</b></label>
@@ -208,12 +213,12 @@
 
   <div class="field">
   <label><b class="is-pulled-left">Type de socket:</b></label>
-  <input  class="input" placeholder="Entrez le type de socket" name="board_type_socket"  >
+  <input  class="input" placeholder="Entrez le type de socket" name="board_socket"  >
   </div>
 
   <div class="field">
   <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
-  <input  class="input" placeholder="Entrez le nombre de slot" name="board_nbram"  >
+  <input  class="input" placeholder="Entrez le nombre de slot" name="board_ram">
   </div>
  </div>
 <!-- Div qui apparaît si l'option "cooler " est choisie -->
@@ -223,7 +228,7 @@
       <label class="label "><h3 class="title is-4">Quel est le type de Refroidissement ?</h3></label>
       <div class="control">
         <label class="radio">
-          <input type="radio" name="cooler_type" value="vent">
+          <input type="radio" name="cooler_type" value="VentiRad">
           Un VentiRad
         </label>
         <label class="radio">
@@ -232,6 +237,21 @@
         </label>
       </div>
     </div>
+
+    <div class="field">
+  <label><b class="is-pulled-left">le niveau sonore</b></label>
+  <input  class="input" placeholder="Entrez le niveau sonore" name="cooler_son">
+  </div>
+
+  <div class="field">
+  <label><b class="is-pulled-left">La taille </b></label>
+  <input  class="input" placeholder="Entrez la taille en MM" name="cooler_taille">
+
+  <div class="field">
+  <label><b class="is-pulled-left">La vitesse de rotation </b></label>
+  <input  class="input" placeholder="Entrez la vitesse" name="cooler_speed">
+  </div>
+  </div>
 </div>
 <!-- Div qui apparaît si l'option "board" est choisie -->
 <div id="board" style="display: none;">
@@ -261,7 +281,7 @@
     
         <div class="control ">
             <div id="module" class="select is-pulled-left">
-            <select  id="is_modulable" >
+            <select name ="is_modulable" id="is_modulable" >
                 <option value="0" selected>Non</option>
                 <option value="2" >Full</option>
                 <option value="1">Semi-modulable</option>
@@ -320,6 +340,10 @@
   
 
 </form>
+<!-------------Message succès--------------> 
+  <div class="notification is-success" id="msg_success">
+    Le composant a été ajouté avec succes !
+  </div>
 </div>
 </div>
 
@@ -359,5 +383,6 @@
         <p class="copyright">Copyright 2022 - DIGIT.ME</p>
     </div>
  </div>
+ <script src="../scripts/script.js"></script>
 </body>
 </html>

@@ -160,6 +160,9 @@ border: 2px solid black;
   position: relative;
   height: 25px;
 }
+.hero{
+  border-bottom: 4px solid white;
+}
 .composant-child{
   width: 60px;
 }
@@ -193,12 +196,19 @@ form .field{
   display: none;
 }
 
+#msg_success{
+  display: none;
+  visibility: hidden;
+  transition: 0.5s cubic-bezier(1,-0.05,.3,1.15);
+  left: -50VW;
+}
 
-
-
-
-
-
+#msg_success.appear {
+  /* Appliquer une transformation à l'élément pour lui donner un effet d'apparition */
+  display: block;
+  visibility: visible;
+  transform:translateX(50vw)
+}
 
 
 /*-----footer----*/

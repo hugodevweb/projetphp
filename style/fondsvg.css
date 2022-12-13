@@ -1,0 +1,18 @@
+.background--custom {
+    background: linear-gradient(90deg, #2560FF, #0EA5DB, #7a06da);
+    background-size: 300% 300%;
+    animation: gradient 4s alternate infinite;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
