@@ -30,16 +30,21 @@
  <form action="connexion_action.php" method="POST">
  <h1>Se connecter</h1>
  
-  <label class="label">Email</label>
+ <div class="field">
+  <label class="label">Votre Email</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Votre email">
+    <input class="input" type="email" placeholder="Votre email">
   </div>
+</div>
+
+<div class="field">
+  <label class="label">Votre mot de passe</label>
+  <div class="control">
+    <input class="input" type="passworld" placeholder="Votre mot de passe">
+  </div>
+</div>
 
 
-  <label class="label">Mot de passe</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Votre mot de passe">
-  </div>
 
  <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
 
@@ -50,7 +55,10 @@
 
  <div class="container2">
  <h1>Nouveau client ?</h1>
- <button class="bouton_inscription"><a href="./Pages/inscription.php">  Creer un compte </a>
+ <a href="../Pages/inscription.php">
+        <input type="button" class="bouton_creer_un_compte" value=" Creer un compte">
+    </a>
+
 
 
  </body>
