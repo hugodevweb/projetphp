@@ -11,7 +11,7 @@
 <body>
     <div class ="container_inscription">
             <h1>Mon inscription</h1>
-            <form action="inscription_action.php" method="POST">
+            <form class = "form_inscription_suite" action="inscription_action.php" method="POST">
 
                 <div class="field">
                 <label class="label">Votre Email</label>
