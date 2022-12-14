@@ -10,41 +10,57 @@
 </head>
 <body>
     <div class ="container_inscription">
-            <h1>Mon inscription</h1>
+        <h1>Finaliser mon inscription</h1>
             <form class = "form_inscription_suite" action="inscription_action.php" method="POST">
+                  <div class="field">
+                  <label class="label">Nom</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Votre email">
+                      </div>
+                  </div>
 
-                <div class="field">
-                <label class="label">Votre Email</label>
-                    <div class="control">
-                      <input class="input" type="email" placeholder="Votre email">
+                  <div class="field">
+                    <label class="label">Prénom</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Votre mot de passe">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Numéro de télephone</label>
+                      <div class="control">
+                        <input class="input" type="tel" placeholder="Votre mot de passe">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Adresse</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Votre mot de passe">
+                      </div>
+                  </div> 
+
+
+                  <div class="field is-grouped is-grouped-centered">
+                    <div class="field">
+                      <label class="label">Code postal</label>
+                        <div class="control">
+                          <input class="input" type="text" placeholder="Code postal">
+                        </div>
                     </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Votre mot de passe</label>
-                    <div class="control">
-                      <input class="input" type="passworld" placeholder="Votre mot de passe">
+                    <div class="field">
+                      <label class="label">Ville</label>
+                        <div class="control">
+                          <input class="input" type="text" placeholder="Ville">
+                        </div>
                     </div>
-                </div>
+                  </div>
 
-                <div class="field">
-                  <label class="label">Confirmer votre mot de passe</label>
-                    <div class="control">
-                      <input class="input" type="passworld" placeholder="Votre mot de passe">
-                    </div>
-                </div>
+                  <a href="../Pages/inscription_suite.php">
+                  <input type="button" class="bouton_inscription_valider" value="Valider mon inscription">
+                </a>
 
-
-                    
-                <a href="../Pages/inscription.php">
-        <input type="button" class="bouton_inscription_suite" value=" S'inscrire">
-    </a>
-
-                   
-                </form>
-        </div>
-        <h2 class="deja_un_compte"> J'ai dejà un <a href="./compte.php"> compte  </a><h2>
-
-    </div>
+              </form>
+      </div>
 </body>
 </html>
