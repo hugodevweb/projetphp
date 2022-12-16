@@ -1,3 +1,15 @@
+<?php
+if (isset($_POST['envoi'])) {
+	if (!empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['confirm_mdp']) ){
+
+
+  }else{
+  echo"remplir les champs";
+  }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,32 +23,32 @@
 <body>
     <div class ="container_inscription">
             <h1>Mon inscription</h1>
-            <form class = "form_inscription" action="inscription_action.php" method="POST">
+            <form class = "form_inscription" action="" method="POST">
 
                 <div class="field">
                 <label class="label">Votre Email</label>
                     <div class="control">
-                      <input class="input" type="email" placeholder="Votre email">
+                      <input class="input" name="mail" type="email" placeholder="Votre email">
                     </div>
                 </div>
 
                 <div class="field">
                   <label class="label">Votre mot de passe</label>
                     <div class="control">
-                      <input class="input" type="passworld" placeholder="Votre mot de passe">
+                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
 
                 <div class="field">
                   <label class="label">Confirmer votre mot de passe</label>
                     <div class="control">
-                      <input class="input" type="passworld" placeholder="Votre mot de passe">
+                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
                   
-                <a href="../Pages/inscription_suite.php">
-                  <input type="button" class="bouton_inscription_suite" value=" S'inscrire">
-                </a>
+                
+                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
+                
                 </form>
         </div>
         

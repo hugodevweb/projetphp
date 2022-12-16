@@ -42,13 +42,13 @@
 
 
                   <div class="field is-grouped is-grouped-centered">
-                    <div class="field">
+                    <div class="field mr-6">
                       <label class="label">Code postal</label>
                         <div class="control">
                           <input class="input" type="text" placeholder="Code postal">
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field mr-6">
                       <label class="label">Ville</label>
                         <div class="control">
                           <input class="input" type="text" placeholder="Ville">
@@ -56,7 +56,7 @@
                     </div>
                   </div>
 
-                  <a href="../Pages/inscription_suite.php">
+                  <a href="../iindex.php">
                   <input type="button" class="bouton_inscription_valider" value="Valider mon inscription">
                 </a>
 

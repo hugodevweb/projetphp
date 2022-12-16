@@ -348,7 +348,7 @@ ul{
     border: none;
     cursor: pointer;
     border-radius: 30px;
-    margin-left: 37%;
+    margin-left: 40%;
 
    }
 
@@ -384,7 +384,7 @@ ul{
         margin-top:5%;
        }
       
-       #container .form_inscription{
+       .container_inscription .form_inscription{
         height: 400px;
         width:100%;
         padding: 30px;
@@ -416,7 +416,7 @@ ul{
         padding: 10px;
        }
 
-       .bouton_inscription{
+       .bouton_inscription_suite{
         background-color: #0d84af;
         color: white;
         padding: 14px 20px;
@@ -424,10 +424,10 @@ ul{
         border: none;
         cursor: pointer;
         border-radius: 30px;
-        margin-left: 37%;
+        margin-left: 40%;
        }
 
-       .bouton_inscription:hover {
+       .bouton_inscription_suite:hover {
         background-color: white;
         color: #0d84af;
         border: 1px solid #0d84af;
@@ -453,7 +453,7 @@ ul{
         border: none;
         cursor: pointer;
         border-radius: 30px;
-        margin-left: 37%;
+        margin-left: 32%;
       }
 
 
@@ -466,7 +466,7 @@ ul{
 
 
       .form_inscription_suite{
-        height: 700px;
+        height: 610px;
         width:100%;
         padding: 30px;
         border: 1px solid #f1f1f1;
@@ -474,3 +474,14 @@ ul{
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
       }
+
+      .container_inscription{
+
+        width:600px;
+        margin:0 auto;
+        margin-top:2%;
+       }
+
+      
+
+      
