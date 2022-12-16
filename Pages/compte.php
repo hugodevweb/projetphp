@@ -1,12 +1,3 @@
-<?php
- if(isset($_GET['erreur'])){
- $err = $_GET['erreur'];
- if($err==1 || $err==2)
- echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
- }
- ?>
-
-
 <html>
  <head>
  <meta charset="utf-8">
@@ -33,14 +24,14 @@
  <div class="field">
   <label class="label">Votre Email</label>
   <div class="control">
-    <input class="input" type="email" placeholder="Votre email">
+    <input class="input" name ="mail" type="email" placeholder="Votre email">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Votre mot de passe</label>
   <div class="control">
-    <input class="input" type="passworld" placeholder="Votre mot de passe">
+    <input class="input" name="mdp" type="password" placeholder="Votre mot de passe">
   </div>
 </div>
 
@@ -48,15 +39,14 @@
 
  <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
 
-
- <button class="bouton_connexion"> Connexion </button>
+ <input type="submit"  name="envoi" class="bouton_connexion" value=" Connexion">
  </form>
  </div>
 
  <div class="container2">
  <h1>Nouveau client ?</h1>
  <a href="../Pages/inscription.php">
-        <input type="button" class="bouton_creer_un_compte" value=" Creer un compte">
+        <input type="submit" class="bouton_creer_un_compte" value=" Creer un compte">
     </a>
 
 

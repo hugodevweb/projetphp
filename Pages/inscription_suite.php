@@ -11,32 +11,32 @@
 <body>
     <div class ="container_inscription">
         <h1>Finaliser mon inscription</h1>
-            <form class = "form_inscription_suite" action="inscription_action.php" method="POST">
+            <form class = "form_inscription_suite" action="inscription_suite_action.php" method="POST">
                   <div class="field">
                   <label class="label">Nom</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Votre email">
+                        <input class="input" name="nom" type="text" placeholder="Votre email">
                       </div>
                   </div>
 
                   <div class="field">
                     <label class="label">Prénom</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Votre mot de passe">
+                        <input class="input" name="prenom" type="text" placeholder="Votre mot de passe">
                       </div>
                   </div>
 
                   <div class="field">
                     <label class="label">Numéro de télephone</label>
                       <div class="control">
-                        <input class="input" type="tel" placeholder="Votre mot de passe">
+                        <input class="input" name="tel" type="tel" placeholder="Votre mot de passe">
                       </div>
                   </div>
 
                   <div class="field">
                     <label class="label">Adresse</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Votre mot de passe">
+                        <input class="input" name="adresse" type="text" placeholder="Votre mot de passe">
                       </div>
                   </div> 
 
@@ -45,20 +45,19 @@
                     <div class="field mr-6">
                       <label class="label">Code postal</label>
                         <div class="control">
-                          <input class="input" type="text" placeholder="Code postal">
+                          <input class="input" name="codepostal" type="text" placeholder="Code postal">
                         </div>
                     </div>
                     <div class="field mr-6">
                       <label class="label">Ville</label>
                         <div class="control">
-                          <input class="input" type="text" placeholder="Ville">
+                          <input class="input" name="ville" type="text" placeholder="Ville">
                         </div>
                     </div>
                   </div>
 
-                  <a href="../iindex.php">
-                  <input type="button" class="bouton_inscription_valider" value="Valider mon inscription">
-                </a>
+                  <input type="submit" name="envoi" class="bouton_inscription_valider" value="Valider mon inscription">
+
 
               </form>
       </div>

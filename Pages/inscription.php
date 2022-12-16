@@ -1,15 +1,3 @@
-<?php
-if (isset($_POST['envoi'])) {
-	if (!empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['confirm_mdp']) ){
-
-
-  }else{
-  echo"remplir les champs";
-  }
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +11,7 @@ if (isset($_POST['envoi'])) {
 <body>
     <div class ="container_inscription">
             <h1>Mon inscription</h1>
-            <form class = "form_inscription" action="" method="POST">
+            <form class = "form_inscription" action="inscription_action.php" method="POST">
 
                 <div class="field">
                 <label class="label">Votre Email</label>
