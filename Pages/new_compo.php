@@ -45,22 +45,42 @@
 
                     <div class="navbar-end">
                         <div class="navbar-item has-text-centered">
-                            <div class="buttons">
-                                <button class="button is-dark">
-                                    <span class="icon">
-                                        <i class="fa fa-user"></i>
+                          
+                                <div class="dropdown">
+                                    <div class="dropdown-trigger">
+                                        <button id="btn" class="button is-dark">
+                                            <span class="icon">
+                                                <i class="fa fa-user"></i>
 
-                                    </span>
-                                    <span>Mon compte</span>
-                                </button>
-                                <button class="button is-white">
+                                            </span>
+                                            <span>Mon compte</span>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu is-dark" id="dropdown-menu3" role="menu">
+                                        <div class="dropdown-content">
+                                            
+                                            <a href="#" class="dropdown-item">
+                                                Mon compte
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                Mes configurations
+                                            </a>
+                                            
+                                            <hr class="dropdown-divider">
+                                            <a href="#" class="dropdown-item">
+                                                Se Deconnecter
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button style="margin-left:2%" id="btnpanier" class="button is-white">
                                     <span class="icon has-text-dark">
                                         <img src="../images/cart.gif" alt="cart">
 
                                     </span>
                                     <span href="">Panier</span>
                                 </button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -394,6 +414,7 @@
         </div>
     </div>
     <script src="../scripts/script.js"></script>
+    
 </body>
 
 </html>

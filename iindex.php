@@ -75,7 +75,7 @@
         Acceuil
       </a>
   
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" href="./Pages/CréationPc.php">
         Creer une configuration
       </a>
   
