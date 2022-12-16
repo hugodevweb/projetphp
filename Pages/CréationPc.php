@@ -72,7 +72,7 @@
   
   <div id="secondaryNavbar" class="navbar-menu">
     <div class="navbar-start" style="margin-left: 8vw;">
-      <a class="navbar-item" href="iindex.php" style="border-left: 1px solid white;">
+      <a class="navbar-item" href="../iindex.php" style="border-left: 1px solid white;">
         Acceuil
       </a>
   
@@ -125,13 +125,12 @@
   <div class="select is-rounded">
 <div class="select is-link">
 <select>
+<option></option>
 <?php while($donne = $req -> fetch())
 {
-
-  echo " <option>".$donne['name']."</option> ";
-  echo $donne['price'];
+  $_SESSION['res']= $donne['id_comp'];
+  echo "<option>".$donne['name']."</option> ";
   $compteur = $compteur + 1;
-  $_SESSION['res']=$donne;
   $sql = "SELECT name FROM composants_board where id_comp = $compteur";
   $req = $bdd->prepare($sql); 
        $req ->execute();
@@ -140,6 +139,15 @@
 </select>
 </div>
 
+<?php 
+session_start();
+$compteur = 1;
+$bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+$sql = "SELECT * FROM composants_board where id_comp = $_SESSION['res'];";
+$req = $bdd->prepare($sql); 
+$req ->execute();
+ ?>
 </div>
 
   <div class="column"></div>
