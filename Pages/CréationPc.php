@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/ConfigPc.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head> 
  <body>
@@ -71,11 +72,11 @@
   
   <div id="secondaryNavbar" class="navbar-menu">
     <div class="navbar-start" style="margin-left: 8vw;">
-      <a class="navbar-item" href="#" style="border-left: 1px solid white;">
+      <a class="navbar-item" href="iindex.php" style="border-left: 1px solid white;">
         Acceuil
       </a>
   
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" href="CréationPc.php">
         Creer une configuration
       </a>
   
@@ -97,10 +98,10 @@
   <section class="hero " style="background: url('.//images/gradient.gif') center/cover no-repeat;" >
     <div class="hero-body" >
         <div class="container" >
-            <h1 class="title has-text-white">
+            <h1 class="title has-text-black">
                 Bienvenue sur digit.me 
             </h1>
-            <h2 class="subtitle has-text-white">
+            <h2 class="subtitle has-text-black">
                Votre configurateur de PC personnalisé
             </h2>
             <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
@@ -109,8 +110,109 @@
 </section>
 
 <!---------------------Création pc--------------------------------->
+<?php 
+       session_start();
+       $compteur = 1;
+       $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    
+       $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+       $req = $bdd->prepare($sql); 
+       $req ->execute();
+      ?>
+      
+<div class="columns"> <div class="column"></div>
+  <div class="column is-two-thirds">Choissisez votre carte mere</div>
+  <div class="select is-rounded">
+<div class="select is-link">
+<select>
+<?php while($donne = $req -> fetch())
+{
 
+  echo " <option>".$donne['name']."</option> ";
+  echo $donne['price'];
+  $compteur = $compteur + 1;
+  $_SESSION['res']=$donne;
+  $sql = "SELECT name FROM composants_board where id_comp = $compteur";
+  $req = $bdd->prepare($sql); 
+       $req ->execute();
+}
+?>
+</select>
+</div>
 
+</div>
+
+  <div class="column"></div>
+</div>
+<div class="columns"> <div class="column"></div>
+  <div class="column is-two-thirds">Choissisez votre carte graphique</div>
+  <div class="select is-rounded">
+<div class="select is-link">
+  <select>
+    <option> carte graphique</option>
+    <option> carte graphique 1 </option>
+    <option> carte graphique 2 </option>
+  </select>
+</div>
+</div>
+  <div class="column"></div>
+</div>
+<div class="columns"> <div class="column"></div>
+  <div class="column is-two-thirds">Choissisez votre stockage</div>
+  <div class="select is-rounded">
+<div class="select is-link">
+  <select>
+    <option> carte mere </option>
+    <option> carte mere 1 </option>
+    <option> carte mere 2 </option>
+  </select>
+</div>
+
+</div>
+  <div class="column"></div>
+</div>
+<div class="columns"> <div class="column"></div>
+  <div class="column is-two-thirds">Choissisez votre RAM</div>
+  <div class="select is-rounded">
+<div class="select is-link">
+  <select>
+    <option> carte mere </option>
+    <option> carte mere 1 </option>
+    <option> carte mere 2 </option>
+  </select>
+</div>
+
+</div>
+  <div class="column"></div>
+</div>
+<div class="columns"> <div class="column"></div>
+  <div class="column is-two-thirds">Choissisez votre Alimentation</div>
+  <div class="select is-rounded">
+<div class="select is-link">
+  <select>
+    <option> carte mere </option>
+    <option> carte mere 1 </option>
+    <option> carte mere 2 </option>
+  </select>
+</div>
+
+</div>
+  <div class="column"></div>
+</div>
+<div class="columns"> <div class="column"></div>
+  <div class="column is-two-thirds">Choissisez votre Carte réseau</div>
+  <div class="select is-rounded">
+<div class="select is-link">
+  <select>
+    <option> carte mere </option>
+    <option> carte mere 1 </option>
+    <option> carte mere 2 </option>
+  </select>
+</div>
+
+</div>
+  <div class="column"></div>
+</div>
 
 
 
