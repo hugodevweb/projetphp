@@ -215,7 +215,17 @@ form .field{
   visibility: visible;
   transform:translateX(50vw)
 }
-
+#msg_error{
+  display: none;
+  visibility: hidden;
+  left: -50VW;
+}
+#msg_error.appear {
+  /* Appliquer une transformation à l'élément pour lui donner un effet d'apparition */
+  display: block;
+  visibility: visible;
+  transform:translateX(50vw)
+}
 
 /*-----footer----*/
 .footer{

@@ -180,6 +180,10 @@
                     <label for="rating"><b class="is-pulled-left">La note:</b></label>
                     <input class="input" placeholder="Entrez la note /5" name="rating">
                 </div>
+                <div class="field">
+                    <label for="URL"><b class="is-pulled-left">L'URL :</b></label>
+                    <input class="input" placeholder="L'url" name="URL">
+                </div>
 
 
                 <div class="field">
@@ -371,6 +375,9 @@
             <!-------------Message succès-------------->
             <div class="notification is-success" id="msg_success">
                 Le composant a été ajouté avec succes !
+            </div>
+            <div class="notification is-danger" id="msg_error">
+                Le composant n'a pas été ajouté !
             </div>
         </div>
     </div>

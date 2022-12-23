@@ -26,10 +26,13 @@ function showDiv() {
             success: function(data)
             {
               $('#msg_success').addClass('appear');
+            },
+            error: function(xhr, status, error) {
+              $('#msg_error').addClass('appear');
             }
+          });
         });
-    });
-  });
+      });
 
   $('#btn').click(function() {
 

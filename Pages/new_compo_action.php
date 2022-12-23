@@ -12,11 +12,12 @@ $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
 
 $type = $_POST['type'];
-				$name = $_POST['name'];
-				$price = $_POST['price'];
-				$brand = $_POST['brand'];
-				$rating = $_POST['rating'];
-				$is_available = $_POST['is_available'];
+$name = $_POST['name'];
+$price = $_POST['price'];
+$brand = $_POST['brand'];
+$rating = $_POST['rating'];
+$is_available = $_POST['is_available'];
+$url = $_POST['URL'];
 
 				
 switch($type) {
@@ -66,27 +67,27 @@ switch($type) {
 		
 				break;
 		
-			case "board":
-				$board_socket = $_POST['board_socket'];
-				$board_ram = $_POST['board_ram'];
+case "board":
+	$board_socket = $_POST['board_socket'];
+	$board_ram = $_POST['board_ram'];
 
-				$stmt = $pdo->prepare("
-				INSERT INTO composants_board(price,rating,brand,name,img,ram,socket,is_available)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/board/',LAST_INSERT_ID()+1,'.png'), :nbram, :socket, :is_available)");
+	$stmt = $pdo->prepare("
+	INSERT INTO composants_board(price,rating,brand,name,img,ram,socket,is_available)
+	VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/board/',LAST_INSERT_ID()+1,'.png'), :nbram, :socket, :is_available)");
 
-				//Liaison des valeurs aux variables
-				$stmt->bindParam(':name', $name);
-				$stmt->bindParam(':price', $price);
-				$stmt->bindParam(':brand', $brand);
-				$stmt->bindParam(':rating', $rating);
-				$stmt->bindParam(':is_available', $is_available);
-				$stmt->bindParam(':socket', $board_socket);
-				$stmt->bindParam(':nbram', $board_ram);
+	//Liaison des valeurs aux variables
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':price', $price);
+	$stmt->bindParam(':brand', $brand);
+	$stmt->bindParam(':rating', $rating);
+	$stmt->bindParam(':is_available', $is_available);
+	$stmt->bindParam(':socket', $board_socket);
+	$stmt->bindParam(':nbram', $board_ram);
 
-				//Exécution de la requête
-				$stmt->execute();
-				echo "insert done board";
-				break;
+	//Exécution de la requête
+	$stmt->execute();
+	echo "insert done board";
+	break;
 		
     case "alim":
         $alim_wattage = $_POST['alim_wattage'];
@@ -115,7 +116,7 @@ switch($type) {
         
 		$stmt = $pdo->prepare("
 				INSERT INTO composants_gpu(price,rating,brand,name,img,is_available,ram,clock)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/gpu/',LAST_INSERT_ID()+1,'.png'), :is_available, :ram, :clock)");
+				VALUES (:price, :rating, :brand,:name,:url,LAST_INSERT_ID()+1,'.png'), :is_available, :ram, :clock)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -125,6 +126,7 @@ switch($type) {
 				$stmt->bindParam(':is_available', $is_available);
 				$stmt->bindParam(':ram', $gpu_vram);
 				$stmt->bindParam(':clock', $gpu_clock);
+				$stmt->bindParam(':url', $url);
 
 				//Exécution de la requête
 				$stmt->execute();
