@@ -19,50 +19,6 @@ $rating = $_POST['rating'];
 $is_available = $_POST['is_available'];
 $url = $_POST['URL'];
 
-$errors = array();
-
-    // Vérification de la validité des champs
-	if (empty($type)) {
-		$errors[] = "Le champ 'Type' est obligatoire";
-	  }
-	  if (empty($name)) {
-		$errors[] = "Le champ 'Nom' est obligatoire";
-	  }
-	  if (!filter_var($price, FILTER_VALIDATE_FLOAT)) {
-		$errors[] = "Le champ 'Prix' doit être un nombre décimal valide";
-	  }
-	  if (empty($brand)) {
-		$errors[] = "Le champ 'Marque' est obligatoire";
-	  }
-	  if (!filter_var($rating, FILTER_VALIDATE_INT) || $rating < 0 || $rating > 5) {
-		$errors[] = "Le champ 'Note' doit être un nombre entier compris entre 0 et 5";
-	  }
-	  if (empty($is_available)) {
-		$errors[] = "Le champ 'Disponibilité' doit être 'Oui' ou 'Non'";
-	  }
-	  if (!filter_var($url, FILTER_VALIDATE_URL)) {
-		$errors[] = "Le champ 'URL' doit être une URL valide";
-	  }
-  // Si des erreurs ont été détectées, renvoi d'un code d'état HTTP erroné et du tableau d'erreurs
-  if (count($errors) > 0) {
-    http_response_code(400);
-    echo json_encode($errors);
-  } else {
-    // Tous les champs sont valides : traitement normal de la requête
-    // ...
-  }
-
-// <!-- Dans ce code, nous avons utilisé la fonction empty pour vérifier si chaque champ est vide ou non. Si le champ est vide, nous ajoutons un message d'erreur au tableau $errors.
-
-// Ensuite, nous vérifions si le tableau $errors est vide ou non. Si le tableau n'est pas vide, cela signifie qu'au moins un champ du formulaire est vide, et nous renvoyons un code d'état HTTP erroné et le tableau d'erreurs au client. Si le tableau est vide, cela signifie que tous les champs du formulaire sont valides et nous pouvons procéder au traitement normal de la requête.
-
-// Notez que nous avons utilisé la fonction json_encode pour encoder le tableau d'erreurs en chaîne de caractères JSON avant de le renvoyer au client. Cela permet de facilement traiter les erreurs dans le script JavaScript qui a envoyé la requête $.ajax.
-//  -->
-
-
-
-
-
 
 switch($type) {
     case "stockage":
@@ -160,7 +116,7 @@ case "board":
         
 		$stmt = $pdo->prepare("
 				INSERT INTO composants_gpu(price,rating,brand,name,img,is_available,ram,clock)
-				VALUES (:price, :rating, :brand,:name,:url,LAST_INSERT_ID()+1,'.png'), :is_available, :ram, :clock)");
+				VALUES (:price, :rating, :brand,:name,:url, :is_available, :ram, :clock)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -181,7 +137,7 @@ case "board":
        
 		$stmt = $pdo->prepare("
 				INSERT INTO composants_boitier(price,rating,brand,name,img,is_available,type)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/gpu/',LAST_INSERT_ID()+1,'.png'), :is_available, :type)");
+				VALUES (:price, :rating, :brand,:name,:url, :is_available, :type)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -190,7 +146,7 @@ case "board":
 				$stmt->bindParam(':rating', $rating);
 				$stmt->bindParam(':is_available', $is_available);
 				$stmt->bindParam(':type', $boitier_type);
-
+				$stmt->bindParam(':url', $url);
 				//Exécution de la requête
 				$stmt->execute();
 				echo "insert done boitier";

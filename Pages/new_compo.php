@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/fondsvg.css" rel="stylesheet">
+    <link rel = "icon" href = "../images/logo_diggit.png" 
+        type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>DIGGIT.ME- Ajout composant</title>
 </head>
 
 <body>
@@ -150,7 +153,7 @@
                     <div class="control ">
                         <label for="type" class="choixtype"><b>Type de composant:</b></label>
                         <div class="select">
-                            <select name="type" id="type" onchange="showDiv()">
+                            <select  name="type" id="type" onchange="showDiv()">
                                 <option value="erreur_choix_composant" selected>Choisir</option>
                                 <option value="cooler">Refroidissement de CPU</option>
                                 <option value="stockage">Stockage</option>
@@ -285,20 +288,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Div qui apparaît si l'option "board" est choisie -->
-                <div id="board" style="display: none;">
-                    <h3 class="title is-2">paramètres de la carte mere :</h3>
-
-                    <div class="field">
-                        <label><b class="is-pulled-left">Type de socket:</b></label>
-                        <input class="input" placeholder="Entrez le type de socket" name="board_type_socket">
-                    </div>
-
-                    <div class="field">
-                        <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
-                        <input class="input" placeholder="Entrez le nombre de slot" name="board_nbram">
-                    </div>
-                </div>
+               
                 <!-- Div qui apparaît si l'option "alim" est choisie -->
                 <div id="alim" style="display: none;">
                     <h3 class="title is-2">paramètres de l'alimentation' :</h3>
@@ -378,7 +368,7 @@
             </div>
             <div class="notification is-danger" id="msg_error">
                 Le composant n'a pas été ajouté !
-                <div id="errors"></div>
+                <div style="text"id="errors"></div>
 
             </div>
         </div>
@@ -422,9 +412,8 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
-    <script src="../scripts/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/validate.js"></script>
-
+    <script src="../scripts/newcompo.js"></script>
+    <script src="../scripts/main.js"></script>
     
     
 </body>
