@@ -378,6 +378,8 @@
             </div>
             <div class="notification is-danger" id="msg_error">
                 Le composant n'a pas été ajouté !
+                <div id="errors"></div>
+
             </div>
         </div>
     </div>
@@ -421,6 +423,9 @@
         </div>
     </div>
     <script src="../scripts/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/validate.js"></script>
+
+    
     
 </body>
 

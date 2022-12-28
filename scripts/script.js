@@ -23,14 +23,12 @@ function showDiv() {
             type: "POST",
             url: url,
             data: form.serialize(), // serializes the form's elements
-            success: function(data)
+            success: function(data,response)
             {
               $('#msg_success').addClass('appear');
-            },
-            error: function(xhr, status, error) {
-              $('#msg_error').addClass('appear');
-            }
-          });
+              alert(response.message);
+              
+            }})
         });
       });
 
