@@ -1,0 +1,34 @@
+.background--custom {
+    background-color: #FFFFFF;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
+    z-index: -2;
+    top: 0;
+    left: 0;
+  }
+  canvas#canvas {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    transform: rotate(-12deg) scale(2) translateY(-56%);
+    --gradient-color-1: #277D97; 
+    --gradient-color-2: #044C63; 
+    --gradient-color-3: #068DB6;  
+    --gradient-color-4: #0FBFF5;
+    --gradient-speed: 0.000016;
+  }
+  #logo {
+    max-height: unset;
+    
+}
+.navbar-item img {
+    max-height: unset;
+}
+.navbar{
+    background-color: unset;
+    left:5vw;
+    top:5vh
+}

@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="./style/main.css" rel="stylesheet">
+    <link href="./style/fondsvg.css" rel="stylesheet">
+    <link rel = "icon" href = "./images/logo_diggit.png" 
+        type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>DIGGIT.ME- Acceuil</title>
 </head>
 
 <body>
@@ -42,22 +48,43 @@
 
                     <div class="navbar-end">
                         <div class="navbar-item has-text-centered">
-                            <div class="buttons">
-                                <button class="button is-dark">
-                                    <span class="icon">
-                                        <i class="fa fa-user"></i>
+                          
+                                <div class="dropdown">
+                                    <div class="dropdown-trigger">
+                                        <button id="btn" class="button is-dark">
+                                            <span class="icon">
+                                                <i class="fa fa-user"></i>
 
-                                    </span>
-                                    <a href="./Pages/compte.php">Mon compte</a>
-                                </button>
-                                <button class="button is-white">
+                                            </span>
+                                            
+                                            <a href="./Pages/compte.php">Mon compte</a>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu is-dark" id="dropdown-menu3" role="menu">
+                                        <div class="dropdown-content">
+                                            
+                                            <a href="#" class="dropdown-item">
+                                                Mon compte
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                Mes configurations
+                                            </a>
+                                            
+                                            <hr class="dropdown-divider">
+                                            <a href="#" class="dropdown-item">
+                                                Se Deconnecter
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button style="margin-left:2%" id="btnpanier" class="button is-white">
                                     <span class="icon has-text-dark">
                                         <img src="./images/cart.gif" alt="cart">
 
                                     </span>
                                     <span href="">Panier</span>
                                 </button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -76,7 +103,7 @@
                                 Acceuil
                             </a>
 
-                            <a class="navbar-item" href="./Pages/CréationPc.php">
+                            <a class="navbar-item" href="#">
                                 Creer une configuration
                             </a>
 
@@ -94,20 +121,23 @@
         </div>
         </nav>
     </header>
-    <!----contenu---->
-    <section class="hero " style="background: url('.//images/gradient.gif') center/cover no-repeat;">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title has-text-white">
-                    Bienvenue sur digit.me
-                </h1>
-                <h2 class="subtitle has-text-white">
-                    Votre configurateur de PC personnalisé
-                </h2>
-                <!-- <img class="is-right" src="./images/pc.gif" style="width: 250px ;height:200px;"> -->
+    <!----header---->
+    <section class="hero">
+        <div class="background--custom">
+            <div class="hero-body">
+                <div class="container">
+
+                    <h1 class="title has-text-white">
+                       Bienvenu sur DIGIT.ME
+                    </h1>
+                    <h2 class="subtitle has-text-white">
+                        Votre configurateur de PC personnalisés
+                    </h2>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!---------------------config prefaites--------------------------------->
     <div class="hero is-fullheight" style="background: url('./images/banner.jpg') center/cover no-repeat;">
@@ -117,7 +147,7 @@
             <div class="title-1">Les configurations recommandées:</div>
             <div class="columns">
                 <div class="column">
-                    <img class="itemImage" src="https://drive.google.com/uc?id=1ct1C3oRdzCox6tsVvWiCduxZPofuwqS2">
+                    <img class="itemImage" src=" https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc">
                     <span>
                         <span>
                             <p> <img class="icon" src="./images/icons/desktop.png">composant 1</p>
@@ -256,8 +286,8 @@
         </div>
     </div>
 
-    <!-------------Footer-------------->
-    <div class="footer">
+  <!-------------Footer-------------->
+  <div class="footer">
         <div class="container">
             <div class="rang">
                 <div class="footer_col1">
@@ -265,9 +295,9 @@
                     <p>Télécharger notre application maintenant sur Android et IOS</p>
                     <div class="app_logo">
                         <a href="https://play.google.com/store/search?q=footprint"><img class="playstr"
-                                src="Images/playstore.png"></a>
+                                src="./images/playstore.png"></a>
                         <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr"
-                                src="Images/appstore.png"></a>
+                                src="./images/appstore.png"></a>
                     </div>
                 </div>
                 <div class="footer_col2">
@@ -291,9 +321,13 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright 2022 - Foot-Print</p>
+            <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
+    <script src="./scripts/newcompo.js"></script>
+   
+    
+    
 </body>
 
 </html>

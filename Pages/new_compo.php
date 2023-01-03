@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -120,7 +120,7 @@
         </div>
         </nav>
     </header>
-    <!----contenu---->
+    <!----header---->
     <section class="hero">
         <div class="background--custom">
             <div class="hero-body">
@@ -132,7 +132,6 @@
                     <h2 class="subtitle has-text-white">
                         Ici vous pouvez ajouter des composants
                     </h2>
-                    <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
                 </div>
             </div>
         </div>
@@ -186,6 +185,7 @@
                 <div class="field">
                     <label for="URL"><b class="is-pulled-left">L'URL :</b></label>
                     <input class="input" placeholder="L'url" name="URL">
+                    <p class="has-text-grey">Utilisez le lien suivant <b>https://drive.google.com/uc?export=view&id="imageid"</b> en remplaçant  l'imageid par l'id de l'image (Vous pouvez le trouver ici : https://drive.google.com/file/d/<b>13jueBPF680fgvWnK2JImyf13PhgjsFBS</b>/view?usp=share_link ) </p>
                 </div>
 
 
@@ -319,8 +319,8 @@
                     <h3 class="title is-2">paramètres de la carte graphique :</h3>
 
                     <div class="field">
-                        <label><b class="is-pulled-left">Puissance:</b></label>
-                        <input class="input" placeholder="Entrez la  puissance" name="gpu_puiss">
+                        <label><b class="is-pulled-left">Fréquence</b></label>
+                        <input class="input" placeholder="Entrez la  Fréquence en MHz" name="gpu_puiss">
                     </div>
 
                     <div class="field">
