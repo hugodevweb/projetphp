@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -110,25 +108,46 @@
 </section>
 
 <!---------------------Création pc--------------------------------->
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds"><a class="navbar-item" href="PageCarteMere.php">
-Choissisez votre carte mere
-      </a>
-    <?php  
-    session_start();
-    $bdd = mysqli_connect("localhost","root","","diggit.me");
-    if(isset($_POST['button1'])) {
-          $sql = "INSERT INTO creationpc VALUES (".$_SESSION['name'].",'',".$_SESSION['price'].")";
-          $res=mysqli_query($bdd,$sql);
-        }?>
-    </div>
-
-
-</div>
-
-
-
-
+<table>
+  <thead>
+    <tr>
+      <td>nom</td>
+      <td>Prix</td>
+      <td>brand</td>
+      <td>ram</td>
+      <td></td>
+    </tr>
+  </thead>
+ <tbody>
+  
+<?php 
+       session_start();
+       $compteur = 1;
+       $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    
+       $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+       $req = $bdd->prepare($sql); 
+       $req ->execute();
+       while($donne = $req -> fetch())
+{
+  echo "<tr>";
+  echo "<td>".$donne['name']."</option> ";
+  echo "<td>".$donne['price']."</option> ";
+  echo "<td>".$donne['brand']."</option> ";
+  echo "<td>".$donne['ram']."</option> ";
+  echo "<td>   <form method='post' action='CréationPc.php'>
+  <input type='submit' name='button1' 
+          value='Button1'/></form> </td>";
+          $_SESSION['name']=$donne['name'];
+          $_SESSION['price']=$donne['price'];
+  $compteur = $compteur + 1;
+  $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+  $req = $bdd->prepare($sql); 
+  $req ->execute();
+}
+      ?>
+      </tbody> 
+      </table>
 <!-------------Footer--------------> 
 <div class="footer">
     <div class="container">
