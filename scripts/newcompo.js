@@ -35,7 +35,7 @@ function showDiv() {
 
                 // Vérifier le prix du composant
                 const price = document.getElementsByName('price')[0].value;
-                if (!price) {
+                if (!price || isNaN(price)) {
                   $('.field > input[name="price"]').addClass('is-danger');
                   errors.push('Le prix du composant est obligatoire');
                 }
@@ -49,7 +49,7 @@ function showDiv() {
 
                 // Vérifier la note du composant
                 const rating = document.getElementsByName('rating')[0].value;
-                if (!rating) {
+                if (!rating || isNaN(price) && price<5 && price>0) {
                   $('.field > input[name="rating"]').addClass('is-danger');
                   errors.push('La note du composant est obligatoire');
                 }
@@ -77,13 +77,13 @@ function showDiv() {
                     errors.push('Vous devez indiquer le type de stockage');
                   }
                   const stockage_taille = document.getElementsByName('stockage_taille')[0].value;
-                if (!stockage_taille) {
+                if (!stockage_taille || isNaN(price)) {
                   $('.field > input[name="stockage_taille"]').addClass('is-danger');
                   errors.push('L\'espace de stockage du composant est obligatoire');
                 }
 
                 const stockage_speed = document.getElementsByName('stockage_vitesse')[0].value;
-                if (!stockage_speed) {
+                if (!stockage_speed || isNaN(price)) {
                   $('.field > input[name="stockage_vitesse"]').addClass('is-danger');
                   errors.push('La vitesse de stockage du composant est obligatoire');
                 }
@@ -98,7 +98,7 @@ function showDiv() {
               }
 
               // Vérifie si le niveau sonore a été entré
-              if (!document.querySelector('input[name="cooler_son"]').value) {
+              if (!document.querySelector('input[name="cooler_son"]').value ) {
                 document.querySelector('input[name="cooler_son"]').classList.add('is-danger');
                 errors.push("Le niveau sonore du refroidissement est obligatoire");
               }
