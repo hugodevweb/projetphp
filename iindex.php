@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/fondsvg.css" rel="stylesheet">
-    <link rel = "icon" href = "./images/logo_diggit.png" 
-        type = "image/x-icon">
+    <link href="./style/index.css" rel="stylesheet">
+    <link rel="icon" href="./images/logo_diggit.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -48,46 +48,146 @@
 
                     <div class="navbar-end">
                         <div class="navbar-item has-text-centered">
-                          
-                                <div class="dropdown">
-                                    <div class="dropdown-trigger">
-                                        <button id="btn" class="button is-dark">
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
 
-                                            </span>
-                                            
-                                            <a href="./Pages/compte.php">Mon compte</a>
-                                        </button>
-                                    </div>
-                                    <div class="dropdown-menu is-dark" id="dropdown-menu3" role="menu">
-                                        <div class="dropdown-content">
-                                            
-                                            <a href="#" class="dropdown-item">
-                                                Mon compte
-                                            </a>
-                                            <a href="#" class="dropdown-item">
-                                                Mes configurations
-                                            </a>
-                                            
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item">
-                                                Se Deconnecter
-                                            </a>
-                                        </div>
-                                    </div>
+                            <div class="dropdown">
+                                <div class="dropdown-trigger">
+                                    <button id="btn" class="button is-dark" data-target="#modal-id" data-toggle="modal">
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <p> Se Connecter</p>
+                                    </button>
                                 </div>
-                                <button style="margin-left:2%" id="btnpanier" class="button is-white">
-                                    <span class="icon has-text-dark">
-                                        <img src="./images/cart.gif" alt="cart">
+                                <div class="modal" id="modal-id">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-content">
 
+                                        <div id="container">
+
+                                            <form class="form_compte" action="connexion_action.php" method="POST">
+                                                <h1>Se connecter</h1>
+
+                                                <div class="field">
+                                                    <label class="label">Votre Email</label>
+                                                    <div class="control">
+                                                        <input class="input" name="mail" type="email"
+                                                            placeholder="Votre email">
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="label">Votre mot de passe</label>
+                                                    <div class="control">
+                                                        <input class="input" name="mdp" type="password"
+                                                            placeholder="Votre mot de passe">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
+
+                                                <input type="submit" name="envoi" class="bouton_connexion"
+                                                    value=" Connexion">
+                                            </form>
+                                        </div>
+
+                                        
+                                        <button class="modal-close is-large" aria-label="close"></button>
+                                    </div>
+
+                                </div>
+                                <button id="btn2" class="button is-white" style="margin-left:2%" data-target="#modal-id-2" data-toggle="modal">
+                                    <span class="icon">
+                                        <i class="fa fa-user"></i>
                                     </span>
-                                    <span href="">Panier</span>
+                                    <p>S'inscrire</p>
                                 </button>
-                            
-                        </div>
+                            </div>
+                            <div class="modal" id="modal-id-2">
+                                <div class="modal-background"></div>
+                                    <div class="modal-content">
+                                    <div class ="container_inscription">
+            
+            <form class = "form_inscription" action="inscription_action.php" method="POST">
+            <h1>Mon inscription</h1>
+                <div class="field">
+                <label class="label">Votre Email</label>
+                    <div class="control">
+                      <input class="input" name="mail" type="email" placeholder="Votre email">
                     </div>
                 </div>
+
+                <div class="field">
+                  <label class="label">Votre mot de passe</label>
+                    <div class="control">
+                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
+                    </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Confirmer votre mot de passe</label>
+                    <div class="control">
+                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
+                    </div>
+                </div>
+                  
+                 
+                  <div class="field">
+                  <label class="label">Nom</label>
+                      <div class="control">
+                        <input class="input" name="nom" type="text" placeholder="Votre email">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Prénom</label>
+                      <div class="control">
+                        <input class="input" name="prenom" type="text" placeholder="Votre mot de passe">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Numéro de télephone</label>
+                      <div class="control">
+                        <input class="input" name="tel" type="tel" placeholder="Votre mot de passe">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Adresse</label>
+                      <div class="control">
+                        <input class="input" name="adresse" type="text" placeholder="Votre mot de passe">
+                      </div>
+                  </div> 
+
+
+                  
+                  <div class="columns">
+                    <div class="column is-two-fifths">
+                        <label class="label">Code postal</label>
+                        <div class="control">
+                          <input class="input" name="codepostal" type="text" placeholder="Code postal">
+                        </div>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column is-two-fifths"><label class="label">Ville</label>
+                        <div class="control">
+                          <input class="input" name="ville" type="text" placeholder="Ville">
+                        </div>
+                    </div>
+                    
+                 
+            </div>
+                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
+                </form>
+                
+        </div>
+                                    </div>
+                                <button class="modal-close is-large" aria-label="close"></button>
+                            </div>
+                        </div>
+                    </div>
             </nav>
         </div>
         <!-- -----------Deuxieme ligne du navbar------ -->
@@ -122,32 +222,50 @@
         </nav>
     </header>
     <!----header---->
-    <section class="hero">
-        <div class="background--custom">
-            <div class="hero-body">
-                <div class="container">
-
-                    <h1 class="title has-text-white">
-                       Bienvenu sur DIGIT.ME
-                    </h1>
-                    <h2 class="subtitle has-text-white">
-                        Votre configurateur de PC personnalisés
-                    </h2>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
 
     <!---------------------config prefaites--------------------------------->
-    <div class="hero is-fullheight" style="background: url('./images/banner.jpg') center/cover no-repeat;">
+    
+        <div class="background--custom">
+        <section class="hero">
+            <div class="hero-body">
 
+                <div class="columns">
+                    <div class="column"></div>
+                    <div class="column is-three-fifths">
+                        <article class="message is-dark">
+
+                            <div class="message-body">
+                                <div class="columns">
+                                    <div class="column">
+                                            <img style="height:150px; width:auto;" src="./images/welcome.gif">
+                                    </div>
+                                    <div class="column is-four-fifths">
+                                        <h1 class="title" style="margin-top:3%">
+                                            Bienvenu sur DIGIT.ME
+                                        </h1>
+                                        <h2 class="subtitle ">
+                                            Votre configurateur de PC personnalisés
+                                        </h2>
+                                    </div>
+                                </div>
+                        </article>
+                    </div>
+                
+                <div class="column is-half"></div>
+                </div>
+            </div>
+            
+
+        </section>
 
         <div id="pres" class="box has-text-centered has-background-white ">
             <div class="title-1">Les configurations recommandées:</div>
             <div class="columns">
                 <div class="column">
-                    <img class="itemImage" src=" https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc">
+                    <img class="itemImage"
+                        src=" https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc">
                     <span>
                         <span>
                             <p> <img class="icon" src="./images/icons/desktop.png">composant 1</p>
@@ -284,10 +402,14 @@
             </ul>
 
         </div>
+        </div>
+    
+   
+
     </div>
 
-  <!-------------Footer-------------->
-  <div class="footer">
+    <!-------------Footer-------------->
+    <div class="footer">
         <div class="container">
             <div class="rang">
                 <div class="footer_col1">
@@ -325,9 +447,32 @@
         </div>
     </div>
     <script src="./scripts/newcompo.js"></script>
-   
+
+
+    <script>
+        // Ouvre la modale lorsque le bouton est cliqué
+        $('#btn').on('click', function () {
+            $('#modal-id').addClass('is-active');
+        });
+
+        // Ferme la modale lorsque le bouton de fermeture est cliqué
+        $('.modal-close').on('click', function () {
+            $('#modal-id').removeClass('is-active');
+            
+        });
+
     
-    
+        // Ouvre la modale lorsque le bouton est cliqué
+        $('#btn2').on('click', function() {
+            $('#modal-id-2').addClass('is-active');
+        });
+
+        // Ferme la modale lorsque le bouton de fermeture est cliqué
+        $('.modal-close').on('click', function() {
+            $('#modal-id-2').removeClass('is-active');
+        });
+
+    </script>
 </body>
 
 </html>

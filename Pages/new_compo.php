@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/fondsvg.css" rel="stylesheet">
+    <link href="../style/newcompo.css" rel="stylesheet">
     <link rel = "icon" href = "../images/logo_diggit.png" 
         type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -97,7 +98,7 @@
 
 
                     <div id="secondaryNavbar" class="navbar-menu">
-                        <div class="navbar-start" style="margin-left: 8vw;">
+                        <div class="navbar-start" >
                             <a class="navbar-item" href="#" style="border-left: 1px solid white;">
                                 Acceuil
                             </a>
@@ -120,27 +121,16 @@
         </div>
         </nav>
     </header>
-    <!----header---->
-    <section class="hero">
-        <div class="background--custom">
-            <div class="hero-body">
-                <div class="container">
 
-                    <h1 class="title has-text-white">
-                        Bonjour //////ADMIN/////
-                    </h1>
-                    <h2 class="subtitle has-text-white">
-                        Ici vous pouvez ajouter des composants
-                    </h2>
-                </div>
-            </div>
-        </div>
-    </section>
+        
 
     <!---------------------ajout composant--------------------------------->
-    <div class="hero is-fullheight" style="background: url('../images/fondnewcomp.svg') center/cover no-repeat;">
 
 
+    <section class="hero">
+        <div class="background--custom">
+
+            
         <div id="pres" class="box has-text-centered has-background-white ">
             <h1 style="font-family: 'Montserrat', sans-serif;" class="title is-2">Completer le formulaire ci-dessous:
             </h1>
@@ -372,8 +362,19 @@
 
             </div>
         </div>
+   
+        <article class="message is-info">
+            <div class="message-header">
+                <p>Info</p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+            </div>
+        </article>
+        
     </div>
-
+    </section>
     <!-------------Footer-------------->
     <div class="footer">
         <div class="container">
