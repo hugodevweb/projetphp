@@ -1,9 +1,8 @@
-
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 if (isset($_POST['envoi'])) 
   {
-    if(!empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['confirm_mdp']) )
+    if(!empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['confirm_mdp']AND !empty($_POST['nom'] ) )
     {
       $email = ($_POST['mail']);
       $mdp = ($_POST['mdp']);
