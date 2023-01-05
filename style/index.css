@@ -1,0 +1,9 @@
+#article {
+    position: relative;
+    left: -150%;
+    transition: left 0.5s;
+  }
+  
+  #article.visible {
+    left: 0;
+  }

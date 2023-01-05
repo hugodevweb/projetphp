@@ -234,7 +234,7 @@
                 <div class="columns">
                     <div class="column"></div>
                     <div class="column is-three-fifths">
-                        <article class="message is-dark">
+                        <article id="article" class="message is-dark">
 
                             <div class="message-body">
                                 <div class="columns">
@@ -320,7 +320,7 @@
             <div class="title-1">Les composants populaires:</div>
             <ul class="composants">
                 <li>
-                    <div class="title-3">Carte Mere</div>
+                    <div class="title-3">Processeur</div>
                     <img class="composant-child" src="./images/icons/cpu.png">
                     <ol>
                         <li>composant 1 </li>
@@ -330,8 +330,8 @@
 
                 </li>
                 <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
+                    <div class="title-3">stockage</div>
+                    <img class="composant-child" src="./images/icons/motherboard.png">
                     <ol>
                         <li>composant 1 </li>
                         <li>composant 1 </li>
@@ -340,8 +340,8 @@
 
                 </li>
                 <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
+                    <div class="title-3">RAM</div>
+                    <img class="composant-child" src="./images/icons/ram-memory.png">
                     <ol>
                         <li>composant 1 </li>
                         <li>composant 1 </li>
@@ -350,8 +350,36 @@
 
                 </li>
                 <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
+                    <div class="title-3">Carte Graphique</div>
+                    <img class="composant-child" src="./images/icons/video-card.png">
+                    <ol>
+                        <?php
+                        // Connexion à la base de données
+                        $host = "localhost";
+                        $user = "root";
+                        $password = "";
+                        $dbname = "digit.me";
+
+                        $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                        $stmt = $pdo->prepare("SELECT NAME FROM composants_gpu WHERE is_selected=1;");
+
+                        $stmt->execute();
+
+                        while ($row = $stmt->fetch()) {
+                            echo "<li class=\"is-size-8\">".$row['NAME']."</li>";
+                        }
+
+                        
+                        
+                        
+                        ?>
+                    </ol>
+
+                </li>
+                <li>
+                    <div class="title-3">Alimentation</div>
+                    <img class="composant-child" src="./images/icons/supply.png">
                     <ol>
                         <li>composant 1 </li>
                         <li>composant 1 </li>
@@ -360,8 +388,8 @@
 
                 </li>
                 <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
+                    <div class="title-3">Boitier</div>
+                    <img class="composant-child" src="./images/icons/desktop.png">
                     <ol>
                         <li>composant 1 </li>
                         <li>composant 1 </li>
@@ -370,8 +398,8 @@
 
                 </li>
                 <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
+                    <div class="title-3">stockage</div>
+                    <img class="composant-child" src="./images/icons/hdd.png">
                     <ol>
                         <li>composant 1 </li>
                         <li>composant 1 </li>
@@ -380,18 +408,8 @@
 
                 </li>
                 <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
-                    <ol>
-                        <li>composant 1 </li>
-                        <li>composant 1 </li>
-                        <li>composant 1 </li>
-                    </ol>
-
-                </li>
-                <li>
-                    <div class="title-3">Carte Mere</div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
+                    <div class="title-3">Refroidissement</div>
+                    <img class="composant-child" src="./images/icons/cooling-fan.png">
                     <ol>
                         <li>composant 1 </li>
                         <li>composant 1 </li>
@@ -446,33 +464,9 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
-    <script src="./scripts/newcompo.js"></script>
+   
 
-
-    <script>
-        // Ouvre la modale lorsque le bouton est cliqué
-        $('#btn').on('click', function () {
-            $('#modal-id').addClass('is-active');
-        });
-
-        // Ferme la modale lorsque le bouton de fermeture est cliqué
-        $('.modal-close').on('click', function () {
-            $('#modal-id').removeClass('is-active');
-            
-        });
-
-    
-        // Ouvre la modale lorsque le bouton est cliqué
-        $('#btn2').on('click', function() {
-            $('#modal-id-2').addClass('is-active');
-        });
-
-        // Ferme la modale lorsque le bouton de fermeture est cliqué
-        $('.modal-close').on('click', function() {
-            $('#modal-id-2').removeClass('is-active');
-        });
-
-    </script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
