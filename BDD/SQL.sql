@@ -43,18 +43,19 @@ CREATE TABLE IF NOT EXISTS `composants_alim` (
   `is_available` tinyint(1) NOT NULL,
   `is_modulable` int DEFAULT NULL,
   `wattage` int DEFAULT NULL,
+  `is_selected` int DEFAULT NULL,
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_alim : ~7 rows (environ)
-INSERT INTO `composants_alim` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `is_modulable`, `wattage`) VALUES
-	(1, 150.00, 2, 'samsung', 'ssd', '../images/composants/board/1.png', 1, 2, 55),
-	(2, 86.00, 3, 'VDIa', 'cartegrap', '../images/composants/alim/1.png', 1, 2, 76),
-	(3, 86.00, 3, 'VDIa', 'cartegrap', '../images/composants/alim/1.png', 1, 2, 76),
-	(4, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56),
-	(5, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56),
-	(6, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56),
-	(7, 86.00, 4, 'Nvidia', 'inserte', '../images/composants/alim/1.png', 1, 1, 56);
+INSERT INTO `composants_alim` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `is_modulable`, `wattage`, `is_selected`) VALUES
+	(1, 150.00, 2, 'samsung', 'ssd', '../images/composants/board/1.png', 1, 2, 55, NULL),
+	(2, 86.00, 3, 'VDIa', 'cartegrap', '../images/composants/alim/1.png', 1, 2, 76, NULL),
+	(3, 86.00, 3, 'VDIa', 'cartegrap', '../images/composants/alim/1.png', 1, 2, 76, NULL),
+	(4, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56, NULL),
+	(5, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56, NULL),
+	(6, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56, NULL),
+	(7, 86.00, 4, 'Nvidia', 'inserte', '../images/composants/alim/1.png', 1, 1, 56, NULL);
 
 -- Listage de la structure de table diggit.me. composants_board
 CREATE TABLE IF NOT EXISTS `composants_board` (
@@ -67,13 +68,14 @@ CREATE TABLE IF NOT EXISTS `composants_board` (
   `is_available` tinyint(1) NOT NULL,
   `ram` int DEFAULT NULL,
   `socket` int DEFAULT NULL,
+  `is_selected` int DEFAULT NULL,
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_board : ~2 rows (environ)
-INSERT INTO `composants_board` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`) VALUES
-	(1, 150.00, 4, 'samsung', 'test1', '../images/composants/board/1.png', 1, 2, 4),
-	(2, 150.00, 3, 'samsung', 'ssd', '../images/composants/board/1.png', 1, 2, 4);
+INSERT INTO `composants_board` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`) VALUES
+	(1, 150.00, 4, 'samsung', 'test1', '../images/composants/board/1.png', 1, 2, 4, NULL),
+	(2, 150.00, 3, 'samsung', 'ssd', '../images/composants/board/1.png', 1, 2, 4, NULL);
 
 -- Listage de la structure de table diggit.me. composants_boitier
 CREATE TABLE IF NOT EXISTS `composants_boitier` (
@@ -85,33 +87,16 @@ CREATE TABLE IF NOT EXISTS `composants_boitier` (
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_available` tinyint(1) NOT NULL,
   `type` varchar(100) DEFAULT NULL,
+  `is_selected` int DEFAULT NULL,
   PRIMARY KEY (`id_comp`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Listage des données de la table diggit.me.composants_boitier : ~21 rows (environ)
-INSERT INTO `composants_boitier` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `type`) VALUES
-	(1, 150.00, 5, 'samsung', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(2, 150.00, 3, 'samsung', 'testajax1', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(3, 15.00, 4, 'test', 'testajax 2', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(4, 15.00, 5, 'nvidia', 'testnotif', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(5, 25.00, 5, 'niek', 'testannim', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(6, 4.00, 5, 'nike', 'testannim2', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(7, 150.00, 3, 'dsf', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(8, 150.00, 3, 'nvidia', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(9, 456.00, 2, 'nvidia', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(10, 54.00, 2, 'samsung', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(11, 45.00, 4, 'xcv', 'dsf', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(12, 150.00, 4, 'test', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(13, 150.00, 4, 'test', 'ssd', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(14, 45.00, 4, 'niek', 'test1', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(15, 52.00, 5, 'nike', 'test1', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(16, 52.00, 5, 'nike', 'test1', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(17, 546.00, 3, 'samsung', 'test1', '../images/composants/gpu/1.png', 1, 'btx 5825'),
-	(18, 150.00, 5, 'dsf', 'ssd', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(19, 150.00, 5, 'dsf', 'ssd', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(20, 150.00, 5, 'dsf', 'ssd', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(21, 150.00, 5, 'dsf', 'ssd', '../images/composants/gpu/1.png', 0, 'btx 5825'),
-	(22, 150.00, 3, 'samsung', 'ssd', 'https://drive.google.com/file/d/1ct1C3oRdzCox6tsVvWiCduxZPofuwqS2/edit', 1, 'btx 5825');
+-- Listage des données de la table diggit.me.composants_boitier : ~4 rows (environ)
+INSERT INTO `composants_boitier` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `type`, `is_selected`) VALUES
+	(1, 104.99, 4, 'Corsair', '4000D Airflow', 'https://drive.google.com/uc?export=view&id=1fpbOgFRmIfknbrwj9VYlUzRwuWvhiwcz', 1, 'ATX Mid Tower', 0),
+	(2, 129.99, 5, 'Corsair', 'iCUE 4000X RGB', 'https://drive.google.com/uc?export=view&id=1aTG6fzOgvXkfLwUKuu_iKayreqiaUwsd', 1, 'ATX Mid Tower', 1),
+	(3, 89.99, 5, 'NZXT', 'H510 Flow', 'https://drive.google.com/uc?export=view&id=1GtJ99Esono9hzyB9riMo-S4rHLzinfGo', 0, 'ATX Mid Tower', 1),
+	(4, 89.99, 5, 'NZXT', 'H510 Flow', 'https://drive.google.com/uc?export=view&id=1pVKb0oi8w14WIobXZSM10TCDf7V4zGJf', 1, 'ATX Mid Tower', 1);
 
 -- Listage de la structure de table diggit.me. composants_cooler
 CREATE TABLE IF NOT EXISTS `composants_cooler` (
@@ -126,13 +111,16 @@ CREATE TABLE IF NOT EXISTS `composants_cooler` (
   `son` int DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL,
   `speed` int DEFAULT NULL,
+  `is_selected` int DEFAULT NULL,
   PRIMARY KEY (`id_comp`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Listage des données de la table diggit.me.composants_cooler : ~2 rows (environ)
-INSERT INTO `composants_cooler` (`id_comp`, `price`, `rating`, `brand`, `name`, `is_available`, `img`, `taille`, `son`, `type`, `speed`) VALUES
-	(1, 150.00, 3, 'samsung', 'ssd', 1, '../images/composants/gpu/1.png', 456, 43, 'VentiRad', 245),
-	(2, 160.00, 3, 'nvidia', 'testajax', 1, '../images/composants/gpu/1.png', 552, 545, 'waterC', 21);
+-- Listage des données de la table diggit.me.composants_cooler : ~4 rows (environ)
+INSERT INTO `composants_cooler` (`id_comp`, `price`, `rating`, `brand`, `name`, `is_available`, `img`, `taille`, `son`, `type`, `speed`, `is_selected`) VALUES
+	(1, 150.00, 3, 'samsung', 'ssd', 1, '../images/composants/gpu/1.png', 456, 43, 'VentiRad', 245, NULL),
+	(2, 160.00, 3, 'nvidia', 'testajax', 1, '../images/composants/gpu/1.png', 552, 545, 'waterC', 21, NULL),
+	(3, 150.00, 3, 'samsung', 'ssd', 1, 'qds', 552, 14, 'VentiRad', 21, NULL),
+	(4, 150.00, 3, 'samsung', 'ssd', 1, 'qds', 552, 14, 'VentiRad', 21, NULL);
 
 -- Listage de la structure de table diggit.me. composants_cpu
 CREATE TABLE IF NOT EXISTS `composants_cpu` (
@@ -145,13 +133,19 @@ CREATE TABLE IF NOT EXISTS `composants_cpu` (
   `is_available` tinyint(1) NOT NULL,
   `wattage` int DEFAULT NULL,
   `nbcore` int DEFAULT NULL,
-  `puissance` int DEFAULT NULL,
+  `puissance` float DEFAULT NULL,
+  `is_selected` int DEFAULT NULL,
   PRIMARY KEY (`id_comp`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Listage des données de la table diggit.me.composants_cpu : ~0 rows (environ)
-INSERT INTO `composants_cpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `wattage`, `nbcore`, `puissance`) VALUES
-	(1, 150.00, 5, 'nvidia', 'ssd', '../images/composants/gpu/1.png', 1, 44, 8, 55);
+-- Listage des données de la table diggit.me.composants_cpu : ~6 rows (environ)
+INSERT INTO `composants_cpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `wattage`, `nbcore`, `puissance`, `is_selected`) VALUES
+	(1, 209.38, 5, 'AMD', 'Ryzen 5 5600X', 'https://drive.google.com/uc?export=view&id=1Ok1FoNKMwdzJQYy9tU9fqr6Co9nI6vPX', 1, 65, 6, 3.7, 0),
+	(2, 134.84, 5, 'AMD', 'Ryzen 5 5600', 'https://drive.google.com/uc?export=view&id=1-A-b3yAZdF_ltquko_L-8wOc7Yv1SWe4', 1, 65, 6, 3.5, 0),
+	(3, 319.99, 5, 'Intel', 'Core i5-13600K', 'https://drive.google.com/uc?export=view&id=1WdWEfgM65kTm9l--fwFN-OlxhzSQLybB', 1, 125, 14, 3.5, 1),
+	(4, 594.99, 5, 'Intel', 'Core i9-13900K', 'https://drive.google.com/uc?export=view&id=1CEELu8BfODdIUYp9ztTHy-V3SlHl88O3', 1, 125, 24, 3.3, 1),
+	(5, 450.00, 5, 'Intel', 'Core i7-9700K', 'https://drive.google.com/uc?export=view&id=1xm0tCg3eQjRadlko2EUS0D3Cmuz4qBmj', 1, 95, 8, 3.6, 1),
+	(6, 8390.00, 5, 'AMD', 'Threadripper 3990X', 'https://drive.google.com/uc?export=view&id=1RwcrOEYWcrdT7jICodUf5HKYNid6hJ5z', 1, 280, 64, 2.9, 0);
 
 -- Listage de la structure de table diggit.me. composants_gpu
 CREATE TABLE IF NOT EXISTS `composants_gpu` (
@@ -164,17 +158,43 @@ CREATE TABLE IF NOT EXISTS `composants_gpu` (
   `ram` int DEFAULT NULL,
   `clock` int DEFAULT NULL,
   `is_available` tinyint(1) NOT NULL,
+  `is_selected` int DEFAULT NULL,
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_gpu : ~6 rows (environ)
-INSERT INTO `composants_gpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `ram`, `clock`, `is_available`) VALUES
-	(4, 500.00, 4, 'Aorus', 'Gigabyte Aorus GeForce GTX 1080Ti Xtreme Edition 11G', ' https://drive.google.com/uc?export=view&id=13jueBPF680fgvWnK2JImyf13PhgjsFBS', 11, 1607, 0),
-	(5, 700.00, 5, 'NVIDIA', 'NVIDIA GeForce RTX 3080', ' https://drive.google.com/uc?export=view&id=1G15uq7aSegWRMeY3IEesiv-Kkf7nUddY', 10, 1440, 1),
-	(6, 751.00, 4, 'AMD', 'AMD Radeon RX 6800 XT', ' https://drive.google.com/uc?export=view&id=1G15uq7aSegWRMeY3IEesiv-Kkf7nUddY', 16, 1812, 1),
-	(7, 300.00, 4, 'NVIDIA', 'NVIDIA GeForce GTX 1660 Ti', ' https://drive.google.com/uc?export=view&id=1OsD8R0Zvm2wGgezJeoj1bN3M4pF_PA6F', 6, 1500, 1),
-	(8, 432.00, 4, 'AMD', 'AMD Radeon RX 5700 XT', ' https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc', 11, 1605, 0),
-	(9, 200.00, 3, 'INTEL', 'Intel Iris Xe', ' https://drive.google.com/uc?export=view&id=1OCjgzz5LcxZ7OkH1gl6h_OvUjjj3zsfb', 4, 1200, 1);
+INSERT INTO `composants_gpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `ram`, `clock`, `is_available`, `is_selected`) VALUES
+	(4, 500.00, 4, 'Aorus', 'Gigabyte GTX 1080Ti', ' https://drive.google.com/uc?export=view&id=13jueBPF680fgvWnK2JImyf13PhgjsFBS', 11, 1607, 0, 1),
+	(5, 700.00, 5, 'NVIDIA', ' GeForce RTX 3080', ' https://drive.google.com/uc?export=view&id=1G15uq7aSegWRMeY3IEesiv-Kkf7nUddY', 10, 1440, 1, 0),
+	(6, 751.00, 4, 'AMD', ' Radeon RX 6800 XT', ' https://drive.google.com/uc?export=view&id=1G15uq7aSegWRMeY3IEesiv-Kkf7nUddY', 16, 1812, 1, 1),
+	(7, 300.00, 4, 'NVIDIA', ' GeForce GTX 1660 Ti', ' https://drive.google.com/uc?export=view&id=1OsD8R0Zvm2wGgezJeoj1bN3M4pF_PA6F', 6, 1500, 1, 1),
+	(8, 432.00, 4, 'AMD', ' Radeon RX 5700 XT', ' https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc', 11, 1605, 0, 0),
+	(9, 200.00, 3, 'INTEL', 'Iris Xe', ' https://drive.google.com/uc?export=view&id=1OCjgzz5LcxZ7OkH1gl6h_OvUjjj3zsfb', 4, 1200, 1, 0);
+
+-- Listage de la structure de table diggit.me. composants_ram
+CREATE TABLE IF NOT EXISTS `composants_ram` (
+  `id_comp` int NOT NULL AUTO_INCREMENT,
+  `price` decimal(10,2) NOT NULL,
+  `rating` tinyint(1) DEFAULT NULL,
+  `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `is_available` tinyint(1) NOT NULL,
+  `modules` int DEFAULT NULL,
+  `speed` int DEFAULT NULL,
+  `is_selected` int DEFAULT NULL,
+  PRIMARY KEY (`id_comp`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+-- Listage des données de la table diggit.me.composants_ram : ~7 rows (environ)
+INSERT INTO `composants_ram` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `speed`, `is_selected`) VALUES
+	(1, 150.00, 2, 'samsung', 'ssd', '../images/composants/board/1.png', 1, 2, 55, NULL),
+	(2, 86.00, 3, 'VDIa', 'cartegrap', '../images/composants/alim/1.png', 1, 2, 76, NULL),
+	(3, 86.00, 3, 'VDIa', 'cartegrap', '../images/composants/alim/1.png', 1, 2, 76, NULL),
+	(4, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56, NULL),
+	(5, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56, NULL),
+	(6, 868.00, 4, 'nvidia', 'inserrelno', '../images/composants/alim/1.png', 1, 1, 56, NULL),
+	(7, 86.00, 4, 'Nvidia', 'inserte', '../images/composants/alim/1.png', 1, 1, 56, NULL);
 
 -- Listage de la structure de table diggit.me. composants_stockage
 CREATE TABLE IF NOT EXISTS `composants_stockage` (
@@ -182,21 +202,22 @@ CREATE TABLE IF NOT EXISTS `composants_stockage` (
   `price` decimal(10,2) NOT NULL,
   `rating` tinyint(1) DEFAULT NULL,
   `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `name_comp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'LASt INSERT_ID()+''Images''',
   `capacite` int DEFAULT NULL,
   `type_comp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `speed` int DEFAULT NULL,
   `is_available` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_comp`,`name_comp`) USING BTREE
+  `is_selected` int DEFAULT NULL,
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_stockage : ~4 rows (environ)
-INSERT INTO `composants_stockage` (`id_comp`, `price`, `rating`, `brand`, `name_comp`, `img`, `capacite`, `type_comp`, `speed`, `is_available`) VALUES
-	(17, 150.00, 3, 'samsung', 'test1', '../images/composants/stockage/1', 1000, 'SSD', 541, 1),
-	(18, 150.00, 5, 'nvvidia', 'ssd', '../images/composants/stockage/1.png', 1000, 'SSD', 5656, 1),
-	(19, 150.00, 3, 'samsung', 'testgestionerreur', '../images/composants/stockage/1.png', 1000, 'SSD', 55, 1),
-	(20, 150.00, 3, 'samsung', 'testgestionerreur2', '../images/composants/stockage/1.png', 1000, 'SSD', 55, 1);
+INSERT INTO `composants_stockage` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `capacite`, `type_comp`, `speed`, `is_available`, `is_selected`) VALUES
+	(17, 150.00, 3, 'samsung', 'test1', '../images/composants/stockage/1', 1000, 'SSD', 541, 1, NULL),
+	(18, 150.00, 5, 'nvvidia', 'ssd', '../images/composants/stockage/1.png', 1000, 'SSD', 5656, 1, NULL),
+	(19, 150.00, 3, 'samsung', 'testgestionerreur', '../images/composants/stockage/1.png', 1000, 'SSD', 55, 1, NULL),
+	(20, 150.00, 3, 'samsung', 'testgestionerreur2', '../images/composants/stockage/1.png', 1000, 'SSD', 55, 1, NULL);
 
 -- Listage de la structure de table diggit.me. configurations
 CREATE TABLE IF NOT EXISTS `configurations` (

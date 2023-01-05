@@ -8,16 +8,17 @@
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/ConfigPc.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head> 
- <body>
-  <!-- -----------Premiere ligne du navbar------ -->
-  <header>
-    <div class="header-main">scr
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-        <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo" >
-        </a>
+</head>
+
+<body>
+    <!-- -----------Premiere ligne du navbar------ -->
+    <header>
+        <div class="header-main">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="#">
+                        <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo">
+                    </a>
 
                     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
                         <span aria-hidden="true"></span>
@@ -66,164 +67,57 @@
 
         <!-- -----------Deuxieme ligne du navbar------ -->
 
-  <div class="header-secondary">
-  <nav class="secondary-navbar">
-    <div class="container">
-     
-  
-  <div id="secondaryNavbar" class="navbar-menu">
-    <div class="navbar-start" style="margin-left: 8vw;">
-      <a class="navbar-item" href="../iindex.php" style="border-left: 1px solid white;">
-        Acceuil
-      </a>
-  
-      <a class="navbar-item" href="CréationPc.php">
-        Creer une configuration
-      </a>
-  
-      <a class="navbar-item" href="#">
-        Communauté
-      </a>
-  
-      <a class="navbar-item" href="#">
-        A propos
-      </a>
-    </div>
-  </div>
-    
-  </div>
-    </div>
-  </nav>
-  </header>
-  <!----contenu---->
-  <section class="hero " style="background: url('.//images/gradient.gif') center/cover no-repeat;" >
-    <div class="hero-body" >
-        <div class="container" >
-            <h1 class="title has-text-black">
-                Bienvenue sur digit.me 
-            </h1>
-            <h2 class="subtitle has-text-black">
-               Votre configurateur de PC personnalisé
-            </h2>
-            <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
+        <div class="header-secondary">
+            <nav class="secondary-navbar">
+                <div class="container">
+
+
+                    <div id="secondaryNavbar" class="navbar-menu">
+                        <div class="navbar-start" style="margin-left: 8vw;">
+                            <a class="navbar-item" href="../iindex.php" style="border-left: 1px solid white;">
+                                Acceuil
+                            </a>
+
+                            <a class="navbar-item" href="CréationPc.php">
+                                Creer une configuration
+                            </a>
+
+                            <a class="navbar-item" href="#">
+                                Communauté
+                            </a>
+
+                            <a class="navbar-item" href="#">
+                                A propos
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+        
+        </nav>
+        </div>
+    </header>
+    <!----contenu---->
+
+
+    <!---------------------Création pc--------------------------------->
+    <div class="columns">
+        <div class="column"></div>
+        <div class="column is-two-thirds"><a class="navbar-item" href="PageCarteMere.php">
+                Choissisez votre carte mere
+            </a>
+            <?php  
+    session_start();
+    $bdd = mysqli_connect("localhost","root","","diggit.me");
+    if(isset($_POST['button1'])) {
+          $sql = "INSERT INTO creationpc VALUES (".$_SESSION['name'].",'',".$_SESSION['price'].")";
+          $res=mysqli_query($bdd,$sql);
+        }?>
         </div>
 
 
     </div>
-</section>
 
-<!---------------------Création pc--------------------------------->
-<?php 
-       session_start();
-       $compteur = 1;
-       $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    
-       $sql = "SELECT * FROM composants_board where id_comp = $compteur";
-       $req = $bdd->prepare($sql); 
-       $req ->execute();
-      ?>
-      
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds">Choissisez votre carte mere</div>
-  <div class="select is-rounded">
-<div class="select is-link">
-<select>
-<option></option>
-<?php while($donne = $req -> fetch())
-{
-  $_SESSION['res']= $donne['id_comp'];
-  echo "<option>".$donne['name']."</option> ";
-  $compteur = $compteur + 1;
-  $sql = "SELECT name FROM composants_board where id_comp = $compteur";
-  $req = $bdd->prepare($sql); 
-       $req ->execute();
-}
-?>
-</select>
-</div>
-
-<?php 
-session_start();
-$compteur = 1;
-$bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-$sql = "SELECT * FROM composants_board where id_comp = $_SESSION['res'];";
-$req = $bdd->prepare($sql); 
-$req ->execute();
- ?>
-</div>
-
-  <div class="column"></div>
-</div>
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds">Choissisez votre carte graphique</div>
-  <div class="select is-rounded">
-<div class="select is-link">
-  <select>
-    <option> carte graphique</option>
-    <option> carte graphique 1 </option>
-    <option> carte graphique 2 </option>
-  </select>
-</div>
-</div>
-  <div class="column"></div>
-</div>
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds">Choissisez votre stockage</div>
-  <div class="select is-rounded">
-<div class="select is-link">
-  <select>
-    <option> carte mere </option>
-    <option> carte mere 1 </option>
-    <option> carte mere 2 </option>
-  </select>
-</div>
-
-</div>
-  <div class="column"></div>
-</div>
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds">Choissisez votre RAM</div>
-  <div class="select is-rounded">
-<div class="select is-link">
-  <select>
-    <option> carte mere </option>
-    <option> carte mere 1 </option>
-    <option> carte mere 2 </option>
-  </select>
-</div>
-
-</div>
-  <div class="column"></div>
-</div>
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds">Choissisez votre Alimentation</div>
-  <div class="select is-rounded">
-<div class="select is-link">
-  <select>
-    <option> carte mere </option>
-    <option> carte mere 1 </option>
-    <option> carte mere 2 </option>
-  </select>
-</div>
-
-</div>
-  <div class="column"></div>
-</div>
-<div class="columns"> <div class="column"></div>
-  <div class="column is-two-thirds">Choissisez votre Carte réseau</div>
-  <div class="select is-rounded">
-<div class="select is-link">
-  <select>
-    <option> carte mere </option>
-    <option> carte mere 1 </option>
-    <option> carte mere 2 </option>
-  </select>
-</div>
-
-</div>
-  <div class="column"></div>
-</div>
 
 
 

@@ -27,11 +27,7 @@
 
  <div id="container">
  
-<<<<<<< Updated upstream
  <form class = "form_compte" action="connexion_action.php" method="POST">
-=======
- <form class ="form_compte "action="connexion_action.php" method="POST">
->>>>>>> Stashed changes
  <h1>Se connecter</h1>
  
  <div class="field">
@@ -44,11 +40,7 @@
 <div class="field">
   <label class="label">Votre mot de passe</label>
   <div class="control">
-<<<<<<< Updated upstream
     <input class="input" name="mdp" type="password" placeholder="Votre mot de passe">
-=======
-    <input class="input" type="password" placeholder="Votre mot de passe">
->>>>>>> Stashed changes
   </div>
 </div>
 

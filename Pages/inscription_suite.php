@@ -7,10 +7,23 @@
  <link href="../style/main.css" rel="stylesheet">
  <link href="../style/login.css" rel="stylesheet">
  </head>
-    <title>Création de mon compte</title>
+    <title>Création d'un compte</title>
 </head>
 <body>
-    <div class ="container_inscription">
+<div class="background--custom">
+      
+      <header>
+         <div class="header-main" style="background-color: unset;">
+         <nav class="navbar" style="background-color: unset;left:5vw;" role="navigation" aria-label="main navigation">
+           <div class="navbar-brand">
+             <a class="navbar-item" href="../index.php">
+             <img id="logo" src="../images/diggit.png" width="400px" height="auto" alt="Bulma logo" >
+             </a>
+     </header>
+     <canvas id="canvas" />
+         
+         </div>
+      <div class ="container_inscription">
         <h1>Finaliser mon inscription</h1>
             <form class = "form_inscription_suite" action="inscription_suite_action.php" method="POST">
                   <div class="field">
@@ -40,41 +53,8 @@
                         <input class="input" name="adresse" type="text" placeholder="Votre mot de passe">
                       </div>
                   </div> 
-=======
-    <div class ="container_inscription_suite">
-            <h1>Finaliser mon inscription</h1>
-            <form class ="form_inscription_suite "action="inscription_action.php" method="POST">
 
-                <div class="field">
-                <label class="label">Votre prénom</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Votre prénom">
-                    </div>
-                </div>
 
-                <div class="field">
-                  <label class="label">Votre nom</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Votre nom">
-                    </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Votre numéro de téléphone</label>
-                    <div class="control">
-                      <input class="input" type="tel" placeholder="Votre numéro de télephone">
-                    </div>
-                </div>
->>>>>>> Stashed changes
-
-                <div class="field">
-                  <label class="label">Votre adresse</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Votre adresse">
-                    </div>
-                </div>
-
-<<<<<<< Updated upstream
                   <div class="field is-grouped is-grouped-centered">
                     <div class="field mr-6">
                       <label class="label">Code postal</label>
@@ -95,5 +75,6 @@
 
               </form>
       </div>
+      <script src="../scripts/login.js"></script>
 </body>
 </html>

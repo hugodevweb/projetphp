@@ -7,7 +7,7 @@
  <link href="../style/main.css" rel="stylesheet">
  <link href="../style/login.css" rel="stylesheet">
  </head>
-    <title>Création de mon compte</title>
+    <title>Création d'un compte</title>
 </head>
 <body>
 <div class="background--custom">
@@ -26,9 +26,9 @@
          <script src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js"></script>
 
     <div class ="container_inscription">
-            <h1>Mon inscription</h1>
+            
             <form class = "form_inscription" action="inscription_action.php" method="POST">
-
+            <h1>Mon inscription</h1>
                 <div class="field">
                 <label class="label">Votre Email</label>
                     <div class="control">
@@ -39,34 +39,27 @@
                 <div class="field">
                   <label class="label">Votre mot de passe</label>
                     <div class="control">
-<<<<<<< Updated upstream
-                      <input class="input" name="mdp" type="password" placeholder="Votre mot de passe">
-=======
-                      <input class="input" type="password" placeholder="Votre mot de passe">
->>>>>>> Stashed changes
+                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
 
                 <div class="field">
                   <label class="label">Confirmer votre mot de passe</label>
                     <div class="control">
-<<<<<<< Updated upstream
-                      <input class="input" name="confirm_mdp" type="password" placeholder="Votre mot de passe">
-=======
-                      <input class="input" type="password" placeholder="Votre mot de passe">
->>>>>>> Stashed changes
+                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
                   
                 
                   <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
-                
+                  <h2 class="deja_un_compte"> J'ai dejà un <a href="./compte.php"> compte  </a><h2>
                 </form>
                 
         </div>
         
-        <h2 class="deja_un_compte"> J'ai dejà un <a href="./compte.php"> compte  </a><h2>
+      
 
     </div>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>
