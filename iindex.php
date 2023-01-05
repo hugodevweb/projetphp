@@ -42,20 +42,22 @@
     <div class="navbar-end">
       <div class="navbar-item has-text-centered">
         <div class="buttons">
+          
           <button class="button is-dark">
             <span class="icon">
               <i class="fa fa-user"></i>
-              
             </span>
             <a href="./Pages/compte.php">Mon compte</a>
           </button>
+
           <button class="button is-white">
             <span class="icon has-text-dark">
               <img src="./images/cart.gif" alt="cart">
-              
             </span>
-            <span href="">Panier</span>
+            <a href="./Pages/panier.php">Panier</a>
           </button>
+
+
         </div>
       </div>
     </div>

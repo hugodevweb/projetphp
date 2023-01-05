@@ -23,19 +23,19 @@
                 <div class="field">
                   <label class="label">Votre mot de passe</label>
                     <div class="control">
-                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
+                      <input class="input" name="mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
 
                 <div class="field">
                   <label class="label">Confirmer votre mot de passe</label>
                     <div class="control">
-                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
+                      <input class="input" name="confirm_mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
                   
                 
-                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
+                  <input type="submit" name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
                 
                 </form>
         </div>

@@ -13,7 +13,7 @@
  <body>
   <!-- -----------Premiere ligne du navbar------ -->
   <header>
-    <div class="header-main">scr
+    <div class="header-main">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
@@ -104,7 +104,6 @@
             <h2 class="subtitle has-text-black">
                Votre configurateur de PC personnalisé
             </h2>
-            <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
         </div>
     </div>
 </section>
@@ -125,7 +124,7 @@
   <div class="select is-rounded">
 <div class="select is-link">
 <select>
-<option></option>
+<option>Carte mère</option>
 <?php while($donne = $req -> fetch())
 {
   $_SESSION['res']= $donne['id_comp'];
@@ -138,15 +137,15 @@
 ?>
 </select>
 </div>
-
 <?php 
-session_start();
+/*session_start();
 $compteur = 1;
 $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
 $sql = "SELECT * FROM composants_board where id_comp = $_SESSION['res'];";
 $req = $bdd->prepare($sql); 
-$req ->execute();
+$req ->execute();*/
+
  ?>
 </div>
 
