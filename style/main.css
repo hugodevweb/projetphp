@@ -314,13 +314,12 @@ ul{
   top: 5px;
   text-align: center;
   font-size: 40px;
-
-  
  }
+
+
  #container p{
   text-align: center;
   padding: 10px;
-  
  }
  
 
@@ -448,10 +447,39 @@ ul{
       }
 
 
+<<<<<<< Updated upstream
 
  /*-----CSS inscription_suite.php----*/
 
       .bouton_inscription_valider{
+=======
+      /*-----CSS inscription_suite.php----*/
+    
+       .container_inscription_suite h1{
+        position: relative;
+        top: 5px;
+        text-align: center;
+        font-size: 40px;
+       }
+
+       .container_inscription_suite{
+        width:600px;
+        margin:0 auto;
+        margin-top:5%;
+       }
+
+
+       .container_inscription_suite form {
+        height: 700px;
+        width:100%;
+        padding: 30px;
+        border: 1px solid #f1f1f1;
+        background: #fff;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+       }
+
+       .bouton_inscription_finale{
+>>>>>>> Stashed changes
         background-color: #0d84af;
         color: white;
         padding: 14px 20px;
@@ -459,15 +487,23 @@ ul{
         border: none;
         cursor: pointer;
         border-radius: 30px;
+<<<<<<< Updated upstream
         margin-left: 32%;
       }
 
 
        .bouton_inscription_valider:hover {
+=======
+        margin-left: 37%;
+       }
+
+       .bouton_inscription_finale{
+>>>>>>> Stashed changes
         background-color: white;
         color: #0d84af;
         border: 1px solid #0d84af;
         border-radius: 30px;
+<<<<<<< Updated upstream
        }
 
 
@@ -491,3 +527,6 @@ ul{
       
 
       
+=======
+       }
+>>>>>>> Stashed changes
