@@ -1,8 +1,7 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -13,57 +12,59 @@
  <body>
   <!-- -----------Premiere ligne du navbar------ -->
   <header>
-    <div class="header-main">
+    <div class="header-main">scr
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
         <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo" >
         </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <div class="navbar-item has-text-centered">
-            <div class="field has-addons">
-              <div class="control">
-                <input id="rech" class="input" type="text" placeholder="Chercher un composant ">
-              </div>
-              <div class="control">
-                <button class="button" type="submit"><img type="sub" class="loupe" src="../images/loupe.png" alt="loupe" ></button>
-              </div>
-            </div>
-          </div>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-start">
+                        <div class="navbar-item has-text-centered">
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <input id="rech" class="input" type="text" placeholder="Chercher un composant ">
+                                </div>
+                                <div class="control">
+                                    <button class="button" type="submit"><img type="sub" class="loupe"
+                                            src="../images/loupe.png" alt="loupe"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item has-text-centered">
+                            <div class="buttons">
+                                <button class="button is-dark">
+                                    <span class="icon">
+                                        <i class="fa fa-user"></i>
+
+                                    </span>
+                                    <span>Mon compte</span>
+                                </button>
+                                <button class="button is-white">
+                                    <span class="icon has-text-dark">
+                                        <img src="../images/cart.gif" alt="cart">
+
+                                    </span>
+                                    <span href="">Panier</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item has-text-centered">
-        <div class="buttons">
-          <button class="button is-dark">
-            <span class="icon">
-              <i class="fa fa-user"></i>
-              
-            </span>
-            <span>Mon compte</span>
-          </button>
-          <button class="button is-white">
-            <span class="icon has-text-dark">
-              <img src="../images/cart.gif" alt="cart">
-              
-            </span>
-            <span href="">Panier</span>
-          </button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </nav>
-  </div>
-  <!-- -----------Deuxieme ligne du navbar------ -->
+        <!-- -----------Deuxieme ligne du navbar------ -->
 
   <div class="header-secondary">
   <nav class="secondary-navbar">
@@ -104,7 +105,10 @@
             <h2 class="subtitle has-text-black">
                Votre configurateur de PC personnalisé
             </h2>
+            <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
         </div>
+
+
     </div>
 </section>
 
@@ -124,7 +128,7 @@
   <div class="select is-rounded">
 <div class="select is-link">
 <select>
-<option>Carte mère</option>
+<option></option>
 <?php while($donne = $req -> fetch())
 {
   $_SESSION['res']= $donne['id_comp'];
@@ -137,15 +141,15 @@
 ?>
 </select>
 </div>
+
 <?php 
-/*session_start();
+session_start();
 $compteur = 1;
 $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
 $sql = "SELECT * FROM composants_board where id_comp = $_SESSION['res'];";
 $req = $bdd->prepare($sql); 
-$req ->execute();*/
-
+$req ->execute();
  ?>
 </div>
 
@@ -223,41 +227,44 @@ $req ->execute();*/
 
 
 
-<!-------------Footer--------------> 
-<div class="footer">
-    <div class="container">
-        <div class="rang">
-            <div class="footer_col1">
-                <h3>Télécharger notre application</h3>
-                <p>Télécharger notre application maintenant sur Android et IOS</p>
-                <div class="app_logo">
-                    <a href="https://play.google.com/store/search?q=footprint"><img class="playstr" src="../images/playstore.png" ></a>
-                    <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr" src="../images/appstore.png"></a>
+    <!-------------Footer-------------->
+    <div class="footer">
+        <div class="container">
+            <div class="rang">
+                <div class="footer_col1">
+                    <h3>Télécharger notre application</h3>
+                    <p>Télécharger notre application maintenant sur Android et IOS</p>
+                    <div class="app_logo">
+                        <a href="https://play.google.com/store/search?q=footprint"><img class="playstr"
+                                src="../images/playstore.png"></a>
+                        <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr"
+                                src="../images/appstore.png"></a>
+                    </div>
+                </div>
+                <div class="footer_col2">
+                    <img src="../images/diggit.png">
+                    <p>Notre objectif est de rendre agréable et accessible l'achat et le montage d'ordinateurs
+                    </p>
+                </div>
+                <div class="footer_col3">
+                    <h3>Suivez-nous</h3>
+                    <ul>
+                        <li><a href="https://www.instagram.com/">Instagram</a></li>
+                        <li><a href="https://www.twitter.com/">Twitter</a></li>
+                        <li><a href="https://www.Facebook.com/">Facebook</a></li>
+                        <li><a href="https://www.youtube.com/">youtube</a></li>
+
+
+
+
+                    </ul>
+
                 </div>
             </div>
-            <div class="footer_col2">
-                <img src="../images/diggit.png">
-                <p>Notre objectif est de rendre agréable et accessible l'achat et le montage d'ordinateurs
-                </p>
-            </div>
-            <div class="footer_col3">
-                <h3>Suivez-nous</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/">Instagram</a></li>
-                    <li><a href="https://www.twitter.com/">Twitter</a></li>
-                    <li><a href="https://www.Facebook.com/">Facebook</a></li>
-                    <li><a href="https://www.youtube.com/">youtube</a></li>
-                    
-                
-                
-                
-                </ul>    
-            
-            </div>         
+            <hr>
+            <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
-        <hr>
-        <p class="copyright">Copyright 2022 - Foot-Print</p>
     </div>
- </div>
 </body>
+
 </html>

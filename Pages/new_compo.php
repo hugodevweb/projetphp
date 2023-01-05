@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/fondsvg.css" rel="stylesheet">
+    <link href="../style/newcompo.css" rel="stylesheet">
+    <link rel = "icon" href = "../images/logo_diggit.png" 
+        type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>DIGGIT.ME- Ajout composant</title>
 </head>
 
 <body>
@@ -94,7 +98,7 @@
 
 
                     <div id="secondaryNavbar" class="navbar-menu">
-                        <div class="navbar-start" style="margin-left: 8vw;">
+                        <div class="navbar-start" >
                             <a class="navbar-item" href="#" style="border-left: 1px solid white;">
                                 Acceuil
                             </a>
@@ -117,28 +121,16 @@
         </div>
         </nav>
     </header>
-    <!----contenu---->
-    <section class="hero">
-        <div class="background--custom">
-            <div class="hero-body">
-                <div class="container">
 
-                    <h1 class="title has-text-white">
-                        Bonjour //////ADMIN/////
-                    </h1>
-                    <h2 class="subtitle has-text-white">
-                        Ici vous pouvez ajouter des composants
-                    </h2>
-                    <!-- <img class="is-right" src="../images/pc.gif" style="width: 250px ;height:200px;"> -->
-                </div>
-            </div>
-        </div>
-    </section>
+        
 
     <!---------------------ajout composant--------------------------------->
-    <div class="hero is-fullheight" style="background: url('../images/fondnewcomp.svg') center/cover no-repeat;">
 
 
+    <section class="hero">
+        <div class="background--custom">
+
+            
         <div id="pres" class="box has-text-centered has-background-white ">
             <h1 style="font-family: 'Montserrat', sans-serif;" class="title is-2">Completer le formulaire ci-dessous:
             </h1>
@@ -150,7 +142,7 @@
                     <div class="control ">
                         <label for="type" class="choixtype"><b>Type de composant:</b></label>
                         <div class="select">
-                            <select name="type" id="type" onchange="showDiv()">
+                            <select  name="type" id="type" onchange="showDiv()">
                                 <option value="erreur_choix_composant" selected>Choisir</option>
                                 <option value="cooler">Refroidissement de CPU</option>
                                 <option value="stockage">Stockage</option>
@@ -179,6 +171,11 @@
                 <div class="field">
                     <label for="rating"><b class="is-pulled-left">La note:</b></label>
                     <input class="input" placeholder="Entrez la note /5" name="rating">
+                </div>
+                <div class="field">
+                    <label for="URL"><b class="is-pulled-left">L'URL :</b></label>
+                    <input class="input" placeholder="L'url" name="URL">
+                    <p class="has-text-grey">Utilisez le lien suivant <b>https://drive.google.com/uc?export=view&id="imageid"</b> en remplaçant  l'imageid par l'id de l'image (Vous pouvez le trouver ici : https://drive.google.com/file/d/<b>13jueBPF680fgvWnK2JImyf13PhgjsFBS</b>/view?usp=share_link ) </p>
                 </div>
 
 
@@ -281,20 +278,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Div qui apparaît si l'option "board" est choisie -->
-                <div id="board" style="display: none;">
-                    <h3 class="title is-2">paramètres de la carte mere :</h3>
-
-                    <div class="field">
-                        <label><b class="is-pulled-left">Type de socket:</b></label>
-                        <input class="input" placeholder="Entrez le type de socket" name="board_type_socket">
-                    </div>
-
-                    <div class="field">
-                        <label><b class="is-pulled-left">Le nombre de slot de RAM:</b></label>
-                        <input class="input" placeholder="Entrez le nombre de slot" name="board_nbram">
-                    </div>
-                </div>
+               
                 <!-- Div qui apparaît si l'option "alim" est choisie -->
                 <div id="alim" style="display: none;">
                     <h3 class="title is-2">paramètres de l'alimentation' :</h3>
@@ -325,8 +309,8 @@
                     <h3 class="title is-2">paramètres de la carte graphique :</h3>
 
                     <div class="field">
-                        <label><b class="is-pulled-left">Puissance:</b></label>
-                        <input class="input" placeholder="Entrez la  puissance" name="gpu_puiss">
+                        <label><b class="is-pulled-left">Fréquence</b></label>
+                        <input class="input" placeholder="Entrez la  Fréquence en MHz" name="gpu_puiss">
                     </div>
 
                     <div class="field">
@@ -372,9 +356,17 @@
             <div class="notification is-success" id="msg_success">
                 Le composant a été ajouté avec succes !
             </div>
-        </div>
-    </div>
+            <div class="notification is-danger" id="msg_error">
+                Le composant n'a pas été ajouté !
+                <div style="text"id="errors"></div>
 
+            </div>
+        </div>
+   
+      
+        
+    </div>
+    </section>
     <!-------------Footer-------------->
     <div class="footer">
         <div class="container">
@@ -413,7 +405,9 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
-    <script src="../scripts/script.js"></script>
+    <script src="../scripts/newcompo.js"></script>
+    <script src="../scripts/main.js"></script>
+    
     
 </body>
 

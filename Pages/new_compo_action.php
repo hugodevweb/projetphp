@@ -12,13 +12,14 @@ $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
 
 $type = $_POST['type'];
-				$name = $_POST['name'];
-				$price = $_POST['price'];
-				$brand = $_POST['brand'];
-				$rating = $_POST['rating'];
-				$is_available = $_POST['is_available'];
+$name = $_POST['name'];
+$price = $_POST['price'];
+$brand = $_POST['brand'];
+$rating = $_POST['rating'];
+$is_available = $_POST['is_available'];
+$url = $_POST['URL'];
 
-				
+
 switch($type) {
     case "stockage":
         $stockage_type = $_POST['stockage_type'];
@@ -27,7 +28,7 @@ switch($type) {
         if($stockage_type=='SSD')
           {    $stmt = $pdo->prepare("
                 INSERT INTO composants_stockage(price,rating,brand,name_comp,img,capacite,type_comp,speed,is_available)
-                VALUES ( :price, :rating, :brand,:name,CONCAT('../images/composants/stockage/',LAST_INSERT_ID()+1,'.png'), :taille, :type, :vitesse, :is_available)");
+                VALUES ( :price, :rating, :brand,:name,:url, :taille, :type, :vitesse, :is_available)");
 				
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -38,7 +39,7 @@ switch($type) {
 				$stmt->bindParam(':type', $stockage_type);
 				$stmt->bindParam(':taille', $stockage_taille);
 				$stmt->bindParam(':vitesse', $stockage_vitesse);
-
+				$stmt->bindParam(':url', $url);
 				//Exécution de la requête
 				$stmt->execute();
 				echo" Insertion reussi ssd";
@@ -46,7 +47,7 @@ switch($type) {
 			}
             else{$stmt = $pdo->prepare("
                 INSERT INTO composants_stockage(price,rating,brand,name_comp,img,capacite,type_comp,speed,is_available)
-                VALUES ( :price, :rating, :brand,:name,CONCAT('../images/composants/stockage/',LAST_INSERT_ID()+1,'.png'), :taille, :type, :vitesse, :is_available)");
+                VALUES ( :price, :rating, :brand,:name,:url, :taille, :type, :vitesse, :is_available)");
 				
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -57,6 +58,7 @@ switch($type) {
 				$stmt->bindParam(':type', $stockage_type);
 				$stmt->bindParam(':taille', $stockage_taille);
 				$stmt->bindParam(':vitesse', $stockage_vitesse);
+				$stmt->bindParam(':url', $url);
 
 				//Exécution de la requête
 				$stmt->execute();
@@ -66,27 +68,27 @@ switch($type) {
 		
 				break;
 		
-			case "board":
-				$board_socket = $_POST['board_socket'];
-				$board_ram = $_POST['board_ram'];
+case "board":
+	$board_socket = $_POST['board_socket'];
+	$board_ram = $_POST['board_ram'];
 
-				$stmt = $pdo->prepare("
-				INSERT INTO composants_board(price,rating,brand,name,img,ram,socket,is_available)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/board/',LAST_INSERT_ID()+1,'.png'), :nbram, :socket, :is_available)");
+	$stmt = $pdo->prepare("
+	INSERT INTO composants_board(price,rating,brand,name,img,ram,socket,is_available)
+	VALUES (:price, :rating, :brand,:name,:url, :nbram, :socket, :is_available)");
 
-				//Liaison des valeurs aux variables
-				$stmt->bindParam(':name', $name);
-				$stmt->bindParam(':price', $price);
-				$stmt->bindParam(':brand', $brand);
-				$stmt->bindParam(':rating', $rating);
-				$stmt->bindParam(':is_available', $is_available);
-				$stmt->bindParam(':socket', $board_socket);
-				$stmt->bindParam(':nbram', $board_ram);
-
-				//Exécution de la requête
-				$stmt->execute();
-				echo "insert done board";
-				break;
+	//Liaison des valeurs aux variables
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':price', $price);
+	$stmt->bindParam(':brand', $brand);
+	$stmt->bindParam(':rating', $rating);
+	$stmt->bindParam(':is_available', $is_available);
+	$stmt->bindParam(':socket', $board_socket);
+	$stmt->bindParam(':nbram', $board_ram);
+	$stmt->bindParam(':url', $url);
+	//Exécution de la requête
+	$stmt->execute();
+	echo "insert done board";
+	break;
 		
     case "alim":
         $alim_wattage = $_POST['alim_wattage'];
@@ -94,7 +96,7 @@ switch($type) {
 
 		$stmt = $pdo->prepare("
 				INSERT INTO composants_alim(price,rating,brand,name,img,is_available,is_modulable,wattage)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/alim/',LAST_INSERT_ID()+1,'.png'), :is_available, :is_modulable, :wattage)");
+				VALUES (:price, :rating, :brand,:name,:url, :is_available, :is_modulable, :wattage)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -104,6 +106,7 @@ switch($type) {
 				$stmt->bindParam(':is_available', $is_available);
 				$stmt->bindParam(':is_modulable', $alim_is_modulable);
 				$stmt->bindParam(':wattage', $alim_wattage);
+				$stmt->bindParam(':url', $url);
 
 				//Exécution de la requête
 				$stmt->execute();
@@ -115,7 +118,7 @@ switch($type) {
         
 		$stmt = $pdo->prepare("
 				INSERT INTO composants_gpu(price,rating,brand,name,img,is_available,ram,clock)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/gpu/',LAST_INSERT_ID()+1,'.png'), :is_available, :ram, :clock)");
+				VALUES (:price, :rating, :brand,:name,:url, :is_available, :ram, :clock)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -125,6 +128,7 @@ switch($type) {
 				$stmt->bindParam(':is_available', $is_available);
 				$stmt->bindParam(':ram', $gpu_vram);
 				$stmt->bindParam(':clock', $gpu_clock);
+				$stmt->bindParam(':url', $url);
 
 				//Exécution de la requête
 				$stmt->execute();
@@ -135,7 +139,7 @@ switch($type) {
        
 		$stmt = $pdo->prepare("
 				INSERT INTO composants_boitier(price,rating,brand,name,img,is_available,type)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/gpu/',LAST_INSERT_ID()+1,'.png'), :is_available, :type)");
+				VALUES (:price, :rating, :brand,:name,:url, :is_available, :type)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -144,7 +148,7 @@ switch($type) {
 				$stmt->bindParam(':rating', $rating);
 				$stmt->bindParam(':is_available', $is_available);
 				$stmt->bindParam(':type', $boitier_type);
-
+				$stmt->bindParam(':url', $url);
 				//Exécution de la requête
 				$stmt->execute();
 				echo "insert done boitier";
@@ -156,7 +160,7 @@ switch($type) {
 
         $stmt = $pdo->prepare("
 				INSERT INTO composants_cpu(price,rating,brand,name,img,is_available,wattage,nbcore,puissance)
-				VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/gpu/',LAST_INSERT_ID()+1,'.png'), :is_available, :conso, :core, :puiss)");
+				VALUES (:price, :rating, :brand,:name,:url, :is_available, :conso, :core, :puiss)");
 
 				//Liaison des valeurs aux variables
 				$stmt->bindParam(':name', $name);
@@ -167,7 +171,7 @@ switch($type) {
 				$stmt->bindParam(':puiss', $cpu_puis);
 				$stmt->bindParam(':core', $cpu_nbcore);
 				$stmt->bindParam(':conso', $cpu_wattage);
-
+				$stmt->bindParam(':url', $url);
 				//Exécution de la requête
 				$stmt->execute();
 				echo "insert done cpu";
@@ -181,7 +185,7 @@ switch($type) {
 	
 			$stmt = $pdo->prepare("
 					INSERT INTO composants_cooler(price,rating,brand,name,img,is_available,taille,son,type,speed)
-					VALUES (:price, :rating, :brand,:name,CONCAT('../images/composants/gpu/',LAST_INSERT_ID()+1,'.png'), :is_available, :taille, :son, :type, :speed)");
+					VALUES (:price, :rating, :brand,:name,:url, :is_available, :taille, :son, :type, :speed)");
 	
 					//Liaison des valeurs aux variables
 					$stmt->bindParam(':name', $name);
@@ -193,7 +197,7 @@ switch($type) {
 					$stmt->bindParam(':taille', $cooler_taille);
 					$stmt->bindParam(':speed', $cooler_speed);
 					$stmt->bindParam(':son', $cooler_son);
-	
+					$stmt->bindParam(':url', $url);
 					//Exécution de la requête
 					$stmt->execute();
 					echo "insert done cooler";
