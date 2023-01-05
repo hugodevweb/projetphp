@@ -46,23 +46,142 @@
                         </div>
                     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item has-text-centered">
-        <div class="buttons">
-          <button class="button is-dark">
-            <span class="icon">
-              <i class="fa fa-user"></i>
-              
-            </span>
-            <a href="./Pages/compte.php">Mon compte</a>
-          </button>
-          <button class="button is-white">
-            <span class="icon has-text-dark">
-              <img src="./images/cart.gif" alt="cart">
-              
-            </span>
-            <span href="">Panier</span>
-          </button>
+                    <div class="navbar-end">
+                        <div class="navbar-item has-text-centered">
+
+                            <div class="dropdown">
+                                <div class="dropdown-trigger">
+                                    <button id="btn" class="button is-dark" data-target="#modal-id" data-toggle="modal">
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <p> Se Connecter</p>
+                                    </button>
+                                </div>
+                                <div class="modal" id="modal-id">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-content">
+
+                                        <div id="container">
+
+                                            <form class="form_compte" action="connexion_action.php" method="POST">
+                                                <h1>Se connecter</h1>
+
+                                                <div class="field">
+                                                    <label class="label">Votre Email</label>
+                                                    <div class="control">
+                                                        <input class="input" name="mail" type="email"
+                                                            placeholder="Votre email">
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="label">Votre mot de passe</label>
+                                                    <div class="control">
+                                                        <input class="input" name="mdp" type="password"
+                                                            placeholder="Votre mot de passe">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
+
+                                                <input type="submit" name="envoi" class="bouton_connexion"
+                                                    value=" Connexion">
+                                            </form>
+                                        </div>
+
+                                        
+                                        <button class="modal-close is-large" aria-label="close"></button>
+                                    </div>
+
+                                </div>
+                                <button id="btn2" class="button is-white" style="margin-left:2%" data-target="#modal-id-2" data-toggle="modal">
+                                    <span class="icon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <p>S'inscrire</p>
+                                </button>
+                            </div>
+                            <div class="modal" id="modal-id-2">
+                                <div class="modal-background"></div>
+                                    <div class="modal-content">
+                                    <div class ="container_inscription">
+            
+            <form class = "form_inscription" action="inscription_action.php" method="POST">
+            <h1>Mon inscription</h1>
+                <div class="field">
+                <label class="label">Votre Email</label>
+                    <div class="control">
+                      <input class="input" name="mail" type="email" placeholder="Votre email">
+                    </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Votre mot de passe</label>
+                    <div class="control">
+                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
+                    </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Confirmer votre mot de passe</label>
+                    <div class="control">
+                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
+                    </div>
+                </div>
+                  
+                 
+                  <div class="field">
+                  <label class="label">Nom</label>
+                      <div class="control">
+                        <input class="input" name="nom" type="text" placeholder="Votre email">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Prénom</label>
+                      <div class="control">
+                        <input class="input" name="prenom" type="text" placeholder="Votre mot de passe">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Numéro de télephone</label>
+                      <div class="control">
+                        <input class="input" name="tel" type="tel" placeholder="Votre mot de passe">
+                      </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Adresse</label>
+                      <div class="control">
+                        <input class="input" name="adresse" type="text" placeholder="Votre mot de passe">
+                      </div>
+                  </div> 
+
+
+                  
+                  <div class="columns">
+                    <div class="column is-two-fifths">
+                        <label class="label">Code postal</label>
+                        <div class="control">
+                          <input class="input" name="codepostal" type="text" placeholder="Code postal">
+                        </div>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column is-two-fifths"><label class="label">Ville</label>
+                        <div class="control">
+                          <input class="input" name="ville" type="text" placeholder="Ville">
+                        </div>
+                    </div>
+                    
+                 
+            </div>
+                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
+                </form>
+                
         </div>
                                     </div>
                                 <button class="modal-close is-large" aria-label="close"></button>
