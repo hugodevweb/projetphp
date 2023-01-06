@@ -27,7 +27,7 @@ switch($type) {
         $stockage_vitesse = $_POST['stockage_vitesse'];
         if($stockage_type=='SSD')
           {    $stmt = $pdo->prepare("
-                INSERT INTO composants_stockage(price,rating,brand,name_comp,img,capacite,type_comp,speed,is_available)
+                INSERT INTO composants_stockage(price,rating,brand,name,img,capacite,type_comp,speed,is_available)
                 VALUES ( :price, :rating, :brand,:name,:url, :taille, :type, :vitesse, :is_available)");
 				
 				//Liaison des valeurs aux variables
@@ -202,6 +202,31 @@ case "board":
 					$stmt->execute();
 					echo "insert done cooler";
 			break;
+			case "RAM":
+				$RAM_memoire = $_POST['RAM_memoire'];
+				$RAM_capacite = $_POST['RAM_capacite'];
+				$RAM_fréquence = $_POST['RAM_fréquence'];
+			
+				
+		
+				$stmt = $pdo->prepare("
+						INSERT INTO composants_ram(price,rating,brand,name,img,is_available,modules,capacite,speed)
+						VALUES (:price, :rating, :brand,:name,:url, :is_available, :modules, :capacite, :speed)");
+		
+						//Liaison des valeurs aux variables
+						$stmt->bindParam(':name', $name);
+						$stmt->bindParam(':price', $price);
+						$stmt->bindParam(':brand', $brand);
+						$stmt->bindParam(':rating', $rating);
+						$stmt->bindParam(':is_available', $is_available);
+						$stmt->bindParam(':modules', $RAM_memoire); 	 
+						$stmt->bindParam(':capacite', $RAM_capacite);
+						$stmt->bindParam(':speed', $RAM_fréquence);
+						$stmt->bindParam(':url', $url);
+						//Exécution de la requête
+						$stmt->execute();
+						echo "insert done RAM";
+				break;
     default:
         
 		echo "<p>erreur requete</p>";

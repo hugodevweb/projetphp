@@ -1,6 +1,6 @@
 function showDiv() {
   var type = document.getElementById('type').value;
-  var divs = ['cooler', 'stockage', 'board', 'alim', 'gpu', 'boiter', 'cpu'];
+  var divs = ['cooler', 'stockage', 'board', 'alim', 'gpu', 'boiter', 'cpu','RAM'];
 
   for (var i = 0; i < divs.length; i++) {
     if (divs[i] === type) {
@@ -181,6 +181,25 @@ function showDiv() {
               if (!document.querySelector('input[name="cpu_conso"]').value || isNaN(document.querySelector('input[name="cpu_conso"]').value)) {
                 document.querySelector('input[name="cpu_conso"]').classList.add('is-danger');
                 errors.push("La consommation du CPU est invalide");
+              }
+
+              }
+              else if(type==='RAM'){
+                // Composant "cpu"
+
+              // Vérifie si la puissance a été entrée
+          
+
+              // Vérifie si le nombre de cœurs a été entré
+              if (!document.querySelector('input[name="RAM_capacite"]').value || isNaN(document.querySelector('input[name="RAM_capacite"]').value)) {
+                document.querySelector('input[name="RAM_capacite"]').classList.add('is-danger');
+                errors.push("La capacité de la RAM est invalide");
+              }
+
+              // Vérifie si la consommation a été entrée
+              if (!document.querySelector('input[name="RAM_fréquence"]').value || isNaN(document.querySelector('input[name="RAM_fréquence"]').value)) {
+                document.querySelector('input[name="RAM_fréquence"]').classList.add('is-danger');
+                errors.push("La fréquence de la RAM est invalide");
               }
 
               }
