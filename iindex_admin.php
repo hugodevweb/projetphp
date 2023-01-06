@@ -109,7 +109,7 @@
                                     <div class="modal-content">
                                     <div class ="container_inscription">
             
-            <form class = "form_inscription" action="inscription_action.php" method="POST">
+            <form class = "form_inscription" action="./Pages/inscription_action.php" method="POST">
             <h1>Mon inscription</h1>
                 <div class="field">
                 <label class="label">Votre Email</label>
@@ -337,10 +337,27 @@
                         $stmt->execute();
 
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
+                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>
+                            <div class=\"select\">
+                            <select>
+                            <option selected></option>";  
+                            $stmt2 = $pdo->prepare("SELECT NAME FROM composants_cpu WHERE is_selected=0;");
+    
+                            $stmt2->execute();
+    
+                            while ($row2 = $stmt->fetch()) {
+                                echo "<form class=\"form_compte\" action=\"selection.php\" method=\"POST\">
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+                            }
+                        
+                            echo"</form>      
                             
-                        }             
-                        ?>
+                              
+                            </select>          
+                            </div>"; 
+                        }?>
+
+                       
                     </ol>
 
                 </li>
@@ -364,7 +381,31 @@
                         while ($row = $stmt->fetch()) {
                             echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
                         }             
-                        ?>                    </ol>
+                        ?> <div class="select">
+                        <select>
+                        <option selected></option>
+                        <?php
+                        // Connexion à la base de données
+                        $host = "localhost";
+                        $user = "root";
+                        $password = "";
+                        $dbname = "digit.me";
+
+                        $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                        $stmt = $pdo->prepare("SELECT NAME FROM composants_stockage WHERE is_selected=0;");
+
+                        $stmt->execute();
+
+                        while ($row = $stmt->fetch()) {
+                            echo "<form class=\"form_compte\" action=\"selection.php\" method=\"POST\">
+                            <option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+                        }
+                        echo"</form>";       
+                        ?>
+                          
+                        </select>
+                      </div>              </ol>
 
                 </li>
                 <li>

@@ -151,6 +151,7 @@
                                 <option value="gpu">Carte Graphique</option>
                                 <option value="boiter">Un boitier</option>
                                 <option value="cpu">Un processeur</option>
+                                <option value="RAM">RAM</option>
                             </select>
                         </div>
                     </div>
@@ -345,6 +346,28 @@
                     <div class="field">
                         <label><b class="is-pulled-left">La consomation:</b></label>
                         <input class="input" placeholder="Entrez la consommation en W" name="cpu_conso">
+                    </div>
+                </div>
+
+                    <!-- Div qui apparaît si l'option "RAM" est choisie -->
+
+
+                    <div id="RAM" style="display: none;">
+                    <h3 class="title is-2"></h3>
+
+                    <div class="field">
+                        <label><b class="is-pulled-left">Type de mémoire :</b></label>
+                        <input class="input" placeholder="Entrez le type de mémoire" name="RAM_memoire">
+                    </div>
+
+                    <div class="field">
+                        <label><b class="is-pulled-left">Le capacité ram:</b></label>
+                        <input class="input" placeholder="Entrez la capacité" name="RAM_capacite">
+                    </div>
+
+                    <div class="field">
+                        <label><b class="is-pulled-left">Fréquence mémoire:</b></label>
+                        <input class="input" placeholder="Entrez la fréquence mémoire" name="RAM_fréquence">
                     </div>
                 </div>
                 <button type="submit" class="button is-info is-medium is-fullwidth">Ajouter +</button>
