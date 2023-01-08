@@ -332,31 +332,45 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_cpu WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_cpu WHERE is_selected=1 or is_selected=2 or is_selected=3 ;");
 
                         $stmt->execute();
-
-                        while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>
-                            <div class=\"select\">
-                            <select>
-                            <option selected></option>";  
-                            $stmt2 = $pdo->prepare("SELECT NAME FROM composants_cpu WHERE is_selected=0;");
-    
-                            $stmt2->execute();
-    
-                            while ($row2 = $stmt->fetch()) {
-                                echo "<form class=\"form_compte\" action=\"selection.php\" method=\"POST\">
-                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
-                            }
                         
-                            echo"</form>      
-                            
+                        
+                        while ($row = $stmt->fetch()) {
+                          
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php\" method=\"POST\">";
+                            echo "<div class=\"select\">
+                            <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_cpu");
+
+                            $stmt2->execute();
+                            while ($row2 = $stmt2->fetch()) {
+                                echo"
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+ }                       
+                            echo"                     
                               
                             </select>          
-                            </div>"; 
-                        }?>
-
+                            </div>
+                            "
+                            ; 
+                            echo "<div class=\"control\">
+                        <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                        <div class=\"control\">
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                            Supprimer
+                        </label>
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                            Ajouter
+                        </label>
+                        </div>
+                        </div></form> ";
+                        }
+                        ?>
                        
                     </ol>
 
@@ -594,9 +608,16 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
-   
+    <form>
+  
 
     <script src="./scripts/index.js"></script>
+    <script>
+function displaySelectedIndex() {
+  var select = document.getElementById("mySelect");
+  var selectedIndex = select.selectedIndex;
+}
+</script>
 </body>
 
 </html>

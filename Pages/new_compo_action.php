@@ -202,6 +202,29 @@ case "board":
 					$stmt->execute();
 					echo "insert done cooler";
 			break;
+			case "ram":
+				$RAM_memoire = $_POST['RAM_memoire'];
+				$RAM_capacite = $_POST['RAM_capacite'];
+				$RAM_fréquence = $_POST['RAM_fréquence'];
+		
+				$stmt = $pdo->prepare("
+						INSERT INTO composants_cpu(price,rating,brand,name,img,is_available,wattage,nbcore,puissance)
+						VALUES (:price, :rating, :brand,:name,:url, :is_available, :conso, :core, :puiss)");
+		
+						//Liaison des valeurs aux variables
+						$stmt->bindParam(':name', $name);
+						$stmt->bindParam(':price', $price);
+						$stmt->bindParam(':brand', $brand);
+						$stmt->bindParam(':rating', $rating);
+						$stmt->bindParam(':is_available', $is_available);
+						$stmt->bindParam(':puiss', $cpu_puis);
+						$stmt->bindParam(':core', $cpu_nbcore);
+						$stmt->bindParam(':conso', $cpu_wattage);
+						$stmt->bindParam(':url', $url);
+						//Exécution de la requête
+						$stmt->execute();
+						echo "insert done cpu";
+				break;
     default:
         
 		echo "<p>erreur requete</p>";
