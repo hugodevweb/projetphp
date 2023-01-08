@@ -361,12 +361,12 @@
                     </div>
 
                     <div class="field">
-                        <label><b class="is-pulled-left">Le capacité ram:</b></label>
+                        <label><b class="is-pulled-left">Le capacité de la RAM :</b></label>
                         <input class="input" placeholder="Entrez la capacité" name="RAM_capacite">
                     </div>
 
                     <div class="field">
-                        <label><b class="is-pulled-left">Fréquence mémoire:</b></label>
+                        <label><b class="is-pulled-left">Fréquence mémoire :</b></label>
                         <input class="input" placeholder="Entrez la fréquence mémoire" name="RAM_fréquence">
                     </div>
                 </div>
@@ -381,7 +381,7 @@
             </div>
             <div class="notification is-danger" id="msg_error">
                 Le composant n'a pas été ajouté !
-                <div style="text"id="errors"></div>
+                <div id="errors"></div>
 
             </div>
         </div>
