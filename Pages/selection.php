@@ -12,15 +12,16 @@ if(isset($_POST['answer'])) {
 }
 // Récupération des données du formulaire
 $selectedOption = $_POST['selectedOption'];
+$type=$_GET['type'];
 switch($answer) {
     case 'supprimer':
-        $stmt = $pdo->prepare("UPDATE composants_cpu SET is_selected = 0 WHERE NAME = ?");
+        $stmt = $pdo->prepare("UPDATE composants_".$type." SET is_selected = 0 WHERE NAME = ?");
 
          break;
     case 'ajouter':
-        $stmt = $pdo->prepare("UPDATE composants_cpu SET is_selected = 1 WHERE NAME = ?");
+        $stmt = $pdo->prepare("UPDATE composants_".$type." SET is_selected = 1 WHERE NAME = ?");
 
                 break;
 }
-// $stmt->execute([$selectedOption]);
+$stmt->execute([$selectedOption]);
 ?>

@@ -1,0 +1,22 @@
+/*modifier le type de socket
+INSERT INTO `composants_board` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`)
+VALUES (200.00, 4, 'MSI', 'MPG Z490 Gaming Edge WiFi', '', 1, 16, 'LGA 1200', NULL);
+
+INSERT INTO `composants_board` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`)
+VALUES (400.00, 4.5, 'Gigabyte', 'AORUS X570 Master', '', 1, 32, 'AM4', NULL);
+
+INSERT INTO `composants_board` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`)
+VALUES (200.00, 4.5, 'ASUS', 'ROG Strix B550-F Gaming (Wi-Fi 6)', '', 1, 16, 'AM4', NULL);
+
+INSERT INTO `composants_board` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`)
+VALUES (100.00, 4, 'ASRock', 'B450M Pro4', '', 1, 8, 'AM4', NULL);*/
+
+INSERT INTO `composants_ram` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `capacite`, `speed`, `is_selected`)
+VALUES (100.00, 4.5, 'Corsair', 'Vengeance LPX 16 Go (2 x 8 Go) DDR4 3200 MHz C16 XMP 2.0 Haute Performance', '', 1, '2 x 8 Go', '16 Go', '3200 MHz', NULL);
+INSERT INTO `composants_ram` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `capacite`, `speed`, `is_selected`)
+VALUES (75.00, 4, 'G.Skill', 'Ripjaws V 16 Go (2 x 8 Go) DDR4 3200 MHz CL16', '', 1, '2 x 8 Go', '16 Go', '3200 MHz', NULL);
+INSERT INTO `composants_ram` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `capacite`, `speed`, `is_selected`)
+VALUES (50.00, 4, 'Kingston', 'HyperX Fury 16 Go (2 x 8 Go) DDR4 2400 MHz CL15', '', 1, '2 x 8 Go', '16 Go', '2400 MHz', NULL);
+INSERT INTO `composants_ram` (`price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `capacite`, `speed`, `is_selected`)
+VALUES (50.00, 4, 'Kingston', 'HyperX Fury 16 Go (2 x 8 Go) DDR4 2400 MHz CL15', '', 1, '2 x 8 Go', '16 Go', '2400 MHz', NULL);
+/*ajouter le champ capacité dans ram*/
