@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/ConfigPc.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -101,15 +103,41 @@
 
 
     <!---------------------Création pc--------------------------------->
-    <button id="MyBtn">Open modals</button>
+    <button id="btn">Open modals</button>
 
-    <div id="MyModal" class="modal">
+    <div class="modal" id="modal-id">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-content">
 
-        <div class="modal-content">
-            <span class="close">$times;</span>
-            <p> blalba </p>
-        </div>
-    </div>
+                                        <div id="container">
+
+                                            <form class="form_compte" action="./Pages/connexion_action.php" method="POST">
+                                                <h1>Se connecter</h1>
+
+                                                <div class="field">
+                                                    <label class="label">Votre Email</label>
+                                                    <div class="control">
+                                                        <input class="input" name="mail" type="email"
+                                                            placeholder="Votre email">
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="label">Votre mot de passe</label>
+                                                    <div class="control">
+                                                        <input class="input" name="mdp" type="password"
+                                                            placeholder="Votre mot de passe">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
+
+                                                <input type="submit" name="envoi" class="bouton_connexion"
+                                                    value=" Connexion">
+                                            </form>
+                                        </div>
    
     <!-------------Footer-------------->
     <div class="footer">
@@ -149,7 +177,7 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
-    <script src="../scripts/Compo.js"></script>
+    <script src="../scripts/creation.js"></script>
 </body>
 
 </html>

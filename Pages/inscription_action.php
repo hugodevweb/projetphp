@@ -2,9 +2,7 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-    if(!empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['confirm_mdp']) AND !empty($_POST['nom']) AND !empty($_POST['prenom'])
-    AND !empty($_POST['pseudo']) 
-    AND !empty($_POST['numero_tel']) AND !empty($_POST['adresse']) AND !empty($_POST['ville']) AND !empty($_POST['code_postal']))
+if (isset($_POST['mail']) && isset($_POST['mdp']) && isset($_POST['confirm_mdp']) && isset($_POST['pseudo']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel']) && isset($_POST['adresse']) && isset($_POST['codepostal']) && isset($_POST['ville'])) {ND !empty($_POST['numero_tel']) AND !empty($_POST['adresse']) AND !empty($_POST['ville']) AND !empty($_POST['code_postal']))
     {
       $email = ($_POST['mail']);
       $mdp = ($_POST['mdp']);
@@ -48,10 +46,13 @@ $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
       {
         echo 'mdp non identique';
       }
-      echo "je suis ici ";
+     
+    else{
+      echo"champs vide";
+    } echo "je suis ici ";
     }
     else{
-      echo"hello";
+      echo"bonjour";
     }
 
   
