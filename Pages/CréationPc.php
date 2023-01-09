@@ -95,50 +95,69 @@
                     </div>
 
                 </div>
-        
-        </nav>
+
+            </nav>
         </div>
     </header>
     <!----contenu---->
 
 
     <!---------------------Création pc--------------------------------->
-    <button id="btn">Open modals</button>
+    <div>
+    <button id="btn" class="button is-link">Board</button>
 
     <div class="modal" id="modal-id">
-                                    <div class="modal-background"></div>
-                                    <div class="modal-content">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div id="container">
+                <form>
+                    <table>
+                      <thead>
+                        <tr>
+                            <td>nom</td>
+                            <td>Prix</td>
+                            <td>brand</td>
+                            <td>ram</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                                        <div id="container">
-
-                                            <form class="form_compte" action="./Pages/connexion_action.php" method="POST">
-                                                <h1>Se connecter</h1>
-
-                                                <div class="field">
-                                                    <label class="label">Votre Email</label>
-                                                    <div class="control">
-                                                        <input class="input" name="mail" type="email"
-                                                            placeholder="Votre email">
-                                                    </div>
-                                                </div>
-
-                                                <div class="field">
-                                                    <label class="label">Votre mot de passe</label>
-                                                    <div class="control">
-                                                        <input class="input" name="mdp" type="password"
-                                                            placeholder="Votre mot de passe">
-                                                    </div>
-                                                </div>
-
-
-
-                                                <p><a href="https://www.google.com">Mot de passe oublié ?</a></p>
-
-                                                <input type="submit" name="envoi" class="bouton_connexion"
-                                                    value=" Connexion">
-                                            </form>
-                                        </div>
-   
+                        <?php 
+      
+       $compteur = 1;
+       $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    
+       $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+       $req = $bdd->prepare($sql); 
+       $req ->execute();
+       while($donne = $req -> fetch())
+                    {
+                        echo "<tr>";
+                        echo "<td>".$donne['name']."</option> ";
+                        echo "<td>".$donne['price']."</option> ";
+                        echo "<td>".$donne['brand']."</option> ";
+                        echo "<td>".$donne['ram']."</option> ";
+                        echo "<td>   <form method='post' action='CréationPc.php'>
+                        <input type='submit' name='button1' 
+                            value='Button1'/></form> </td>";
+                            $_SESSION['name']=$donne['name'];
+                            $_SESSION['price']=$donne['price'];
+                        $compteur = $compteur + 1;
+                        $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+                        $req = $bdd->prepare($sql); 
+                        $req ->execute();
+                    }
+?>
+                    </tbody>
+                    </table>
+                </form>
+            </div>
+            <button class="modal-close is-large" aria-label="close"> </button>
+        </div>
+    </div>
+    </div>
+    
     <!-------------Footer-------------->
     <div class="footer">
         <div class="container">
@@ -177,7 +196,7 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
-    <script src="../scripts/creation.js"></script>
+    <script src="../scripts/Compo.js"></script>
 </body>
 
 </html>
