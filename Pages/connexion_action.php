@@ -17,7 +17,7 @@ if (isset($_POST['envoi'])) {
 
         }else{
             
-            echo "<script> alert('Mauvais identifiant');window.location='compte.php' </script>";
+            echo "Mauvais identifiant";
 
         }
 

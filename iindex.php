@@ -332,10 +332,7 @@
                     <ol>
                     <?php
                         // Connexion à la base de données
-                        $host = "localhost";
-                        $user = "root";
-                        $password = "";
-                        $dbname = "digit.me";
+                       
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 

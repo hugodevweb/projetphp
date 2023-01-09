@@ -13,15 +13,20 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
   $adresse = ($_POST['adresse']);
   $ville = ($_POST['ville']);
   $code_postal = ($_POST['codepostal']);
+  $statut= "C";
   if($mdp == $confirm_mdp)
   {
+    $mdp= hash('sha256',$mdp);
+    $insert1 = $bdd->prepare("INSERT INTO client(mail,mdp,statut) VALUES(:email,:mdp,:statut)");
 
-     $insert1 = $bdd -> prepare('INSERT INTO client(mail,mdp,statut) VALUES( ? , ? , "C") '); 
-     $insert1 -> execute(array($email, $mdp ));
+    $insert1->bindParam(':email', $email);
+		$insert1->bindParam(':mdp', $mdp);
+		$insert1->bindParam(':statut', $statut);
+    $insert1 -> execute();
 
 
-     $insert2 = $bdd -> prepare('INSERT INTO users(mail,pseudo,prenom) VALUES( ? , ? , ? )'); 
-     $insert2 -> execute(array($email, $pseudo, $prenom));
+     $insert2 = $bdd -> prepare('INSERT INTO users(mail,pseudo,prenom,nom,adresse,tel,ville,codepostal) VALUES( "'.$email.' , '.$pseudo.' , '.$prenom.', '.$nom.', '.$numero_tel.', '.$adresse.', '.$ville.', '.$code_postal.'" )'); 
+     $insert2 -> execute(array($email, $pseudo, $prenom,$nom,$adresse,$tel,$ville,$code_postal));
 
     header('Location: ../iindex.php');
     echo "je suis ici 1 ";
