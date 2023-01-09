@@ -332,14 +332,14 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_cpu WHERE is_selected=1 or is_selected=2 or is_selected=3 ;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_cpu WHERE is_selected=1;");
 
                         $stmt->execute();
                         
                         
                         while ($row = $stmt->fetch()) {
                           
-                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php\" method=\"POST\">";
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=cpu\" method=\"POST\">";
                             echo "<div class=\"select\">
                             <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
@@ -376,10 +376,10 @@
 
                 </li>
                 <li>
-                    <div class="title-3">stockage</div>
+                    <div class="title-3">Carte Mere</div>
                     <img class="composant-child" src="./images/icons/motherboard.png">
                     <ol>
-                        <?php
+                    <?php
                         // Connexion à la base de données
                         $host = "localhost";
                         $user = "root";
@@ -388,45 +388,54 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_stockage WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_board WHERE is_selected=1;");
 
                         $stmt->execute();
-
+                        
+                        
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
-                        }             
-                        ?> <div class="select">
-                        <select>
-                        <option selected></option>
-                        <?php
-                        // Connexion à la base de données
-                        $host = "localhost";
-                        $user = "root";
-                        $password = "";
-                        $dbname = "digit.me";
-
-                        $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                        $stmt = $pdo->prepare("SELECT NAME FROM composants_stockage WHERE is_selected=0;");
-
-                        $stmt->execute();
-
-                        while ($row = $stmt->fetch()) {
-                            echo "<form class=\"form_compte\" action=\"selection.php\" method=\"POST\">
-                            <option class=\"is-size-8\"><b>".$row['NAME']."</option>";
-                        }
-                        echo"</form>";       
-                        ?>
                           
-                        </select>
-                      </div>              </ol>
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=board\" method=\"POST\">";
+                            echo "<div class=\"select\">
+                            <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_board");
+
+                            $stmt2->execute();
+                            while ($row2 = $stmt2->fetch()) {
+                                echo"
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+ }                       
+                            echo"                     
+                              
+                            </select>          
+                            </div>
+                            "
+                            ; 
+                            echo "<div class=\"control\">
+                        <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                        <div class=\"control\">
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                            Supprimer
+                        </label>
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                            Ajouter
+                        </label>
+                        </div>
+                        </div></form> ";
+                        }
+                        ?>
+                       
+                    </ol>
 
                 </li>
                 <li>
                     <div class="title-3">RAM</div>
                     <img class="composant-child" src="./images/icons/ram-memory.png">
                     <ol>
-                        <?php
+                    <?php
                         // Connexion à la base de données
                         $host = "localhost";
                         $user = "root";
@@ -438,18 +447,51 @@
                         $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_ram WHERE is_selected=1;");
 
                         $stmt->execute();
-
+                        
+                        
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
-                        }             
-                        ?>                    </ol>
+                          
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=ram\" method=\"POST\">";
+                            echo "<div class=\"select\">
+                            <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_ram");
+
+                            $stmt2->execute();
+                            while ($row2 = $stmt2->fetch()) {
+                                echo"
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+ }                       
+                            echo"                     
+                              
+                            </select>          
+                            </div>
+                            "
+                            ; 
+                            echo "<div class=\"control\">
+                        <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                        <div class=\"control\">
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                            Supprimer
+                        </label>
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                            Ajouter
+                        </label>
+                        </div>
+                        </div></form> ";
+                        }
+                        ?>
+                       
+                    </ol>
 
                 </li>
                 <li>
                     <div class="title-3">Carte Graphique</div>
                     <img class="composant-child" src="./images/icons/video-card.png">
                     <ol>
-                        <?php
+                    <?php
                         // Connexion à la base de données
                         $host = "localhost";
                         $user = "root";
@@ -461,11 +503,43 @@
                         $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_gpu WHERE is_selected=1;");
 
                         $stmt->execute();
-
+                        
+                        
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-7\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
-                        }             
+                          
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=gpu\" method=\"POST\">";
+                            echo "<div class=\"select\">
+                            <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_gpu");
+
+                            $stmt2->execute();
+                            while ($row2 = $stmt2->fetch()) {
+                                echo"
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+ }                       
+                            echo"                     
+                              
+                            </select>          
+                            </div>
+                            "
+                            ; 
+                            echo "<div class=\"control\">
+                        <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                        <div class=\"control\">
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                            Supprimer
+                        </label>
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                            Ajouter
+                        </label>
+                        </div>
+                        </div></form> ";
+                        }
                         ?>
+                       
                     </ol>
 
                 </li>
@@ -473,7 +547,7 @@
                     <div class="title-3">Alimentation</div>
                     <img class="composant-child" src="./images/icons/supply.png">
                     <ol>
-                       <?php
+                    <?php
                         // Connexion à la base de données
                         $host = "localhost";
                         $user = "root";
@@ -482,21 +556,53 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand,brand FROM composants_alim WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_alim WHERE is_selected=1;");
 
                         $stmt->execute();
-
+                        
+                        
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
-                        }             
-                        ?>                    </ol>
+                          
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=alim\" method=\"POST\">";
+                            echo "<div class=\"select\">
+                            <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_gpu");
+
+                            $stmt2->execute();
+                            while ($row2 = $stmt2->fetch()) {
+                                echo"
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+ }                       
+                            echo"                     
+                              
+                            </select>          
+                            </div>
+                            "
+                            ; 
+                            echo "<div class=\"control\">
+                        <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                        <div class=\"control\">
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                            Supprimer
+                        </label>
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                            Ajouter
+                        </label>
+                        </div>
+                        </div></form> ";
+                        }
+                        ?>
+                       
+                    </ol>
                 </li>
                 <li>
                     <div class="title-3">Boitier</div>
                     <img class="composant-child" src="./images/icons/desktop.png">
                     <ol>
-                       <?php
+                    <?php
                         // Connexion à la base de données
                         $host = "localhost";
                         $user = "root";
@@ -505,14 +611,47 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand,brand FROM composants_boitier WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_gpu WHERE is_selected=1;");
 
                         $stmt->execute();
-
+                        
+                        
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
-                        }             
-                        ?>                    </ol>
+                          
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=case\" method=\"POST\">";
+                            echo "<div class=\"select\">
+                            <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_case");
+
+                            $stmt2->execute();
+                            while ($row2 = $stmt2->fetch()) {
+                                echo"
+                                <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+ }                       
+                            echo"                     
+                              
+                            </select>          
+                            </div>
+                            "
+                            ; 
+                            echo "<div class=\"control\">
+                        <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                        <div class=\"control\">
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                            Supprimer
+                        </label>
+                        <label class=\"radio\">
+                            <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                            Ajouter
+                        </label>
+                        </div>
+                        </div></form> ";
+                        }
+                        ?>
+                       
+                    </ol>
 
                 </li>
                 <li>
@@ -533,9 +672,41 @@
                         $stmt->execute();
 
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
-                        }             
-                        ?>                    </ol>
+                          
+                            echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=case\" method=\"POST\">";
+                             echo "<div class=\"select\">
+                             <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
+ 
+                             $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_case");
+ 
+                             $stmt2->execute();
+                             while ($row2 = $stmt2->fetch()) {
+                                 echo"
+                                 <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
+  }                       
+                             echo"                     
+                               
+                             </select>          
+                             </div>
+                             "
+                             ; 
+                             echo "<div class=\"control\">
+                         <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+                         <div class=\"control\">
+                         <label class=\"radio\">
+                             <input type=\"radio\" name=\"answer\" value=\"supprimer\">
+                             Supprimer
+                         </label>
+                         <label class=\"radio\">
+                             <input type=\"radio\" name=\"answer\" value=\"ajouter\">
+                             Ajouter
+                         </label>
+                         </div>
+                         </div></form> ";
+                         }
+                         ?>
+                        
+                     </ol>
 
                 </li>
                 <li>
