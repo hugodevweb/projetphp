@@ -611,18 +611,18 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_gpu WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_boitier WHERE is_selected=1;");
 
                         $stmt->execute();
                         
                         
                         while ($row = $stmt->fetch()) {
                           
-                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=case\" method=\"POST\">";
+                           echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=boiter\" method=\"POST\">";
                             echo "<div class=\"select\">
                             <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_case");
+                            $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_boitier");
 
                             $stmt2->execute();
                             while ($row2 = $stmt2->fetch()) {
@@ -672,41 +672,9 @@
                         $stmt->execute();
 
                         while ($row = $stmt->fetch()) {
-                          
-                            echo "<form class=\"form_compte\" action=\"./Pages/selection.php?type=case\" method=\"POST\">";
-                             echo "<div class=\"select\">
-                             <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
- 
-                             $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_case");
- 
-                             $stmt2->execute();
-                             while ($row2 = $stmt2->fetch()) {
-                                 echo"
-                                 <option class=\"is-size-8\"><b>".$row2['NAME']."</option>";
-  }                       
-                             echo"                     
-                               
-                             </select>          
-                             </div>
-                             "
-                             ; 
-                             echo "<div class=\"control\">
-                         <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
-                         <div class=\"control\">
-                         <label class=\"radio\">
-                             <input type=\"radio\" name=\"answer\" value=\"supprimer\">
-                             Supprimer
-                         </label>
-                         <label class=\"radio\">
-                             <input type=\"radio\" name=\"answer\" value=\"ajouter\">
-                             Ajouter
-                         </label>
-                         </div>
-                         </div></form> ";
-                         }
-                         ?>
-                        
-                     </ol>
+                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
+                        }             
+                        ?>                    </ol>
 
                 </li>
                 <li>
