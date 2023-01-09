@@ -101,26 +101,16 @@
 
 
     <!---------------------Création pc--------------------------------->
-    <div class="columns">
-        <div class="column"></div>
-        <div class="column is-two-thirds"><a class="navbar-item" href="PageCarteMere.php">
-                Choissisez votre carte mere
-            </a>
-            <?php  
-    session_start();
-    $bdd = mysqli_connect("localhost","root","","diggit.me");
-    if(isset($_POST['button1'])) {
-          $sql = "INSERT INTO creationpc VALUES (".$_SESSION['name'].",'',".$_SESSION['price'].")";
-          $res=mysqli_query($bdd,$sql);
-        }?>
+    <button id="MyBtn">Open modals</button>
+
+    <div id="MyModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">$times;</span>
+            <p> blalba </p>
         </div>
-
-
     </div>
-
-
-
-
+   
     <!-------------Footer-------------->
     <div class="footer">
         <div class="container">
@@ -159,6 +149,7 @@
             <p class="copyright">Copyright 2022 - DIGIT.ME</p>
         </div>
     </div>
+    <script src="../scripts/Compo.js"></script>
 </body>
 
 </html>
