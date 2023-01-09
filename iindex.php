@@ -109,7 +109,7 @@
                                     <div class="modal-content">
                                     <div class ="container_inscription">
             
-            <form class = "form_inscription" action="inscription_action.php" method="POST">
+            <form class = "form_inscription" action="./Pages/inscription_action.php" method="POST">
             <h1>Mon inscription</h1>
                 <div class="field">
                 <label class="label">Votre Email</label>
@@ -131,6 +131,13 @@
                       <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
+
+                <div class="field">
+                  <label class="label">Pseudo</label>
+                      <div class="control">
+                        <input class="input" name="pseudo" type="text" placeholder="Votre pseudo">
+                      </div>
+                  </div>
                   
                  
                   <div class="field">
