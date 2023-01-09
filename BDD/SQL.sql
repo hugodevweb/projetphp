@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS `client` (
   PRIMARY KEY (`mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.client : ~0 rows (environ)
+-- Listage des données de la table diggit.me.client : ~1 rows (environ)
 INSERT INTO `client` (`mail`, `mdp`, `statut`) VALUES
-	('g@g', 'a', 'C');
+	('sqd@dfs', 'mdp', 'C');
 
 -- Listage de la structure de table diggit.me. composants_alim
 CREATE TABLE IF NOT EXISTS `composants_alim` (
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `composants_alim` (
   `is_modulable` int DEFAULT NULL,
   `wattage` int DEFAULT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_alim : ~3 rows (environ)
@@ -64,14 +64,15 @@ CREATE TABLE IF NOT EXISTS `composants_board` (
   `ram` int DEFAULT NULL,
   `socket` varchar(50) DEFAULT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Listage des données de la table diggit.me.composants_board : ~3 rows (environ)
+-- Listage des données de la table diggit.me.composants_board : ~4 rows (environ)
 INSERT INTO `composants_board` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`) VALUES
-	(1, 159.95, 4, 'ASUS', 'ASUS TUF GAMING B550-PLUS', 'https://drive.google.com/uc?export=view&id=1EG0G_oPYxJb4uT4RcsDgKm0HS7OuL1To', 1, 4, 'AMD AM4', NULL),
-	(2, 939.99, 5, 'ASUS', 'ASUS ROG STRIX Z690-F GAMING WIFI', 'https://drive.google.com/uc?export=view&id=1Bm8wJThtbMBxOMGPfAWkaX0Nv5jStA74', 1, 4, 'Intel 1700', NULL),
-	(3, 409.96, 5, 'MSI', 'MSI MPG Z690 FORCE WIFI DDR5', 'https://drive.google.com/uc?export=view&id=1ATAk6oKTMniQsHOGx5WqQCRhxNEvEDLg', 1, 4, 'Intel 1700', NULL);
+	(18, 200.00, 4, 'MSI', 'MPG Z490 Gaming Edge WiFi', '', 1, 16, 'LGA 1200', NULL),
+	(19, 400.00, 5, 'Gigabyte', 'AORUS X570 Master', '', 1, 32, 'AM4', NULL),
+	(20, 200.00, 5, 'ASUS', 'ROG Strix B550-F Gaming (Wi-Fi 6)', '', 1, 16, 'AM4', NULL),
+	(21, 100.00, 4, 'ASRock', 'B450M Pro4', '', 1, 8, 'AM4', NULL);
 
 -- Listage de la structure de table diggit.me. composants_boitier
 CREATE TABLE IF NOT EXISTS `composants_boitier` (
@@ -84,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `composants_boitier` (
   `is_available` tinyint(1) NOT NULL,
   `type` varchar(100) DEFAULT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_boitier : ~4 rows (environ)
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `composants_cooler` (
   `type` varchar(50) DEFAULT NULL,
   `speed` varchar(50) DEFAULT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_cooler : ~3 rows (environ)
@@ -130,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `composants_cpu` (
   `nbcore` int DEFAULT NULL,
   `puissance` float DEFAULT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_cpu : ~6 rows (environ)
@@ -154,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `composants_gpu` (
   `clock` int DEFAULT NULL,
   `is_available` tinyint(1) NOT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_gpu : ~6 rows (environ)
@@ -179,14 +180,18 @@ CREATE TABLE IF NOT EXISTS `composants_ram` (
   `capacite` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `speed` varchar(50) DEFAULT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Listage des données de la table diggit.me.composants_ram : ~3 rows (environ)
+-- Listage des données de la table diggit.me.composants_ram : ~7 rows (environ)
 INSERT INTO `composants_ram` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `capacite`, `speed`, `is_selected`) VALUES
 	(1, 130.96, 5, 'Corsair', 'ASUS TUF GAMING B550-PLUS', 'https://drive.google.com/uc?export=view&id=1fJRYDdCvMWNFVd-w-qe9-j3c-_xYOYMV', 1, 'DDR4', '32', '3200', 1),
 	(2, 72.95, 5, 'Kingston', 'Kingston FURY Beast 16 Go', 'https://drive.google.com/uc?export=view&id=1OJDqNmFOgLyzuANgyQDVOSuCu4fijTff', 1, 'DDR4', '16', '3200 ', NULL),
-	(3, 403.96, 5, 'Corsair', 'Corsair Vengeance DDR5 64 Go', 'https://drive.google.com/uc?export=view&id=1v2t5rVOUN8fCKaLLm9PtiYm9_rmcPpzB', 1, 'DDR5', '64', '4800', NULL);
+	(3, 403.96, 5, 'Corsair', 'Corsair Vengeance DDR5 64 Go', 'https://drive.google.com/uc?export=view&id=1v2t5rVOUN8fCKaLLm9PtiYm9_rmcPpzB', 1, 'DDR5', '64', '4800', NULL),
+	(15, 100.00, 5, 'Corsair', 'Vengeance LPX 16 Go (2 x 8 Go) DDR4 3200 MHz C16 XMP 2.0 Haute Performance', '', 1, '2 x 8 Go', '16 Go', '3200 MHz', NULL),
+	(16, 75.00, 4, 'G.Skill', 'Ripjaws V 16 Go (2 x 8 Go) DDR4 3200 MHz CL16', '', 1, '2 x 8 Go', '16 Go', '3200 MHz', NULL),
+	(17, 50.00, 4, 'Kingston', 'HyperX Fury 16 Go (2 x 8 Go) DDR4 2400 MHz CL15', '', 1, '2 x 8 Go', '16 Go', '2400 MHz', NULL),
+	(18, 50.00, 4, 'Kingston', 'HyperX Fury 16 Go (2 x 8 Go) DDR4 2400 MHz CL15', '', 1, '2 x 8 Go', '16 Go', '2400 MHz', NULL);
 
 -- Listage de la structure de table diggit.me. composants_stockage
 CREATE TABLE IF NOT EXISTS `composants_stockage` (
@@ -195,13 +200,13 @@ CREATE TABLE IF NOT EXISTS `composants_stockage` (
   `rating` tinyint(1) DEFAULT NULL,
   `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'LASt INSERT_ID()+''Images''',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `capacite` varchar(50) DEFAULT NULL,
   `type_comp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `speed` varchar(50) DEFAULT NULL,
   `is_available` tinyint(1) NOT NULL,
   `is_selected` int DEFAULT NULL,
-  PRIMARY KEY (`id_comp`) USING BTREE
+  PRIMARY KEY (`id_comp`,`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Listage des données de la table diggit.me.composants_stockage : ~3 rows (environ)
@@ -265,13 +270,15 @@ CREATE TABLE IF NOT EXISTS `tj_config_comp` (
 
 -- Listage de la structure de table diggit.me. users
 CREATE TABLE IF NOT EXISTS `users` (
-  `mail` int NOT NULL,
-  `pseudo` int DEFAULT NULL,
-  `prenom` int DEFAULT NULL,
+  `mail` varchar(50) NOT NULL DEFAULT '',
+  `pseudo` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table diggit.me.users : ~0 rows (environ)
+-- Listage des données de la table diggit.me.users : ~1 rows (environ)
+INSERT INTO `users` (`mail`, `pseudo`, `prenom`) VALUES
+	('sqd@dfs', 'kldf', 'sdknk');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
