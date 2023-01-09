@@ -64,7 +64,7 @@
 
                                         <div id="container">
 
-                                            <form class="form_compte" action="connexion_action.php" method="POST">
+                                            <form class="form_compte" action="./Pages/connexion_action.php" method="POST">
                                                 <h1>Se connecter</h1>
 
                                                 <div class="field">

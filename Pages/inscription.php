@@ -49,11 +49,8 @@
                       <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
                     </div>
                 </div>
-                  
-                
-                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S'inscrire">
-                  <h2 class="deja_un_compte"> J'ai dejà un <a href="./compte.php"> compte  </a><h2>
                 </form>
+                
                 
         </div>
         
