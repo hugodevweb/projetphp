@@ -9,7 +9,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
 if(isset($_POST['answer'])) {
     $answer = $_POST['answer'];
-}
+
 // Récupération des données du formulaire
 $selectedOption = $_POST['selectedOption'];
 $type=$_GET['type'];
@@ -23,5 +23,8 @@ switch($answer) {
 
                 break;
 }
+header('Location: ../iindex.php');
+
 $stmt->execute([$selectedOption]);
+}
 ?>
