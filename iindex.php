@@ -336,12 +336,12 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_cpu WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT id_comp,NAME,brand FROM composants_cpu WHERE is_selected=1;");
 
                         $stmt->execute();
 
                         while ($row = $stmt->fetch()) {
-                            echo "<li class=\"is-size-8\"><b>".$row['brand']."</b> - ".$row['NAME']."</li>";
+                            echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=cpu\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                             
                         }             
                         ?>
@@ -349,7 +349,7 @@
 
                 </li>
                 <li>
-                    <div class="title-3">stockage</div>
+                    <div class="title-3">Carte Mère</div>
                     <img class="composant-child" src="./images/icons/motherboard.png">
                     <ol>
                         <?php
@@ -361,7 +361,7 @@
 
                         $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_stockage WHERE is_selected=1;");
+                        $stmt = $pdo->prepare("SELECT NAME,brand FROM composants_board WHERE is_selected=1;");
 
                         $stmt->execute();
 
