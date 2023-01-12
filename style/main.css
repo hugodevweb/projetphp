@@ -379,7 +379,11 @@ ul{
     border: 1px solid #0d84af;
     border-radius: 30px;
    }
+   .secondary-navbar>.container{
+    margin: unset;
+    left: 25vw;
 
+}
    .container2{
       width:600px;
       margin:0 auto;
