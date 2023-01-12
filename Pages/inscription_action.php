@@ -26,7 +26,15 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
 
 
      $insert2 = $bdd -> prepare('INSERT INTO users(mail,pseudo,prenom,nom,adresse,tel,ville,codepostal) VALUES( "'.$email.' , '.$pseudo.' , '.$prenom.', '.$nom.', '.$numero_tel.', '.$adresse.', '.$ville.', '.$code_postal.'" )'); 
-     $insert2 -> execute(array($email, $pseudo, $prenom,$nom,$adresse,$tel,$ville,$code_postal));
+     $insert2->bindParam(':email', $email);
+     $insert2->bindParam(':pseudo', $pseudo);
+     $insert2->bindParam(':prenom', $prenom);
+     $insert2->bindParam(':nom', $nom);
+     $insert2->bindParam(':tel', $numero_tel);
+     $insert2->bindParam(':adresse', $adresse);
+     $insert2->bindParam(':ville', $ville);
+     $insert2->bindParam(':codepostal', $code_postal);
+     $insert2 -> execute();
 
     header('Location: ../iindex.php');
     echo "je suis ici 1 ";
