@@ -4,7 +4,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=diggit.me;charset=utf8;', "root", ""
 if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_mdp']) && !empty($_POST['pseudo']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['tel']) && !empty($_POST['adresse']) && !empty($_POST['codepostal']) && !empty($_POST['ville'])) {
   
   $email = ($_POST['mail']);
-  $mdp = ($_POST['mdp']);
+  $mdp = sha1($_POST['mdp']);
   $confirm_mdp = ($_POST['confirm_mdp']);
   $pseudo = ($_POST['pseudo']);
   $nom = ($_POST['nom']);
@@ -16,6 +16,7 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
   $statut= "C";
   if($mdp == $confirm_mdp)
   {
+<<<<<<< Updated upstream
     $mdp= hash('sha256',$mdp);
     $insert1 = $bdd->prepare("INSERT INTO client(mail,mdp,statut) VALUES(:email,:mdp,:statut)");
 
@@ -35,6 +36,14 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
      $insert2->bindParam(':ville', $ville);
      $insert2->bindParam(':codepostal', $code_postal);
      $insert2 -> execute();
+=======
+     $insert1 = $bdd -> prepare('INSERT INTO client(mail,mdp,statut) VALUES( ? , ? , "C")'); 
+     $insert1 -> execute(array($email, $mdp));
+
+
+     $insert2 = $bdd -> prepare('INSERT INTO users(mail,pseudo,prenom,nom,adresse,tel,ville,codepostal) VALUES( ? , ? , ? , ? , ? , ? , ? ,? )');
+     $insert2 -> execute(array($email, $pseudo, $prenom, $nom, $adresse, $numero_tel, $ville, $code_postal));
+>>>>>>> Stashed changes
 
     header('Location: ../iindex.php');
     echo "je suis ici 1 ";
