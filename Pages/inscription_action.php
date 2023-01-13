@@ -13,11 +13,11 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
   $adresse = ($_POST['adresse']);
   $ville = ($_POST['ville']);
   $code_postal = ($_POST['codepostal']);
-  $statut= "C";
+  $statut= "A";
   if($mdp == $confirm_mdp)
   {
     $mdp= hash('sha256',$mdp);
-    $insert1 = $bdd->prepare("INSERT INTO client(mail,mdp,statut) VALUES(:email,:mdp,:statut)");
+    $insert1 = $bdd->prepare("INSERT INTO client(mailc,mdp,statut) VALUES(:email,:mdp,:statut)");
 
     $insert1->bindParam(':email', $email);
 		$insert1->bindParam(':mdp', $mdp);
@@ -25,21 +25,32 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
     $insert1 -> execute();
 
 
-     $insert2 = $bdd -> prepare('INSERT INTO users(mail,pseudo,prenom,nom,adresse,tel,ville,codepostal) VALUES( "'.$email.' , '.$pseudo.' , '.$prenom.', '.$nom.', '.$numero_tel.', '.$adresse.', '.$ville.', '.$code_postal.'" )'); 
-     $insert2 -> execute(array($email, $pseudo, $prenom,$nom,$adresse,$numero_tel ,$ville,$code_postal));
+     $insert2 = $bdd -> prepare("INSERT INTO users(mailu,pseudo,prenom,nom,telephone) VALUES(:email,:pseudo,:prenom,:nom,:tel)"); 
+     $insert2->bindParam(':email', $email);
+    $insert2->bindParam(':pseudo', $pseudo);
+    $insert2->bindParam(':prenom', $prenom);
+    $insert2->bindParam(':nom', $nom);
+    $insert2->bindParam(':tel', $numero_tel);
 
+     $insert2 -> execute();
+
+     $insert3 = $bdd -> prepare("INSERT INTO adresse(id_adresse,rue,codepostal,ville) VALUES(:email,:rue,:cp,:ville)"); 
+     $insert3->bindParam(':email', $email);
+    $insert3->bindParam(':rue', $adresse);
+    $insert3->bindParam(':ville', $ville);
+    $insert3->bindParam(':cp', $code_postal);
+    
+
+     $insert3 -> execute();
+     session_start();
+     $_SESSION['pseudo']=$pseudo;
+     $_SESSION['statut']=$statut;
+     
     header('Location: ../iindex.php');
-    echo "je suis ici 1 ";
+
   }
-  else
-  {
-    echo 'mdp non identique';
-  }
-  echo "je suis ici ";
+ 
 }
-else{
-      echo"hello";
-    }
 
   
 ?> 
