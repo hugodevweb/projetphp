@@ -16,7 +16,7 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
   $statut= "A";
   if($mdp == $confirm_mdp)
   {
-<<<<<<< Updated upstream
+
     $mdp= hash('sha256',$mdp);
     $insert1 = $bdd->prepare("INSERT INTO client(mailc,mdp,statut) VALUES(:email,:mdp,:statut)");
 

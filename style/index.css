@@ -35,3 +35,23 @@
 
 #res{
   color: black;}
+
+  
+  #pres{
+    margin-top: 7vh;
+    margin-left:20vw ;
+    margin-right: 20vw;
+    border-radius: 0.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin-bottom: 10vh;
+  }
+  #pres2{
+    margin-top: 7vh;
+    margin-left:8vw ;
+    margin-right: 8vw;
+    border-radius: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-bottom: 10vh;
+  }

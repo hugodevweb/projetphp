@@ -18,11 +18,10 @@ if (isset($_POST['envoi'])) {
             while($donne=$recupClient->fetch())
 					{ 
                         $_SESSION['statut'] = $donne['statut'];
-                        $_SESSION['id'] = $donne['pseudo'];
 					}
             
             
-            header("Location:../iindex.php");
+            header("Location:../index.php");
 
         }else{
             

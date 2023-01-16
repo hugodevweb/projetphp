@@ -9,3 +9,4 @@ $('.modal-close').on('click', function () {
   $('#modal-id').removeClass('is-active');
   
 });
+

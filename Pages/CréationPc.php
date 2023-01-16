@@ -18,7 +18,7 @@
         <div class="header-main">
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="../index.php">
                         <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo">
                     </a>
 
@@ -76,11 +76,11 @@
 
                     <div id="secondaryNavbar" class="navbar-menu">
                         <div class="navbar-start" style="margin-left: 8vw;">
-                            <a class="navbar-item" href="../iindex.php" style="border-left: 1px solid white;">
+                            <a class="navbar-item" href="../index.php" style="border-left: 1px solid white;">
                                 Acceuil
                             </a>
 
-                            <a class="navbar-item" href="CréationPc.php">
+                            <a class="navbar-item" href="./CréationPc.php">
                                 Creer une configuration
                             </a>
 
