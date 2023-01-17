@@ -105,6 +105,15 @@ button {
   line-height: 26px;
   margin-bottom: 2vh;
 }
+#pres{
+  margin-top: 7vh;
+  margin-left:20vw ;
+  margin-right: 20vw;
+  border-radius: 0.5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin-bottom: 10vh;
+}
 .prebuild{
   display: inline-block;
     text-decoration: none;
@@ -127,10 +136,7 @@ button {
 .prebuild:hover{
   background: #0d84af;
 }
-.icon {
-  margin-right: 0.5vw;
-  margin-top: 0.4vh;
-}
+
 #comp{
 width: 3vw;
 height: vw;

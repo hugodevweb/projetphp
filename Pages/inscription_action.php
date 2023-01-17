@@ -47,7 +47,7 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
      $_SESSION['pseudo']=$pseudo;
      $_SESSION['statut']=$statut;
      
-    header('Location: ../iindex.php');
+    header('Location: ../index.php');
 
   }
  

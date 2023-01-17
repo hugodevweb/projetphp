@@ -24,3 +24,9 @@ window.onload = function() {
 var article = $('#article')
 article.addClass('visible');
 };
+
+$(document).ready(function(){
+    $("#config-btn").click(function(){
+      $(".config-div").toggle();
+    });
+  });

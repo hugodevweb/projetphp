@@ -17,7 +17,7 @@
 </head>
 <?php
 session_start();
-$mail = $_SESSION['mail'];
+
 
 $type=$_GET['type'];
 $compo=$_GET['composant'];
@@ -272,9 +272,9 @@ $is_available = $row['is_available'];
 if(isset($_SESSION['mail'])){
 if($is_available==1){
     echo'
-    <form>
+    <form  action ="./Pages/ajout_compo_config.php" > 
     <button value="'.$compo.'" id="btnajout" class="button is-success is-fullwidth">+ Ajouter a ma configuration</button>
-    </form action ="./Pages/ajout_compo_config.php">
+    </form>
     <!-------------Message succès-------------->
     <div class="notification is-success" id="msg_success">
         Le composant a été ajouté avec succes !

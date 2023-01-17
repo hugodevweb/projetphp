@@ -2,72 +2,74 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link href="./style/main.css" rel="stylesheet">
-    <link href="./style/fondsvg.css" rel="stylesheet">
-    <link href="./style/index.css" rel="stylesheet">
-    <link rel="icon" href="./images/logo_diggit.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link href="./style/main.css" rel="stylesheet">
+  <link href="./style/fondsvg.css" rel="stylesheet">
+  <link href="./style/index.css" rel="stylesheet">
+  <link rel="icon" href="./images/logo_diggit.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>DIGGIT.ME- Acceuil</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>DIGGIT.ME- Acceuil</title>
 </head>
 
 <body>
-    <?php
+  <?php
     session_start();
     
     ?>
-    <!-- -----------Premiere ligne du navbar------ -->
-    <header>
-        <div class="header-main">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="./index.php">
-                        <img id="logo" src="./images/diggit.png" width="200px" height="auto" alt="Bulma logo">
-                    </a>
+  <!-- -----------Premiere ligne du navbar------ -->
+  <header>
+    <div class="header-main">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./index.php">
+            <img id="logo" src="./images/diggit.png" width="200px" height="auto" alt="Bulma logo">
+          </a>
 
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-                <div class="navbar-menu">
-                    <div class="navbar-start">
-                        <div class="navbar-item has-text-centered">
-                        <form>
-    <div class="field has-addons">
-    <div class="dropdown-trigger">
-        <div class="cont" >
-        <div class="control">
-            <input id="rech" class="input" type="text" placeholder="Chercher un composant">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div class="control">
-            <button id="rechbtn" class="button" type="submit"><img type="sub" class="loupe" src="./images/loupe.png" alt="loupe"></button>
-        </div>
-        <div class="dropdown" id="search-results-dropdown">
-        <div class="dropdown-menu2" id="dropdown-menu" role="menu">
-            <div class="dropdown-content2" id="search-results">
-                <!-- Les résultats de la requête seront ajoutés ici -->
-            </div>
-        </div>
-        </div>
-</div>
-        </form>
-    </div>
-    
-    </div>
-
-
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item has-text-centered">
+              <form>
+                <div class="field has-addons">
+                  <div class="dropdown-trigger">
+                    <div class="cont">
+                      <div class="control">
+                        <input id="rech" class="input" type="text" placeholder="Chercher un composant">
+                      </div>
+                      <div class="control">
+                        <button id="rechbtn" class="button" type="submit"><img type="sub" class="loupe"
+                            src="./images/loupe.png" alt="loupe"></button>
+                      </div>
+                      <div class="dropdown" id="search-results-dropdown">
+                        <div class="dropdown-menu2" id="dropdown-menu" role="menu">
+                          <div class="dropdown-content2" id="search-results">
+                            <!-- Les résultats de la requête seront ajoutés ici -->
+                          </div>
                         </div>
+                      </div>
                     </div>
+              </form>
+            </div>
 
-                    <div class="navbar-end">
-                        <div class="navbar-item has-text-centered">
-                            <?php
+          </div>
+
+
+        </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item has-text-centered">
+        <?php
                         if(isset($_SESSION['mail'])) {
                             echo'<div class="dropdown">
                             <div class="dropdown-trigger">
@@ -253,154 +255,237 @@
                             </div>';
                         }
                         ?>
-                        </div>
+      </div>
 
-                    </div>
-            </nav>
+    </div>
+    </nav>
+    </div>
+    <!-- -----------Deuxieme ligne du navbar------ -->
+
+    <div class="header-secondary">
+      <nav class="secondary-navbar">
+        <div class="container">
+
+
+          <div id="secondaryNavbar" class="navbar-menu">
+            <div class="navbar-start" style="margin-left: 8vw;">
+              <a class="navbar-item" href="#" style="border-left: 1px solid white;">
+                Acceuil
+              </a>
+
+              <a class="navbar-item" href="./Pages/CréationPc.php">
+                Creer une configuration
+              </a>
+
+              <a class="navbar-item" href="#">
+                Communauté
+              </a>
+
+              <a class="navbar-item" href="./Pages/a_propos.php">
+                A propos
+              </a>
+            </div>
+          </div>
+
         </div>
-        <!-- -----------Deuxieme ligne du navbar------ -->
-
-        <div class="header-secondary">
-            <nav class="secondary-navbar">
-                <div class="container">
-
-
-                    <div id="secondaryNavbar" class="navbar-menu">
-                        <div class="navbar-start" style="margin-left: 8vw;">
-                            <a class="navbar-item" href="#" style="border-left: 1px solid white;">
-                                Acceuil
-                            </a>
-
-                            <a class="navbar-item" href="./Pages/CréationPc.php">
-                                Creer une configuration
-                            </a>
-
-                            <a class="navbar-item" href="#">
-                                Communauté
-                            </a>
-
-                            <a class="navbar-item" href="./Pages/a_propos.php">
-                                A propos
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-        </div>
-        </nav>
-    </header>
-    <!----header---->
+    </div>
+    </nav>
+  </header>
+  <!----header---->
 
 
 
-    <!---------------------config prefaites--------------------------------->
+  <!---------------------config prefaites--------------------------------->
 
-    <div class="background--custom">
-        <section class="hero">
-            <div class="hero-body">
+  <div class="background--custom">
+    <section class="hero">
+      <div class="hero-body">
 
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-three-fifths">
+            <article id="article" class="message is-dark">
+
+              <div class="message-body">
                 <div class="columns">
-                    <div class="column"></div>
-                    <div class="column is-three-fifths">
-                        <article id="article" class="message is-dark">
-
-                            <div class="message-body">
-                                <div class="columns">
-                                    <div class="column">
-                                        <img style="height:150px; width:auto;" src="./images/welcome.gif">
-                                    </div>
-                                    <div class="column is-four-fifths">
-                                        <h1 class="title" style="margin-top:3%">
-                                            Bienvenu sur DIGIT.ME
-                                        </h1>
-                                        <h2 class="subtitle ">
-                                            Votre configurateur de PC personnalisés
-                                        </h2>
-                                    </div>
-                                </div>
-                        </article>
-                    </div>
-
-                    <div class="column is-half"></div>
+                  <div class="column">
+                    <img style="height:150px; width:auto;" src="./images/welcome.gif">
+                  </div>
+                  <div class="column is-four-fifths">
+                    <h1 class="title" style="margin-top:3%">
+                      Bienvenu sur DIGIT.ME
+                    </h1>
+                    <h2 class="subtitle ">
+                      Votre configurateur de PC personnalisés
+                    </h2>
+                  </div>
                 </div>
-            </div>
+            </article>
+          </div>
 
-
-        </section>
-
-        <div id="pres" class="box has-text-centered has-background-white ">
-            <div class="title-1">Les configurations recommandées:</div>
-            <div class="columns">
-                <div class="column">
-                    <img class="itemImage"
-                        src=" https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc">
-                    <span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/desktop.png">composant 1</p>
-                        </span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/cpu.png">composant 2</p>
-                        </span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/video-card.png">composant 3</p>
-                        </span>
-
-                    </span>
-                    <button class="prebuild">Voir ></button>
-                </div>
-                <div class="column">
-                    <img class="itemImage" src="https://media.ldlc.com/r150/ld/products/00/05/55/02/LD0005550244_2.jpg">
-                    <span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/desktop.png">composant 1</p>
-                        </span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/cpu.png">composant 2</p>
-                        </span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/video-card.png">composant 3</p>
-                        </span>
-
-                    </span>
-
-                    </span>
-                    <button class="prebuild">Voir ></button>
-                </div>
-                <div class="column">
-                    <img class="itemImage" src="https://media.ldlc.com/r150/ld/products/00/05/55/02/LD0005550244_2.jpg">
-                    <span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/desktop.png">composant 1</p>
-                        </span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/cpu.png">composant 2</p>
-                        </span>
-                        <span>
-                            <p> <img class="icon" src="./images/icons/video-card.png">composant 3</p>
-                        </span>
-
-                    </span>
-                    <button class="prebuild">Voir ></button>
-                </div>
-            </div>
+          <div class="column is-half"></div>
         </div>
-        
-        <div id="pres" class="box has-text-centered has-background-white ">
-            <div class="title-1">Les composants populaires:</div>
-            <ul class="composants">
-                <li>
-                    <div class="title-3">Processeur
-                    </div>
-                    <img class="composant-child" src="./images/icons/cpu.png">
-                    <ol>
-                        <?php
+      </div>
+
+
+    </section>
+
+    <div id="pres" class="box has-text-centered has-background-white ">
+      <div class="title-1">Les configurations recommandées:</div>
+      <hr class="dropdown-divider">
+      
+      
+
+
+        <?php if(isset($_SESSION['statut']) ){
+                            if($_SESSION['statut']=='A'){
+                                $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+                                $stmt = $pdo->prepare("SELECT composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg, configurations.nomconfig AS nom
+                                FROM composants_cpu
+                                JOIN tj_config_comp ON composants_cpu.id_comp = tj_config_comp.id_cpu
+                                JOIN composants_gpu ON composants_gpu.id_comp = tj_config_comp.id_gpu
+                                JOIN composants_boitier ON composants_boitier.id_comp = tj_config_comp.id_boitier
+                                JOIN configurations ON configurations.id_config = tj_config_comp.id_config
+                                WHERE tj_config_comp.is_selected = 1 or tj_config_comp.is_selected = 2 or tj_config_comp.is_selected = 3 order by tj_config_comp.is_selected ;");
+   
+                               $stmt->execute();
+                             $index = 1;
+                             echo'<button id="config-btn" class="button is-primary is-fullwidth">
+                                    <span class="icon">
+                                    <img style="-webkit-filter: invert(100%); /* Safari/Chrome * filter: invert(100%);" src="./images/crayon.png">
+                                    </span>
+                                    <span>Modifier les configurations</span>
+                                </button>
+                                <hr id="border" class="dropdown-divider"><div class="columns">';
+                                while ($row = $stmt->fetch()) {
+                                    
+                                    echo '<div class="column" id="config_admin" >';
+                                  
+                                            echo '<div class="title-3">'.$row['nom'].'</div>';
+                                            echo '<figure class="image is-256x256">
+                                                    <img src="'.$row['boitierimg'].'">
+                                                  </figure>
+                                                  <span>
+                                                  <span>
+                                                  <div id="col_compo" class="columns">
+                                                  <div class="column"> <img class="icon_compo" src="./images/icons/desktop.png">  </div>
+                                                  <div class="column is-four-fifths">  <p class="text_compo">'.$row['boitier'].'</p></div>
+                                                    </div>
+                                                  </span>
+                                                  <span>
+                                                  <div id="col_compo" class="columns">
+                                                  <div class="column">  <img class="icon_compo" src="./images/icons/cpu.png"> </div>
+                                                  <div class="column is-four-fifths">   <p class="text_compo"> '.$row['cpu'].'</p></div>
+                                                    </div>
+                                                     
+                                                         
+                                                  </span>
+                                                  <span >
+                                                  <div id="col_compo" class="columns">
+                                                  <div class="column"> <img class="icon_compo" src="./images/icons/video-card.png">  </div>
+                                                  <div class="column is-four-fifths">  <p class="text_compo"> '.$row['gpu'].'</p></div>
+                                                    </div>                                                
+                                                          
+                                                  </span>
+                                              </span>
+                                        
+                                        <div class="config-div" style="display: none;">
+                                            
+
+                                        <form method="POST" action="./Pages/config_acceuil.php?id_config='.$index.'">
+                                        <div class="select">
+                                        <select id="select_config" name="config" onchange="this.form.submit()">
+                                        <option class="is-size-8"><b>'.$row['nom'].'</b></option>
+                                       ';
+    
+                                       $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+                                       $stmt2 = $pdo->prepare("SELECT configurations.nomconfig AS nom,tj_config_comp.id_config AS id_config
+                                       FROM composants_cpu
+                                       JOIN tj_config_comp ON composants_cpu.id_comp = tj_config_comp.id_cpu
+                                       JOIN composants_gpu ON composants_gpu.id_comp = tj_config_comp.id_gpu
+                                       JOIN composants_boitier ON composants_boitier.id_comp = tj_config_comp.id_boitier
+                                       JOIN configurations ON configurations.id_config = tj_config_comp.id_config where tj_config_comp.is_selected=0 order by tj_config_comp.is_selected ");
+                                        
+                                      $stmt2->execute();
+                                      while ($row = $stmt2->fetch()) {
+                                        echo'<option class="is-size-8" value="'.$row['id_config'].'"><b>'.$row['nom'].'</b></option>';
+    
+                                      }
+                                 
+                                    echo'</select></div></form>
+
+
+
+
+                                        </div>
+                                   </div>';
+                                   $index++;
+                                }
+                                  
+                                   
+                               
+                                                       
+                            }
+                        }else{
+                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+                             $stmt = $pdo->prepare("SELECT composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg, configurations.nomconfig AS nom
+                             FROM composants_cpu
+                             JOIN tj_config_comp ON composants_cpu.id_comp = tj_config_comp.id_cpu
+                             JOIN composants_gpu ON composants_gpu.id_comp = tj_config_comp.id_gpu
+                             JOIN composants_boitier ON composants_boitier.id_comp = tj_config_comp.id_boitier
+                             JOIN configurations ON configurations.id_config = tj_config_comp.id_config
+                             WHERE tj_config_comp.is_selected = 1 or tj_config_comp.is_selected = 2 or tj_config_comp.is_selected = 3 order by tj_config_comp.is_selected ;");
+                            echo'<div class="columns">';
+                            $stmt->execute();
+                            while ($row = $stmt->fetch()) {
+                                echo'<div  class="column">
+                                <div class="title-3">'.$row['nom'].'</div>
+
+                                <figure class="image is-256x256">
+
+                                <img 
+                                    src="'.$row['boitierimg'].'">
+                                    
+                                </figure>
+                                <span>
+                                    <span class="liste">
+                                    <img class="icon" src="./images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
+                                    </span>
+                                    <span class="liste">
+                                    <img class="icon" src="./images/icons/cpu.png">
+                                        <p> '.$row['cpu'].'</p>
+                                    </span>
+                                    <span class="liste">
+                                    <img class="icon" src="./images/icons/video-card.png">  <p> '.$row['gpu'].'</p>
+                                    </span>
+            
+                                </span>
+                                <button class="prebuild">Voir ></button>
+                            </div>
+                            
+                            ';
+
+                            }
+                        }
+                             ?>
+      </div>
+      </div>
+  
+
+    <div id="pres" class="box has-text-centered has-background-white ">
+      <div class="title-1">Les composants populaires:</div>
+      <hr class="dropdown-divider">
+      <ul class="composants">
+        <li>
+          <div class="title-3">Processeur
+          </div>
+          <img class="composant-child" src="./images/icons/cpu.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                           
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -459,14 +544,14 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
-                </li>
-                <li>
-                    <div class="title-3">Carte Mère</div>
-                    <img class="composant-child" src="./images/icons/motherboard.png">
-                    <ol>
-                        <?php
+        </li>
+        <li>
+          <div class="title-3">Carte Mère</div>
+          <img class="composant-child" src="./images/icons/motherboard.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -502,7 +587,6 @@
                                 "
                                 ; 
                                 echo "<div class=\"control\">
-                            
                             <div class=\"control\">
                             <label class=\"radio\">
                                 <input type=\"radio\" name=\"answer\" value=\"supprimer\">
@@ -513,6 +597,7 @@
                                 Ajouter
                             </label>
                             <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+
                             </div>
                             </div></form> ";
                         }
@@ -532,14 +617,14 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
-                </li>
-                <li>
-                    <div class="title-3">RAM</div>
-                    <img class="composant-child" src="./images/icons/ram-memory.png">
-                    <ol>
-                        <?php
+        </li>
+        <li>
+          <div class="title-3">RAM</div>
+          <img class="composant-child" src="./images/icons/ram-memory.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -605,14 +690,14 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
-                </li>
-                <li>
-                    <div class="title-3">Carte Graphique</div>
-                    <img class="composant-child" src="./images/icons/video-card.png">
-                    <ol>
-                        <?php
+        </li>
+        <li>
+          <div class="title-3">Carte Graphique</div>
+          <img class="composant-child" src="./images/icons/video-card.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -677,13 +762,13 @@
                             }   
                         } 
                     ?>
-                    </ol>
-                </li>
-                <li>
-                    <div class="title-3">Alimentation</div>
-                    <img class="composant-child" src="./images/icons/supply.png">
-                    <ol>
-                        <?php
+          </ol>
+        </li>
+        <li>
+          <div class="title-3">Alimentation</div>
+          <img class="composant-child" src="./images/icons/supply.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -748,14 +833,14 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
-                </li>
-                <li>
-                    <div class="title-3">Boitier</div>
-                    <img class="composant-child" src="./images/icons/desktop.png">
-                    <ol>
-                        <?php
+        </li>
+        <li>
+          <div class="title-3">Boitier</div>
+          <img class="composant-child" src="./images/icons/desktop.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -820,14 +905,14 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
-                </li>
-                <li>
-                    <div class="title-3">stockage</div>
-                    <img class="composant-child" src="./images/icons/hdd.png">
-                    <ol>
-                        <?php
+        </li>
+        <li>
+          <div class="title-3">stockage</div>
+          <img class="composant-child" src="./images/icons/hdd.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -892,15 +977,15 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
 
-                </li>
-                <li>
-                    <div class="title-3">Refroidissement</div>
-                    <img class="composant-child" src="./images/icons/cooling-fan.png">
-                    <ol>
-                        <?php
+        </li>
+        <li>
+          <div class="title-3">Refroidissement</div>
+          <img class="composant-child" src="./images/icons/cooling-fan.png">
+          <ol>
+            <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
@@ -965,62 +1050,61 @@
                             }   
                         } 
                     ?>
-                    </ol>
+          </ol>
 
 
-                </li>
-            </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+
+  </div>
+
+  <!-------------Footer-------------->
+  <div class="footer">
+    <div class="container">
+      <div class="rang">
+        <div class="footer_col1">
+          <h3>Télécharger notre application</h3>
+          <p>Télécharger notre application maintenant sur Android et IOS</p>
+          <div class="app_logo">
+            <a href="https://play.google.com/store/search?q=footprint"><img class="playstr"
+                src="./images/playstore.png"></a>
+            <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr" src="./images/appstore.png"></a>
+          </div>
+        </div>
+        <div class="footer_col2">
+          <img src="./images/diggit.png">
+          <p>Notre objectif est de rendre agréable et accessible l'achat et le montage d'ordinateurs
+          </p>
+        </div>
+        <div class="footer_col3">
+          <h3>Suivez-nous</h3>
+          <ul>
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+            <li><a href="https://www.twitter.com/">Twitter</a></li>
+            <li><a href="https://www.Facebook.com/">Facebook</a></li>
+            <li><a href="https://www.youtube.com/">youtube</a></li>
+
+
+
+
+          </ul>
 
         </div>
+      </div>
+      <hr>
+      <p class="copyright">Copyright 2022 - DIGGIT.ME</p>
     </div>
+  </div>
 
 
-
-    </div>
-
-    <!-------------Footer-------------->
-    <div class="footer">
-        <div class="container">
-            <div class="rang">
-                <div class="footer_col1">
-                    <h3>Télécharger notre application</h3>
-                    <p>Télécharger notre application maintenant sur Android et IOS</p>
-                    <div class="app_logo">
-                        <a href="https://play.google.com/store/search?q=footprint"><img class="playstr"
-                                src="./images/playstore.png"></a>
-                        <a href="https://www.apple.com/fr/ios/app-store/"><img class="appstr"
-                                src="./images/appstore.png"></a>
-                    </div>
-                </div>
-                <div class="footer_col2">
-                    <img src="./images/diggit.png">
-                    <p>Notre objectif est de rendre agréable et accessible l'achat et le montage d'ordinateurs
-                    </p>
-                </div>
-                <div class="footer_col3">
-                    <h3>Suivez-nous</h3>
-                    <ul>
-                        <li><a href="https://www.instagram.com/">Instagram</a></li>
-                        <li><a href="https://www.twitter.com/">Twitter</a></li>
-                        <li><a href="https://www.Facebook.com/">Facebook</a></li>
-                        <li><a href="https://www.youtube.com/">youtube</a></li>
-
-
-
-
-                    </ul>
-
-                </div>
-            </div>
-            <hr>
-            <p class="copyright">Copyright 2022 - DIGGIT.ME</p>
-        </div>
-    </div>
-
-
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/main.js"></script>
-    <script src="./scripts/recherche.js"></script>
+  <script src="./scripts/index.js"></script>
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/recherche.js"></script>
 </body>
 
 </html>

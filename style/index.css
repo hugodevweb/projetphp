@@ -55,3 +55,43 @@
     padding-right: 1vw;
     margin-bottom: 10vh;
   }
+
+ 
+ .liste {
+    margin-top: 0;
+    margin: auto;
+    display: flex;
+    margin-top: 0.5vh;
+    margin-left: 3.3000000000000007vw;
+}
+#config_admin{
+transition: 0.5s;
+position: relative;
+}
+
+#config_admin:hover{
+  border: 1px solid rgb(209, 209, 209);
+
+}
+
+#border{
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.config-div{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.text_compo{
+  text-align: center;
+}
+.icon_compo{
+  width: 2vw;
+  height: auto;
+}
+#col_compo{
+  margin-left: 2vw;
+}
