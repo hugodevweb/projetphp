@@ -142,12 +142,14 @@ width: 3vw;
 height: vw;
 border: 2px solid black;
 }
-.composants{
-    overflow: hidden;
-    display: table;
-    text-align: center;
-
+.composants {
+  overflow: hidden;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
 }
+
+
 .composants>li {
   display: inline-block;
   width: 23%;
@@ -156,7 +158,7 @@ border: 2px solid black;
   padding: 10px;
   border: 2px solid #E1E1E1;
   vertical-align: top;
-  min-height: 30vh;
+  min-height: 42vh;
   
   
 }
@@ -509,6 +511,7 @@ ul{
         margin-top:2%;
        }
 
-      
+       .dropdown-divider {
+        background-color: #a5a4a4;}
 
       

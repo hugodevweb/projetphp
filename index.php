@@ -277,7 +277,7 @@
                 Creer une configuration
               </a>
 
-              <a class="navbar-item" href="#">
+              <a class="navbar-item" href="./Pages/commu.php">
                 Communauté
               </a>
 
@@ -332,7 +332,7 @@
 
     <div id="pres" class="box has-text-centered has-background-white ">
       <div class="title-1">Les configurations recommandées:</div>
-      <hr class="dropdown-divider">
+      <hr id="border" class="dropdown-divider">
       
       
 
@@ -361,7 +361,7 @@
                                     
                                     echo '<div class="column" id="config_admin" >';
                                   
-                                            echo '<div class="title-3">'.$row['nom'].'</div>';
+                                            echo '<div class="title-3"><b>'.$row['nom'].'</b></div>';
                                             echo '<figure class="image is-256x256">
                                                     <img src="'.$row['boitierimg'].'">
                                                   </figure>
@@ -439,7 +439,7 @@
                             $stmt->execute();
                             while ($row = $stmt->fetch()) {
                                 echo'<div  class="column">
-                                <div class="title-3">'.$row['nom'].'</div>
+                                <div class="title-3"><b>'.$row['nom'].'</b></div>
 
                                 <figure class="image is-256x256">
 
@@ -480,7 +480,7 @@
           <div class="title-3">Processeur
           </div>
           <img class="composant-child" src="./images/icons/cpu.png">
-          <ol>
+          <ol >
             <?php
                         if(isset($_SESSION['statut']) ){
                             if($_SESSION['statut']=='A'){
@@ -500,7 +500,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_cpu");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_cpu WHERE is_selected=0");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -534,12 +534,12 @@
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                            $stmt = $pdo->prepare("SELECT id_comp,NAME,brand FROM composants_cpu WHERE is_selected=1;");
+                            $stmt = $pdo->prepare("SELECT id_comp,NAME,brand,puissance FROM composants_cpu WHERE is_selected=1;");
 
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cpu\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cpu\"><b>".$row['brand']."</b> - ".$row['NAME']." - ".$row['puissance']."Ghz</a></li>";
                                 
                             }   
                         } 
@@ -573,7 +573,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_board");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_board WHERE is_selected=0;");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -646,7 +646,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_ram");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_ram WHERE is_selected=0;");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -719,7 +719,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_gpu");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_gpu WHERE is_selected=0");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -790,7 +790,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_alim");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_alim WHERE is_selected=0");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -862,7 +862,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_boitier");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_boitier WHERE is_selected=0");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -895,12 +895,12 @@
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-                            $stmt = $pdo->prepare("SELECT id_comp,NAME,brand FROM composants_boitier WHERE is_selected=1;");
+                            $stmt = $pdo->prepare("SELECT id_comp,NAME,brand,type FROM composants_boitier WHERE is_selected=1;");
 
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_boitier\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_boitier\"><b>".$row['brand']."</b> - ".$row['NAME'].$row['type']."</a></li>";
                                 
                             }   
                         } 
@@ -934,7 +934,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_stockage");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_stockage WHERE is_selected=0");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
@@ -1007,7 +1007,7 @@
                                 echo "<div class=\"select\">
                                 <select id=\"mySelect\" name=\"selectedOption\"><option class=\"is-size-8\"><b>".$row['NAME']."</option>";
 
-                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_cooler");
+                                $stmt2 = $pdo->prepare("SELECT NAME,brand FROM composants_cooler WHERE is_selected=0");
 
                                 $stmt2->execute();
                                 while ($row2 = $stmt2->fetch()) {
