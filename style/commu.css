@@ -1,13 +1,18 @@
 #pres{
-    width: 76vw;
-    margin-left: 9vw;
+    width: 90vw;
+    margin-left: 0;
+    background-color: #cbcbcb;
 }
 #config{
     display: flex;
     flex-direction: column;
-    border: 2px ridge #828282;
     padding: unset;
     margin-left: 2vw ;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    max-width: 15vw;
+    margin-top: 2vh;
 }
 .user {
     display: flex;
@@ -17,11 +22,12 @@
     background-color: #0988f7;
     margin: -0.5px;
     padding-top: 0.5vh;
+    border-top-left-radius: 20px;
+border-top-right-radius: 20px;
 }
 .grille{
-   
+   margin-top: 10px;
     background-color: #ffffff;
-  
     display: grid;
    
 }
@@ -49,4 +55,39 @@
     grid-row: 2;
     justify-self: center;
     align-self: center;
+}
+.body{
+
+    background-color: #0988f7;
+    color: #ffffff;
+    min-height: 24vh;
+}
+.foot{
+    background-color: #0988f7;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid;
+    border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+
+}
+.prix{
+    display: flex;
+}
+.Like>button {
+    border: unset;
+    background-color: unset;}
+
+.liste {
+    margin-left:unset
+}
+
+.columns>hr{
+    background-color: #f5f5f5;
+    border: none;
+    display: block;
+    height: auto;
+    width: 3px;
+    margin: 1.5rem 0;
 }

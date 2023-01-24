@@ -18,6 +18,12 @@ CREATE TABLE IF NOT EXISTS `adresse` (
 
 INSERT INTO `adresse` (`id_adresse`, `Rue`, `codepostal`, `ville`) VALUES
 	('a@gmail.com', '54 dsgf', '4455', 'sdfkqsdkf'),
+	('admin@diggit.fr', '25 rue du four', '44380', 'Nantes'),
+	('davd.g@gmail.com', '25 rue du vieux four', '44380', 'saint-léger'),
+	('djsnake@gmail.com', '25 rue du vieux four', '78442', 'Paris'),
+	('fdkgklm@gmail.com', 'fgh', '7545', 'SAint mars de coutain'),
+	('guigui@gmail.Com', '25 rue du four', '44380', 'Montpellier'),
+	('jesuisunclient@gmail.com', '25 rue du vieux four', '78442', 'chauray'),
 	('tu@gmail.com', '25 rue du vieux four', '79255', 'saint-léger');
 
 CREATE TABLE IF NOT EXISTS `client` (
@@ -28,8 +34,14 @@ CREATE TABLE IF NOT EXISTS `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `client` (`mailc`, `mdp`, `statut`) VALUES
-	('a@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'A'),
-	('tu@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'A');
+	('a@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
+	('admin@diggit.fr', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'A'),
+	('davd.g@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
+	('djsnake@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
+	('fdkgklm@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
+	('guigui@gmail.Com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
+	('jesuisunclient@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
+	('tu@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C');
 
 CREATE TABLE IF NOT EXISTS `composants_alim` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
@@ -127,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `composants_cpu` (
 
 INSERT INTO `composants_cpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `wattage`, `nbcore`, `puissance`, `is_selected`) VALUES
 	(1, 209.38, 5, 'AMD', 'Ryzen 5 5600X', 'https://drive.google.com/uc?export=view&id=1Ok1FoNKMwdzJQYy9tU9fqr6Co9nI6vPX', 0, 65, 6, 3.7, 0),
-	(2, 134.84, 5, 'AMD', 'Ryzen 5 5600', 'https://drive.google.com/uc?export=view&id=1-A-b3yAZdF_ltquko_L-8wOc7Yv1SWe4', 1, 65, 6, 3.5, 0),
+	(2, 134.84, 5, 'AMD', 'Ryzen 5 5600', 'https://drive.google.com/uc?export=view&id=1-A-b3yAZdF_ltquko_L-8wOc7Yv1SWe4', 1, 65, 6, 3.5, 1),
 	(3, 319.99, 5, 'Intel', 'Core i5-13600K', 'https://drive.google.com/uc?export=view&id=1WdWEfgM65kTm9l--fwFN-OlxhzSQLybB', 1, 125, 14, 3.5, 0),
 	(4, 594.99, 5, 'Intel', 'Core i9-13900K', 'https://drive.google.com/uc?export=view&id=1CEELu8BfODdIUYp9ztTHy-V3SlHl88O3', 1, 125, 24, 3.3, 0),
 	(5, 450.00, 5, 'Intel', 'Core i7-9700K', 'https://drive.google.com/uc?export=view&id=1xm0tCg3eQjRadlko2EUS0D3Cmuz4qBmj', 1, 95, 8, 3.6, 1),
@@ -205,19 +217,35 @@ CREATE TABLE `config` (
 
 CREATE TABLE IF NOT EXISTS `configurations` (
   `id_config` int NOT NULL AUTO_INCREMENT,
-  `id_client` varchar(50) NOT NULL DEFAULT '',
+  `id_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `prixtt` float DEFAULT NULL,
   `nomconfig` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_config`) USING BTREE,
-  KEY `FK_configurations_client` (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_configurations_client` (`id_client`),
+  CONSTRAINT `FK_configurations_client` FOREIGN KEY (`id_client`) REFERENCES `client` (`mailc`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `configurations` (`id_config`, `id_client`, `date`, `prixtt`, `nomconfig`) VALUES
-	(5, 'tu@gmail.com', '2023-01-13 21:20:24', 56.98, 'predator'),
-	(6, 'a@gmail.com', '2023-01-13 21:20:24', 56.98, 'hyper x'),
-	(7, 'tu@gmail.com', '2023-01-13 21:20:24', 56.98, 'corsair'),
-	(8, 'tu@gmail.com', '2023-01-13 21:20:24', 56.98, 'asus');
+INSERT INTO `configurations` (`id_config`, `id_client`, `date`, `nomconfig`) VALUES
+	(5, 'a@gmail.com', '2023-01-13 21:20:24', 'Predator'),
+	(6, 'tu@gmail.com', '2023-01-13 21:20:24', 'Hyper x'),
+	(7, 'a@gmail.com', '2023-01-13 21:20:24', 'Corsair'),
+	(8, 'a@gmail.com', '2023-01-13 21:20:24', 'Asus'),
+	(9, 'admin@diggit.fr', '2023-01-20 00:50:29', 'Nvidia');
+
+CREATE TABLE IF NOT EXISTS `likes` (
+  `id_config` int NOT NULL,
+  `id_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id_config`,`id_client`) USING BTREE,
+  KEY `FK__client` (`id_client`),
+  CONSTRAINT `FK__client` FOREIGN KEY (`id_client`) REFERENCES `client` (`mailc`),
+  CONSTRAINT `FK__configurations` FOREIGN KEY (`id_config`) REFERENCES `configurations` (`id_config`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `likes` (`id_config`, `id_client`) VALUES
+	(5, 'a@gmail.com'),
+	(6, 'a@gmail.com'),
+	(9, 'admin@diggit.fr'),
+	(5, 'tu@gmail.com');
 
 CREATE TABLE IF NOT EXISTS `tj_config_comp` (
   `id_config` int NOT NULL AUTO_INCREMENT,
@@ -248,13 +276,14 @@ CREATE TABLE IF NOT EXISTS `tj_config_comp` (
   CONSTRAINT `FK_tj_config_comp_composants_gpu` FOREIGN KEY (`id_gpu`) REFERENCES `composants_gpu` (`id_comp`),
   CONSTRAINT `FK_tj_config_comp_composants_ram` FOREIGN KEY (`id_ram`) REFERENCES `composants_ram` (`id_comp`),
   CONSTRAINT `FK_tj_config_comp_composants_stockage` FOREIGN KEY (`id_stockage`) REFERENCES `composants_stockage` (`id_comp`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `tj_config_comp` (`id_config`, `id_alim`, `id_board`, `id_boitier`, `id_cooler`, `id_cpu`, `id_gpu`, `id_stockage`, `id_ram`, `is_selected`) VALUES
-	(5, 1, 19, 4, 1, 1, 1, 3, 15, 2),
+	(5, 1, 19, 2, 1, 3, 1, 3, 15, 2),
 	(6, 1, 19, 1, 1, 1, 1, 3, 15, 0),
 	(7, 1, 19, 2, 1, 1, 1, 3, 15, 3),
-	(8, 1, 19, 2, 1, 1, 1, 3, 15, 1);
+	(8, 1, 19, 2, 1, 1, 1, 3, 15, 1),
+	(9, 2, 20, 2, 2, 2, 5, 2, 15, 0);
 
 CREATE TABLE IF NOT EXISTS `users` (
   `mailu` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
@@ -267,6 +296,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`mailu`, `pseudo`, `prenom`, `nom`, `telephone`) VALUES
 	('a@gmail.com', 'pseudo', 'pre', 'nom', '015'),
+	('admin@diggit.fr', 'DIGGIT.ME', 'admin', 'admin', '07844545454'),
+	('davd.g@gmail.com', 'davidGuetta', 'David', 'Guetta', '07828954654'),
+	('djsnake@gmail.com', 'DJsnake', 'snake', 'Dj', '078456756'),
+	('fdkgklm@gmail.com', 'psuedo', 'pre', 'om', '45'),
+	('guigui@gmail.Com', 'guigui79', 'gringe', 'guillaume', '0871545465'),
+	('jesuisunclient@gmail.com', 'titi78', 'Martin', 'Garix', '07852235'),
 	('tu@gmail.com', 'psuedo', 'prenom', 'nom', '078293258');
 
 DROP TABLE IF EXISTS `config`;

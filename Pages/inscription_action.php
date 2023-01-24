@@ -1,10 +1,14 @@
 <?php
+session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=diggit.me;charset=utf8;', "root", "");
 
+
+
+$bdd = new PDO('mysql:host=localhost;dbname=diggit.me;charset=utf8;', "root", "");
 if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_mdp']) && !empty($_POST['pseudo']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['tel']) && !empty($_POST['adresse']) && !empty($_POST['codepostal']) && !empty($_POST['ville'])) {
-  
+ 
   $email = ($_POST['mail']);
-  $mdp = sha1($_POST['mdp']);
+  $mdp = ($_POST['mdp']);
   $confirm_mdp = ($_POST['confirm_mdp']);
   $pseudo = ($_POST['pseudo']);
   $nom = ($_POST['nom']);
@@ -13,10 +17,10 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
   $adresse = ($_POST['adresse']);
   $ville = ($_POST['ville']);
   $code_postal = ($_POST['codepostal']);
-  $statut= "A";
+  $statut= "C";
   if($mdp == $confirm_mdp)
   {
-<<<<<<< Updated upstream
+
     $mdp= hash('sha256',$mdp);
     $insert1 = $bdd->prepare("INSERT INTO client(mailc,mdp,statut) VALUES(:email,:mdp,:statut)");
 
@@ -43,12 +47,16 @@ if (!empty($_POST['mail']) && !empty($_POST['mdp']) && !empty($_POST['confirm_md
     
 
      $insert3 -> execute();
-     session_start();
+     
+     $_SESSION['mail']=$email;
      $_SESSION['pseudo']=$pseudo;
      $_SESSION['statut']=$statut;
      
     header('Location: ../index.php');
 
+  }
+  else{
+   echo" mdp different";
   }
  
 }

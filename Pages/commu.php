@@ -305,52 +305,165 @@
                 <div class="title-1">Les configurations de la Communauté:</div>
                 <hr class="dropdown-divider">
                 <div style ="margin-top:2vh;" class="columns">
-                  <div class="column is-one-fifth" >alalla</div> 
-                  <div class="is-divider-vertical" ></div>
-                  <div class="column" >
+                <!-- Filtre -->
+                  <div class="column is-2" >
+                  <form method="post" action="tri.php">
+                      <div class="field">
+                          <label class="label" for="tri">Trier par :</label>
+                          <div class="control">
+                              <div class="select">
+                                  <select name="tri" id="tri">
+                                      <option value="likes">Likes</option>
+                                      <option value="statut">Statut</option>
+                                      <option value="prix_total">Prix total</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="control">
+                          <input class="button is-primary" type="submit" value="Trier">
+                      </div>
+               </form>
+               <form method="post" action="filtreprix.php">
+    <label for="prix">Filtrer par prix :</label>
+    <input type="range" name="prix" id="prix" min="100" max="1000" step="50">
+    <br>
+    <label>Min : 100€</label>
+    <label>Max : 1000€</label>
+    <input class="button is-primary" type="submit" value="Filtrer">
+</form>
+
+                    
+
+
+
+                  </div> 
+                  <!-- Filtre -->
+                  <hr class="is-divider-vertical">
+                                    <div class="column" >
                     <div class="columns">
-                      <div id="config" class="column" >
-                        <div class="head">
-                          <span class="user">
-                              <img  class="icon" src="../images/avatar.png">
-                             <p class="has-text-white" >Hugo</p>
-                          </span>  
-                      
-                      </div>
-                        <div class="img">
-                        <ul class="grille">
-                          <li  class="g1"> <img  src="https://drive.google.com/uc?export=view&id=1aTG6fzOgvXkfLwUKuu_iKayreqiaUwsd"></li>
-                         
 
+                      <?php
+                      $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                      $stmt = $pdo->prepare("SELECT (SELECT COUNT(*) FROM likes WHERE likes.id_config = configurations.id_config) AS likes,client.statut AS statut, SUM(composants_alim.price + composants_board.price+composants_boitier.price+composants_cooler.price+composants_cpu.price+composants_gpu.price+composants_ram.price+composants_stockage.price) as prix_total, users.pseudo AS pseudo,composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg,composants_gpu.img as gpuimg,composants_cpu.img as cpuimg, configurations.nomconfig AS nom, configurations.id_config AS id_config
+                      FROM configurations
+                      JOIN tj_config_comp ON configurations.id_config = tj_config_comp.id_config
+                      JOIN composants_alim ON tj_config_comp.id_alim = composants_alim.id_comp
+                      JOIN composants_board ON tj_config_comp.id_board = composants_board.id_comp
+                      JOIN composants_boitier ON tj_config_comp.id_boitier = composants_boitier.id_comp
+                      JOIN composants_cooler ON tj_config_comp.id_cooler = composants_cooler.id_comp
+                      JOIN composants_cpu ON tj_config_comp.id_cpu = composants_cpu.id_comp
+                      JOIN composants_gpu ON tj_config_comp.id_gpu = composants_gpu.id_comp
+                      JOIN composants_ram ON tj_config_comp.id_ram = composants_ram.id_comp
+                      JOIN composants_stockage ON tj_config_comp.id_stockage = composants_stockage.id_comp
+                      JOIN users ON configurations.id_client = users.mailu
+                      JOIN client  ON configurations.id_client = client.mailc
+                      GROUP BY configurations.id_config order by likes DESC;");
+
+                      $stmt->execute();
+                      $index = 0;
+                      while ($row = $stmt->fetch()) {
+                        $index +=1;
+                        echo'
+                        <div id="config" class="column is-3" >
+                          <div class="head">';
+                          if($row['statut']=='A'){
+                            echo'<span class="user">
+                            <img  class="icon" src="../images/logo_diggit.png">
+                           <p class="has-text-white" >DIGGIT.ME</p>
+                        </span>  ';
+                          }else{
+                            echo'<span class="user">
+                            <img  class="icon" src="../images/avatar.png">
+                           <p class="has-text-white" >'.$row['pseudo'].'</p>
+                        </span>  ';
+
+                          }
                           
 
+                            
                         
-                          <li class="g2"><img  src="https://drive.google.com/uc?export=view&id=1Ok1FoNKMwdzJQYy9tU9fqr6Co9nI6vPX"></li>
-                          <li class="g3"><img   src=" https://drive.google.com/uc?export=view&id=1G15uq7aSegWRMeY3IEesiv-Kkf7nUddY"></li>
-                          
-                        </ul>
-                      </div>
-                        <div class="body"> lalala</div>
-                        <div class="foot"> lalala</div>
+                        echo'</div>
+                          <div class="img">
+  
+                          <ul class="grille">
+                            <li  class="g1"> <img  src="'.$row['boitierimg'].'"></li>
+                            <li class="g2"><img  src="'.$row['cpuimg'].'"></li>
+                            <li class="g3"><img   src="'.$row['gpuimg'].'"></li>
+                            
+                          </ul>
                         </div>
-                        <div id="config" class="column" >
-                        <div class="head"> lalala</div>
-                        <div class="img">lalala </div>
-                        <div class="body"> lalala</div>
-                        <div class="foot"> lalala</div>
-                        </div>
-                        <div id="config" class="column" >
-                        <div class="head"> lalala</div>
-                        <div class="img">lalala </div>
-                        <div class="body"> lalala</div>
-                        <div class="foot"> lalala</div>
-                        </div>
-                        <div id="config" class="column" >
-                        <div class="head"> lalala</div>
-                        <div class="img">lalala </div>
-                        <div class="body"> lalala</div>
-                        <div class="foot"> lalala</div>
-                        </div>
+                          <div class="body"> 
+                            <b>'.$row['nom'].'</b>
+                            <span>
+                                    <span class="liste">
+                                    <img class="icon" src="../images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
+                                    </span>
+                                    <span class="liste">
+                                    <img class="icon" src="../images/icons/cpu.png">
+                                        <p> '.$row['cpu'].'</p>
+                                    </span>
+                                    <span class="liste">
+                                    <img class="icon" src="../images/icons/video-card.png">  <p> '.$row['gpu'].'</p>
+                                    </span>
+            
+                                </span>
+  
+                          </div>
+                          <div class="foot">
+                          <p class="has-text-white" >'.$row['prix_total'].'€</p>
+                          <div class="prix">';
+                      
+
+                      $stmt2 = $pdo->prepare("SELECT likes.id_client AS client , likes.id_config AS config
+                      FROM likes WHERE likes.id_config = ? AND likes.id_client = ? ");
+
+                      $stmt2->execute(array($row['id_config'],$_SESSION['mail']));
+                      if(isset($_SESSION['mail'])){
+                            if($stmt2->rowCount()==1 ){
+
+                              echo' 
+                              <form class="Like" action="../Pages/like.php?id_config='.$row['id_config'].'&id_client='.$_SESSION['mail'].'" method="post">
+                              <button name="like_button"><img  class="icon" style="-webkit-filter: invert(100%); /* Safari/Chrome * filter: invert(100%);" src="../images/like.png">
+                              </button>
+                              </form>
+                                    <p>'.$row['likes'].'</p>
+                                    </div>';
+
+
+                            }
+                            else{
+                              echo' 
+                              <form class="Like" action="../Pages/like.php?id_config='.$row['id_config'].'&id_client='.$_SESSION['mail'].'" method="post">
+                              <button name="like_button"><img  class="icon" style="-webkit-filter: invert(100%); /* Safari/Chrome * filter: invert(100%);" src="../images/unlike.png">
+                              </button>
+                              </form>
+                                    <p>'.$row['likes'].'</p>
+                                    </div>';
+                            }
+                    }
+                    else{
+                      echo' <img  class="icon" style="-webkit-filter: invert(100%); /* Safari/Chrome * filter: invert(100%);" src="../images/unlike.png">
+                               <p>'.$row['likes'].'</p>
+                               </div>';
+                    }
+                               
+                            
+                       echo' </div></div>';
+
+                     
+                      
+                      if($index==4){
+                        echo'</div>
+                        <div class="columns">';
+                      }
+                    }
+                    echo'</div>';
+                      
+                      ?>
+
+                      
                         
 
                   </div>
@@ -402,6 +515,7 @@
   <script src="../scripts/index.js"></script>
   <script src="../scripts/main.js"></script>
   <script src="../scripts/recherche.js"></script>
+  <script src="../scripts/like.js"></script>
 </body>
 
 </html>

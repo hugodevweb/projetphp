@@ -13,12 +13,13 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>DIGGIT.ME- Acceuil</title>
+  <title>DIGGIT.ME- Accueil</title>
 </head>
 
 <body>
   <?php
     session_start();
+   
     
     ?>
   <!-- -----------Premiere ligne du navbar------ -->
@@ -270,7 +271,7 @@
           <div id="secondaryNavbar" class="navbar-menu">
             <div class="navbar-start" style="margin-left: 8vw;">
               <a class="navbar-item" href="#" style="border-left: 1px solid white;">
-                Acceuil
+                Accueil
               </a>
 
               <a class="navbar-item" href="./Pages/CréationPc.php">
@@ -312,12 +313,25 @@
                     <img style="height:150px; width:auto;" src="./images/welcome.gif">
                   </div>
                   <div class="column is-four-fifths">
-                    <h1 class="title" style="margin-top:3%">
-                      Bienvenu sur DIGIT.ME
-                    </h1>
-                    <h2 class="subtitle ">
+                    <?php 
+                      if (isset($_SESSION['mail'])) {
+                        echo'<h1 class="title" style="margin-top:3%">
+                        Salut <b style="color:blue;" >'.$_SESSION['pseudo'].'</b>👋 bienvenu sur DIGGIT.ME
+                      </h1><h2 class="subtitle ">
+                      Ton configurateur de PC personnalisés
+                    </h2>'; 
+                      }
+                      else{
+                        echo'<h1 class="title" style="margin-top:3%">
+                         Bienvenu sur DIGGIT.ME 👋
+                      </h1><h2 class="subtitle ">
                       Votre configurateur de PC personnalisés
-                    </h2>
+                    </h2>';
+                      }
+                    
+                    ?>
+                    
+                    
                   </div>
                 </div>
             </article>
@@ -337,7 +351,7 @@
       
 
 
-        <?php if(isset($_SESSION['statut']) ){
+        <?php if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                                 $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
                                 $stmt = $pdo->prepare("SELECT composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg, configurations.nomconfig AS nom
@@ -425,8 +439,8 @@
                                    
                                
                                                        
-                            }
-                        }else{
+                            }}
+                        else{
                              $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
                              $stmt = $pdo->prepare("SELECT composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg, configurations.nomconfig AS nom
                              FROM composants_cpu
@@ -435,31 +449,31 @@
                              JOIN composants_boitier ON composants_boitier.id_comp = tj_config_comp.id_boitier
                              JOIN configurations ON configurations.id_config = tj_config_comp.id_config
                              WHERE tj_config_comp.is_selected = 1 or tj_config_comp.is_selected = 2 or tj_config_comp.is_selected = 3 order by tj_config_comp.is_selected ;");
-                            echo'<div class="columns">';
+                            echo'<div class="columns" style="margin:15px">';
                             $stmt->execute();
                             while ($row = $stmt->fetch()) {
-                                echo'<div  class="column">
+                                echo'<div id="config_acc" class="column">
                                 <div class="title-3"><b>'.$row['nom'].'</b></div>
 
                                 <figure class="image is-256x256">
 
-                                <img 
+                                <img style="mix-blend-mode: multiply;"
                                     src="'.$row['boitierimg'].'">
                                     
                                 </figure>
-                                <span>
-                                    <span class="liste">
-                                    <img class="icon" src="./images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
-                                    </span>
-                                    <span class="liste">
-                                    <img class="icon" src="./images/icons/cpu.png">
-                                        <p> '.$row['cpu'].'</p>
-                                    </span>
-                                    <span class="liste">
-                                    <img class="icon" src="./images/icons/video-card.png">  <p> '.$row['gpu'].'</p>
-                                    </span>
-            
-                                </span>
+                                  <span>
+                                      <span class="liste">
+                                      <img class="icon" src="./images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
+                                      </span>
+                                      <span class="liste">
+                                      <img class="icon" src="./images/icons/cpu.png">
+                                          <p> '.$row['cpu'].'</p>
+                                      </span>
+                                      <span class="liste">
+                                      <img class="icon" src="./images/icons/video-card.png">  <p> '.$row['gpu'].'</p>
+                                      </span>
+              
+                                  </span>
                                 <button class="prebuild">Voir ></button>
                             </div>
                             
@@ -482,7 +496,7 @@
           <img class="composant-child" src="./images/icons/cpu.png">
           <ol >
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
                            
@@ -552,13 +566,10 @@
           <img class="composant-child" src="./images/icons/motherboard.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -625,13 +636,10 @@
           <img class="composant-child" src="./images/icons/ram-memory.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -698,13 +706,10 @@
           <img class="composant-child" src="./images/icons/video-card.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                       if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -769,13 +774,10 @@
           <img class="composant-child" src="./images/icons/supply.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -841,13 +843,10 @@
           <img class="composant-child" src="./images/icons/desktop.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -913,13 +912,10 @@
           <img class="composant-child" src="./images/icons/hdd.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
@@ -986,13 +982,10 @@
           <img class="composant-child" src="./images/icons/cooling-fan.png">
           <ol>
             <?php
-                        if(isset($_SESSION['statut']) ){
+                        if(isset($_SESSION['mail'])){
                             if($_SESSION['statut']=='A'){
                             // Connexion à la base de données
-                            $host = "localhost";
-                            $user = "root";
-                            $password = "";
-                            $dbname = "digit.me";
+                             
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 

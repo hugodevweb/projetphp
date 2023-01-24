@@ -12,13 +12,23 @@ if (isset($_POST['envoi'])) {
 
         if($recupClient->rowCount()==1 ){
 
-            
-            $_SESSION['mail'] = $mail;
-            $_SESSION['mdp'] = $mdp; 
             while($donne=$recupClient->fetch())
 					{ 
                         $_SESSION['statut'] = $donne['statut'];
+ 
 					}
+            $stmt = $bdd -> prepare('SELECT * FROM  users WHERE mailu= ? ' );
+            $stmt->execute(array($mail));
+            $_SESSION['mail'] = $mail;
+            $_SESSION['mdp'] = $mdp; 
+            while($donne=$stmt->fetch())
+            { 
+                $_SESSION['pseudo']=$donne['pseudo'];
+
+            }
+
+            
+            
             
             
             header("Location:../index.php");
