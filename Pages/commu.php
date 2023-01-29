@@ -313,25 +313,76 @@
                           <div class="control">
                               <div class="select">
                                   <select name="tri" id="tri">
-                                      <option value="likes">Likes</option>
-                                      <option value="statut">Statut</option>
-                                      <option value="prix_total">Prix total</option>
+                                      <option value="likes_Deroissant">likes Deroissant</option>
+                                      <option value="likes_Croissant">likes Croissant</option>                                
+                                      <option value="prix_total_Croissant">Prix total <b>Croissant</b></option>
+                                      <option value="prix_total_Decroissant">Prix total <b>Decroissant</b></option>
                                   </select>
                               </div>
                           </div>
                       </div>
-                      <div class="control">
-                          <input class="button is-primary" type="submit" value="Trier">
+                     
+                      <div class="tri_prix">
+    <label class="label" for="prix">Filtrer par prix :</label>
+   
+        <p class="control">
+            <a class="button is-static is-small" id="prix_min_display">Min:  <?php if(isset($_GET['prix_min'])){
+              echo $_GET['prix_min'];
+            }
+            else{
+              echo "100";
+            }
+?>€</a>
+        </p>
+        <p>
+            <input  type="range" name="prix_min" id="prix_min" min="100" max="5000" step="50" value="<?php if(isset($_GET['prix_min'])){
+              echo $_GET['prix_min'];
+            }
+            else{
+              echo "100";
+            }
+?>"
+        </p>
+        <p>
+            <a class="button is-static is-small" id="prix_max_display">Max:  <?php if(isset($_GET['prix_max'])){
+              echo $_GET['prix_max'];
+            }
+            else{
+              echo "5000";
+            }
+?>€</a>
+        </p>
+        <p>
+            <input  type="range" name="prix_max" id="prix_max" min="100" max="5000" step="50" value="<?php if(isset($_GET['prix_max'])){
+              echo $_GET['prix_max'];
+            }
+            else{
+              echo "5000";
+            }
+?>">
+        </p>
+  
+        
+        <div class="control">
+                          <input class="button is-info" type="submit" value="Trier">
                       </div>
-               </form>
-               <form method="post" action="filtreprix.php">
-    <label for="prix">Filtrer par prix :</label>
-    <input type="range" name="prix" id="prix" min="100" max="1000" step="50">
-    <br>
-    <label>Min : 100€</label>
-    <label>Max : 1000€</label>
-    <input class="button is-primary" type="submit" value="Filtrer">
+                      </div>
 </form>
+<script>
+    $(document).ready(function(){
+        // Afficher la valeur sélectionnée pour le curseur "prix_min"
+        $("#prix_min").on("input change", function(){
+            var prix_min = $(this).val();
+            $("#prix_min_display").text("Min: " + prix_min + "€");
+        });
+
+        // Afficher la valeur sélectionnée pour le curseur "prix_max"
+        $("#prix_max").on("input change", function(){
+            var prix_max = $(this).val();
+            $("#prix_max_display").text("Max: " + prix_max + "€");
+        });
+    });
+</script>
 
                     
 
@@ -344,7 +395,12 @@
                     <div class="columns">
 
                       <?php
-                      $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+                       $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+                      if(isset($_GET['order'],$_GET['prix_min'],$_GET['prix_max'])){
+                        
+                        $order=$_GET['order'];
+                        $prix_max = $_GET['prix_max'];
+                        $prix_min = $_GET['prix_min'];
 
                       $stmt = $pdo->prepare("SELECT (SELECT COUNT(*) FROM likes WHERE likes.id_config = configurations.id_config) AS likes,client.statut AS statut, SUM(composants_alim.price + composants_board.price+composants_boitier.price+composants_cooler.price+composants_cpu.price+composants_gpu.price+composants_ram.price+composants_stockage.price) as prix_total, users.pseudo AS pseudo,composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg,composants_gpu.img as gpuimg,composants_cpu.img as cpuimg, configurations.nomconfig AS nom, configurations.id_config AS id_config
                       FROM configurations
@@ -359,7 +415,39 @@
                       JOIN composants_stockage ON tj_config_comp.id_stockage = composants_stockage.id_comp
                       JOIN users ON configurations.id_client = users.mailu
                       JOIN client  ON configurations.id_client = client.mailc
+
+
+                      WHERE (composants_alim.price + composants_board.price+composants_boitier.price+composants_cooler.price+composants_cpu.price+composants_gpu.price+composants_ram.price+composants_stockage.price) 
+                      BETWEEN $prix_min AND $prix_max
+                      GROUP BY configurations.id_config ".$order.";");
+
+
+                      }
+                      else{
+                        $stmt = $pdo->prepare("SELECT (SELECT COUNT(*) FROM likes WHERE likes.id_config = configurations.id_config) AS likes,client.statut AS statut, SUM(composants_alim.price + composants_board.price+composants_boitier.price+composants_cooler.price+composants_cpu.price+composants_gpu.price+composants_ram.price+composants_stockage.price) as prix_total, users.pseudo AS pseudo,composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg,composants_gpu.img as gpuimg,composants_cpu.img as cpuimg, configurations.nomconfig AS nom, configurations.id_config AS id_config
+                      FROM configurations
+                      JOIN tj_config_comp ON configurations.id_config = tj_config_comp.id_config
+                      JOIN composants_alim ON tj_config_comp.id_alim = composants_alim.id_comp
+                      JOIN composants_board ON tj_config_comp.id_board = composants_board.id_comp
+                      JOIN composants_boitier ON tj_config_comp.id_boitier = composants_boitier.id_comp
+                      JOIN composants_cooler ON tj_config_comp.id_cooler = composants_cooler.id_comp
+                      JOIN composants_cpu ON tj_config_comp.id_cpu = composants_cpu.id_comp
+                      JOIN composants_gpu ON tj_config_comp.id_gpu = composants_gpu.id_comp
+                      JOIN composants_ram ON tj_config_comp.id_ram = composants_ram.id_comp
+                      JOIN composants_stockage ON tj_config_comp.id_stockage = composants_stockage.id_comp
+                      JOIN users ON configurations.id_client = users.mailu
+                      JOIN client  ON configurations.id_client = client.mailc
                       GROUP BY configurations.id_config order by likes DESC;");
+                      }
+                        
+
+
+                      
+                      
+
+
+
+
 
                       $stmt->execute();
                       $index = 0;
@@ -401,7 +489,7 @@
                                     <img class="icon" src="../images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
                                     </span>
                                     <span class="liste">
-                                    <img class="icon" src="../images/icons/cpu.png">
+                                    <img  class="icon" src="../images/icons/cpu.png">
                                         <p> '.$row['cpu'].'</p>
                                     </span>
                                     <span class="liste">
@@ -414,13 +502,13 @@
                           <div class="foot">
                           <p class="has-text-white" >'.$row['prix_total'].'€</p>
                           <div class="prix">';
+                          if(isset($_SESSION['mail'])){
                       
-
                       $stmt2 = $pdo->prepare("SELECT likes.id_client AS client , likes.id_config AS config
                       FROM likes WHERE likes.id_config = ? AND likes.id_client = ? ");
 
                       $stmt2->execute(array($row['id_config'],$_SESSION['mail']));
-                      if(isset($_SESSION['mail'])){
+                      
                             if($stmt2->rowCount()==1 ){
 
                               echo' 

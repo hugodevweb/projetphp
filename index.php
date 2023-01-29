@@ -215,6 +215,21 @@
                       </div>
                   </div>
 
+
+                    <div class="field">
+                       
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="genre" value="Homme">
+                                Homme
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="genre" value="Femme">
+                                Femme
+                            </label>
+                        </div>
+                  
+
                   <div class="field">
                     <label class="label">Numéro de télephone</label>
                       <div class="control">
@@ -310,7 +325,7 @@
               <div class="message-body">
                 <div class="columns">
                   <div class="column">
-                    <img style="height:150px; width:auto;" src="./images/welcome.gif">
+                    <img style="height:auto; width:auto;" src="./images/welcome.gif">
                   </div>
                   <div class="column is-four-fifths">
                     <?php 
@@ -738,7 +753,6 @@
                                 "
                                 ; 
                                 echo "<div class=\"control\">
-                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
                             <div class=\"control\">
                             <label class=\"radio\">
                                 <input type=\"radio\" name=\"answer\" value=\"supprimer\">
@@ -748,6 +762,8 @@
                                 <input type=\"radio\" name=\"answer\" value=\"ajouter\">
                                 Ajouter
                             </label>
+                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+
                             </div>
                             </div></form> ";
                         }
@@ -806,7 +822,6 @@
                                 "
                                 ; 
                                 echo "<div class=\"control\">
-                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
                             <div class=\"control\">
                             <label class=\"radio\">
                                 <input type=\"radio\" name=\"answer\" value=\"supprimer\">
@@ -816,6 +831,8 @@
                                 <input type=\"radio\" name=\"answer\" value=\"ajouter\">
                                 Ajouter
                             </label>
+                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+
                             </div>
                             </div></form> ";
                         }
@@ -875,7 +892,6 @@
                                 "
                                 ; 
                                 echo "<div class=\"control\">
-                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
                             <div class=\"control\">
                             <label class=\"radio\">
                                 <input type=\"radio\" name=\"answer\" value=\"supprimer\">
@@ -885,6 +901,8 @@
                                 <input type=\"radio\" name=\"answer\" value=\"ajouter\">
                                 Ajouter
                             </label>
+                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+
                             </div>
                             </div></form> ";
                         }
@@ -944,7 +962,6 @@
                                 "
                                 ; 
                                 echo "<div class=\"control\">
-                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
                             <div class=\"control\">
                             <label class=\"radio\">
                                 <input type=\"radio\" name=\"answer\" value=\"supprimer\">
@@ -954,6 +971,8 @@
                                 <input type=\"radio\" name=\"answer\" value=\"ajouter\">
                                 Ajouter
                             </label>
+                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+
                             </div>
                             </div></form> ";
                         }
@@ -1014,7 +1033,6 @@
                                 "
                                 ; 
                                 echo "<div class=\"control\">
-                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
                             <div class=\"control\">
                             <label class=\"radio\">
                                 <input type=\"radio\" name=\"answer\" value=\"supprimer\">
@@ -1024,6 +1042,8 @@
                                 <input type=\"radio\" name=\"answer\" value=\"ajouter\">
                                 Ajouter
                             </label>
+                            <button class=\"button is-primary\" onclick=\"displaySelectedIndex()\">Submit</button>
+
                             </div>
                             </div></form> ";
                         }
