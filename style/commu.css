@@ -114,7 +114,7 @@ input[type="range"] {
      appearance: none;
      background: transparent;
      cursor: pointer;
-     width: 80%;
+     width: 7vw;
  }
  
  /* Removes default focus */
@@ -125,9 +125,9 @@ input[type="range"] {
  /***** Chrome, Safari, Opera and Edge Chromium styles *****/
  /* slider track */
  input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #053a5f;
+    background-color:transparent;
     border-radius: 0.5rem;
-    height: 0.5rem;  
+    height: 0.5rem;
  }
  
  /* slider thumb */
@@ -140,6 +140,7 @@ input[type="range"] {
     background-color: #0b88f7;
     height: 2rem;
     width: 1rem;
+    
  }
  
  input[type="range"]:focus::-webkit-slider-thumb {   
@@ -181,3 +182,16 @@ input[type="range"] {
     padding-bottom: 10vh;
     margin-bottom: 10vh;
   }
+#prix_min{
+    position: absolute;
+    left: 6.5vw;
+    top: 58.1vh;
+    width: 9VW;z-index: 999;
+}
+#prix_max{
+    position: absolute;
+    left: 7.5vw;
+    top: 58.1vh;
+    width: 9VW;
+    background-color:#053a5f;
+}

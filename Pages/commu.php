@@ -33,7 +33,7 @@
 
        
           <div class="navbar-brand">
-          <a class="navbar-item" href="./index.php">
+          <a class="navbar-item" href="../index.php">
             <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo">
           </a>
 </div>   <div class="navbar-start">
@@ -92,7 +92,7 @@
                                     </a>';
 
                                     if($_SESSION['statut']=='A'){
-                                      echo'<a href="#" class="dropdown-item">+ Composants 
+                                      echo'<a href="../Pages/new_compo.php" class="dropdown-item">+ Composants 
                                   </a>';}
                                   echo'
                                     <hr class="dropdown-divider">
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <button style="margin-left:2%" id="btnpanier" class="button is-white">
-                            <span class="icon has-text-dark">
+                            <span id="kart" class="icon has-text-dark">
                                 <img src="../images/cart.gif" alt="cart">
 
                             </span>
@@ -373,15 +373,6 @@
 ?>"
         </p>
         <p>
-            <a class="button is-static is-small" id="prix_max_display">Max:  <?php if(isset($_GET['prix_max'])){
-              echo $_GET['prix_max'];
-            }
-            else{
-              echo "5000";
-            }
-?>€</a>
-        </p>
-        <p>
             <input  type="range" name="prix_max" id="prix_max" min="100" max="5000" step="50" value="<?php if(isset($_GET['prix_max'])){
               echo $_GET['prix_max'];
             }
@@ -390,6 +381,16 @@
             }
 ?>">
         </p>
+        <p>
+            <a class="button is-static is-small" id="prix_max_display">Max:  <?php if(isset($_GET['prix_max'])){
+              echo $_GET['prix_max'];
+            }
+            else{
+              echo "5000";
+            }
+?>€</a>
+        </p>
+       
   
         
         <div class="control">

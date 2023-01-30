@@ -108,7 +108,7 @@ $is_available = $row['is_available'];
                                     </a>';
 
                                     if($_SESSION['statut']=='A'){
-                                      echo'<a href="#" class="dropdown-item">+ Composants 
+                                      echo'<a href="../Pages/new_compo.php" class="dropdown-item">+ Composants 
                                   </a>';}
                                   echo'
                                     <hr class="dropdown-divider">
@@ -468,20 +468,48 @@ if($is_available==1){
     <button value="'.$compo.'" id="btnajout" class="button is-success is-fullwidth">+ Ajouter a ma configuration</button>
     </form>
     <!-------------Message succès-------------->
-    <div class="notification is-success" id="msg_success">
-        Le composant a été ajouté avec succes !
-    </div>
-    <div class="notification is-danger" id="msg_error">
-        Le composant n\'a pas été ajouté !
+    
+    
+    
+    </div>';
 
+    if(isset($_SESSION[$type])){
+      if($_SESSION[$type]==$compo){
+        echo'<div class="column">
+        <div class="columns">
+          <div class="column is-9">
+            <form  action ="./ajout_panier.php?compo='.$compo.'&type='.$type.'" method="POST" > 
+            <button value="'.$compo.'" id="btnajoutpan" class="button is-info is-fullwidth" disabled> Produit Deja Ajouté au Panier</button>
+            </form>
+          </div>
+          <div class="column">
+            <form  action ="./sup_panier.php?compo='.$compo.'&type='.$type.'" method="POST" > 
+            <button value="'.$compo.'" id="btnsuppan" class="button is-danger" > Retirer</button>
+            </form>
+          </div>
+        </div>';
+      }
+    }else{
+      echo'<div class="column">
+        <form  action ="./ajout_panier.php?compo='.$compo.'&type='.$type.'" method="POST" > 
+        <button value="'.$compo.'" id="btnajoutpan" class="button is-info is-fullwidth" > + Ajouter le Produit au Panier</button>
+        </form>
+        
+        </div>';
+
+    }
+    
+echo'
+
+    <div class="notification is-success" id="msg_success">
+        Le composant a été ajouté !
     </div>
-    </div>
-    <div class="column">
-    <form  action ="./Pages/ajout_compo_config.php" > 
-    <button value="'.$compo.'" id="btnajout" class="button is-info is-fullwidth">+ Ajouter au Panier</button>
-    </form>
+    
+    <div class="notification is-danger" id="msg_error">
+        Le composant a bien été retiré du Panier !
     </div>
     ';
+    
     
 }else echo' <button  class="button is-danger is-fullwidth" disabled>Article en rupture de stock </button>';
 }?>
@@ -532,5 +560,6 @@ if($is_available==1){
  <script src="../scripts/index.js"></script>
   <script src="../scripts/main.js"></script>
   <script src="../scripts/recherche2.js"></script>
+  <script src="../scripts/ajout_panier.js"></script>
 </body>
 </html>

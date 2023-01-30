@@ -35,7 +35,7 @@ if (isset($_POST['envoi'])) {
 
         }else{
             
-            header("Location:../index.php");
+            header("Location:../index.php?connexion=false");
 
         }
 

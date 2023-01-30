@@ -92,7 +92,12 @@
                                     <hr class="dropdown-divider">
                                     <a href="./Pages/deconnexion.php" class="dropdown-item">
                                         Se Deconnecter
-                                    </a>
+                                    </a>';
+
+                                    if($_SESSION['statut']=='A'){
+                                      echo'<a href="../Pages/new_compo.php" class="dropdown-item">+ Composants 
+                                  </a>';}
+                                  echo'
                                 </div>
                             </div>
                         </div>

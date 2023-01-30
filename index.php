@@ -94,7 +94,7 @@
                                     </a>';
 
                                     if($_SESSION['statut']=='A'){
-                                      echo'<a href="#" class="dropdown-item">+ Composants 
+                                      echo'<a href="./Pages/new_compo.php" class="dropdown-item">+ Composants 
                                   </a>';}
                                   echo'
                                     <hr class="dropdown-divider">
@@ -583,8 +583,14 @@
           <img class="composant-child" src="./images/icons/cpu.png">
           <ol >
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+            if (isset($_SESSION['mail'])){
+              $statut =$_SESSION['statut'];
+            }else{
+              $statut="O";
+            }
+            
+                        
+                            if($statut=='A'){
                             // Connexion à la base de données
                            
 
@@ -643,7 +649,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cpu\"><b>".$row['brand']."</b> - ".$row['NAME']." - ".$row['puissance']."Ghz</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
@@ -653,9 +659,7 @@
           <img class="composant-child" src="./images/icons/motherboard.png">
           <ol>
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
-                            // Connexion à la base de données
+                        if($statut=='A'){
                              
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -713,7 +717,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_board\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
@@ -723,8 +727,7 @@
           <img class="composant-child" src="./images/icons/ram-memory.png">
           <ol>
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+                        if($statut=='A'){
                             // Connexion à la base de données
                              
 
@@ -783,7 +786,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_ram\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
@@ -793,8 +796,7 @@
           <img class="composant-child" src="./images/icons/video-card.png">
           <ol>
             <?php
-                       if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+                       if($statut=='A'){
                             // Connexion à la base de données
                              
 
@@ -853,7 +855,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_gpu\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
         </li>
@@ -862,8 +864,7 @@
           <img class="composant-child" src="./images/icons/supply.png">
           <ol>
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+                        if($statut=='A'){
                             // Connexion à la base de données
                              
 
@@ -922,7 +923,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_alim\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
@@ -932,8 +933,7 @@
           <img class="composant-child" src="./images/icons/desktop.png">
           <ol>
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+                       if($statut=='A'){
                             // Connexion à la base de données
                              
 
@@ -992,7 +992,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_boitier\"><b>".$row['brand']."</b> - ".$row['NAME'].$row['type']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
@@ -1002,8 +1002,7 @@
           <img class="composant-child" src="./images/icons/hdd.png">
           <ol>
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+                       if($statut=='A'){
                             // Connexion à la base de données
                              
 
@@ -1062,7 +1061,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_stockage\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
@@ -1073,8 +1072,7 @@
           <img class="composant-child" src="./images/icons/cooling-fan.png">
           <ol>
             <?php
-                        if(isset($_SESSION['mail'])){
-                            if($_SESSION['statut']=='A'){
+                        if($statut=='A'){
                             // Connexion à la base de données
                              
 
@@ -1133,7 +1131,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cooler\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } }
+                        } 
                     ?>
           </ol>
 
