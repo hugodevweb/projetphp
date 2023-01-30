@@ -19,6 +19,7 @@
     position: absolute;
     left: -29vw;
     top: 3.5vh;
+    width: 26vw;
 
   }
 
@@ -62,7 +63,6 @@
     margin: auto;
     display: flex;
     margin-top: 0.5vh;
-    margin-left: 3.3000000000000007vw;
 }
 #config_admin{
 transition: 0.5s;
@@ -96,7 +96,13 @@ position: relative;
   margin-left: 2vw;
 }
 #config_acc{
-  margin-left: 1vw;
+  
   border-radius: 57px;
 
+}
+#btn_inscription{
+  height: 5vh;
+}
+.img_boitier{
+  width: 10vw;
 }

@@ -21,6 +21,10 @@
     
         
     }
+    #nav_menu1{
+      justify-content: center;
+
+    }
      #rech{
       width: 26vw;
      }
@@ -40,7 +44,6 @@
 
     }
     .navbar {
-      left: 23vw;
       height: 9vh;
       background-color:rgb(0, 114, 149);
       
@@ -67,7 +70,7 @@ button {
 #btnpanier:hover {
 
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  border-radius: 2vw;
+  
   
 }
 

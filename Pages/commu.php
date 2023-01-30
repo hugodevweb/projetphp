@@ -20,26 +20,25 @@
 <body>
   <?php
     session_start();
+   
     
     ?>
   <!-- -----------Premiere ligne du navbar------ -->
   <header>
+    
     <div class="header-main">
       <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="../index.php">
+        
+        <div id="nav_menu1" class="navbar-menu">
+
+       
+          <div class="navbar-brand">
+          <a class="navbar-item" href="./index.php">
             <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo">
           </a>
-
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-menu">
-          <div class="navbar-start">
+</div>   <div class="navbar-start">
             <div class="navbar-item has-text-centered">
+            
               <form>
                 <div class="field has-addons">
                   <div class="dropdown-trigger">
@@ -82,7 +81,7 @@
                                     <span>Mon compte</span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu is-dark" id="dropdown-menu3" role="menu">
+                            <div class="dropdown-menu is-dark" id="dropdown-menu4" role="menu">
                                 <div class="dropdown-content">
                                     
                                     <a href="#" class="dropdown-item">
@@ -90,8 +89,12 @@
                                     </a>
                                     <a href="#" class="dropdown-item">
                                         Mes configurations
-                                    </a>
-                                    
+                                    </a>';
+
+                                    if($_SESSION['statut']=='A'){
+                                      echo'<a href="#" class="dropdown-item">+ Composants 
+                                  </a>';}
+                                  echo'
                                     <hr class="dropdown-divider">
                                     <a href="../Pages/deconnexion.php" class="dropdown-item">
                                         Se Deconnecter
@@ -113,7 +116,7 @@
                             <div class="dropdown">
                                 <div class="dropdown-trigger">
                                     <button id="btn" class="button is-dark" data-target="#modal-id" data-toggle="modal">
-                                        <span class="icon">
+                                        <span  class="icon">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <p> Se Connecter</p>
@@ -125,7 +128,7 @@
 
                                         <div id="container">
 
-                                            <form class="form_compte" action="../Pages/connexion_action.php" method="POST">
+                                            <form class="form_compte" action="./Pages/connexion_action.php" method="POST">
                                                 <h1>Se connecter</h1>
 
                                                 <div class="field">
@@ -170,7 +173,7 @@
                                     <div class="modal-content">
                                     <div class ="container_inscription">
             
-            <form class = "form_inscription" action="../Pages/inscription_action.php" method="POST">
+            <form class = "form_inscription" action="./Pages/inscription_action.php" method="POST">
             <h1>Mon inscription</h1>
                 <div class="field">
                 <label class="label">Votre Email</label>
@@ -215,6 +218,21 @@
                       </div>
                   </div>
 
+
+                    <div class="field">
+                       
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="genre" value="Homme">
+                                Homme
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="genre" value="Femme">
+                                Femme
+                            </label>
+                        </div>
+                  
+
                   <div class="field">
                     <label class="label">Numéro de télephone</label>
                       <div class="control">
@@ -247,7 +265,18 @@
                     
                  
             </div>
-                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S\'inscrire">
+    
+    
+      
+    <div id="btn_inscription" class="field">
+    <button style="all: unset;"type="submit"><a class="fancy" >
+    <span class="top-key"></span>
+    <span class="text">S\'inscrire</span>
+    <span class="bottom-key-1"></span>
+    <span class="bottom-key-2"></span>
+  </a>   </button>
+       </div>
+  </div> 
                 </form>
                 
     
@@ -269,20 +298,20 @@
 
 
           <div id="secondaryNavbar" class="navbar-menu">
-            <div class="navbar-start" style="margin-left: 8vw;">
-              <a class="navbar-item" href="../index.php" style="border-left: 1px solid white;">
-                Acceuil
+            <div class="navbar-start" >
+            <a class="navbar-item" href="../index.php" style="border-left: 1px solid white;">
+                Accueil
               </a>
 
-              <a class="navbar-item" href="../Pages/CréationPc.php">
+              <a class="navbar-item" href="./CréationPc.php">
                 Creer une configuration
               </a>
 
-              <a class="navbar-item" href="#">
+              <a class="navbar-item" href="./commu.php">
                 Communauté
               </a>
 
-              <a class="navbar-item" href="../Pages/a_propos.php">
+              <a class="navbar-item" href="./a_propos.php">
                 A propos
               </a>
             </div>
@@ -602,8 +631,9 @@
 
   <script src="../scripts/index.js"></script>
   <script src="../scripts/main.js"></script>
-  <script src="../scripts/recherche.js"></script>
+  <script src="../scripts/recherche2.js"></script>
   <script src="../scripts/like.js"></script>
+  
 </body>
 
 </html>

@@ -226,10 +226,10 @@ CREATE TABLE IF NOT EXISTS `configurations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `configurations` (`id_config`, `id_client`, `date`, `nomconfig`) VALUES
-	(5, 'a@gmail.com', '2023-01-13 21:20:24', 'Predator'),
-	(6, 'tu@gmail.com', '2023-01-13 21:20:24', 'Hyper x'),
-	(7, 'a@gmail.com', '2023-01-13 21:20:24', 'Corsair'),
-	(8, 'a@gmail.com', '2023-01-13 21:20:24', 'Asus'),
+	(5, 'djsnake@gmail.com', '2023-01-13 21:20:24', 'Predator'),
+	(6, 'jesuisunclient@gmail.com', '2023-01-13 21:20:24', 'Hyper x'),
+	(7, 'davd.g@gmail.com', '2023-01-13 21:20:24', 'Corsair'),
+	(8, 'guigui@gmail.Com', '2023-01-13 21:20:24', 'Asus'),
 	(9, 'admin@diggit.fr', '2023-01-20 00:50:29', 'Nvidia');
 
 CREATE TABLE IF NOT EXISTS `likes` (
@@ -244,8 +244,16 @@ CREATE TABLE IF NOT EXISTS `likes` (
 INSERT INTO `likes` (`id_config`, `id_client`) VALUES
 	(5, 'a@gmail.com'),
 	(6, 'a@gmail.com'),
+	(9, 'a@gmail.com'),
+	(5, 'admin@diggit.fr'),
+	(6, 'admin@diggit.fr'),
+	(7, 'admin@diggit.fr'),
+	(8, 'admin@diggit.fr'),
 	(9, 'admin@diggit.fr'),
-	(5, 'tu@gmail.com');
+	(9, 'davd.g@gmail.com'),
+	(9, 'fdkgklm@gmail.com'),
+	(5, 'tu@gmail.com'),
+	(9, 'tu@gmail.com');
 
 CREATE TABLE IF NOT EXISTS `tj_config_comp` (
   `id_config` int NOT NULL AUTO_INCREMENT,
@@ -279,10 +287,10 @@ CREATE TABLE IF NOT EXISTS `tj_config_comp` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `tj_config_comp` (`id_config`, `id_alim`, `id_board`, `id_boitier`, `id_cooler`, `id_cpu`, `id_gpu`, `id_stockage`, `id_ram`, `is_selected`) VALUES
-	(5, 1, 19, 2, 1, 3, 1, 3, 15, 2),
-	(6, 1, 19, 1, 1, 1, 1, 3, 15, 0),
-	(7, 1, 19, 2, 1, 1, 1, 3, 15, 3),
-	(8, 1, 19, 2, 1, 1, 1, 3, 15, 1),
+	(5, 1, 19, 4, 1, 3, 1, 3, 15, 0),
+	(6, 1, 19, 1, 1, 1, 1, 3, 15, 3),
+	(7, 1, 19, 2, 1, 1, 1, 3, 15, 2),
+	(8, 1, 19, 3, 1, 1, 1, 3, 15, 1),
 	(9, 2, 20, 2, 2, 2, 5, 2, 15, 0);
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -296,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`mailu`, `pseudo`, `prenom`, `nom`, `telephone`) VALUES
 	('a@gmail.com', 'pseudo', 'pre', 'nom', '015'),
-	('admin@diggit.fr', 'DIGGIT.ME', 'admin', 'admin', '07844545454'),
+	('admin@diggit.fr', 'Admin', 'admin', 'admin', '07844545454'),
 	('davd.g@gmail.com', 'davidGuetta', 'David', 'Guetta', '07828954654'),
 	('djsnake@gmail.com', 'DJsnake', 'snake', 'Dj', '078456756'),
 	('fdkgklm@gmail.com', 'psuedo', 'pre', 'om', '45'),

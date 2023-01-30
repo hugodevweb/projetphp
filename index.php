@@ -8,6 +8,7 @@
   <link href="./style/main.css" rel="stylesheet">
   <link href="./style/fondsvg.css" rel="stylesheet">
   <link href="./style/index.css" rel="stylesheet">
+<link href="./style/btn.css" rel="stylesheet">
   <link rel="icon" href="./images/logo_diggit.png" type="image/x-icon">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -24,22 +25,22 @@
     ?>
   <!-- -----------Premiere ligne du navbar------ -->
   <header>
+    
     <div class="header-main">
       <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+        
+        <div id="nav_menu1" class="navbar-menu">
+
+       
+          <div class="navbar-brand">
           <a class="navbar-item" href="./index.php">
             <img id="logo" src="./images/diggit.png" width="200px" height="auto" alt="Bulma logo">
           </a>
-
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <div class="navbar-item has-text-centered">
+</div>   <div class="navbar-start">
+            <div class="navbar-item has-text-centered" style="
+    height: 9vh;
+">
+            
               <form>
                 <div class="field has-addons">
                   <div class="dropdown-trigger">
@@ -82,7 +83,7 @@
                                     <span>Mon compte</span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu is-dark" id="dropdown-menu3" role="menu">
+                            <div class="dropdown-menu is-dark" id="dropdown-menu4" role="menu">
                                 <div class="dropdown-content">
                                     
                                     <a href="#" class="dropdown-item">
@@ -90,8 +91,12 @@
                                     </a>
                                     <a href="#" class="dropdown-item">
                                         Mes configurations
-                                    </a>
-                                    
+                                    </a>';
+
+                                    if($_SESSION['statut']=='A'){
+                                      echo'<a href="#" class="dropdown-item">+ Composants 
+                                  </a>';}
+                                  echo'
                                     <hr class="dropdown-divider">
                                     <a href="./Pages/deconnexion.php" class="dropdown-item">
                                         Se Deconnecter
@@ -113,7 +118,7 @@
                             <div class="dropdown">
                                 <div class="dropdown-trigger">
                                     <button id="btn" class="button is-dark" data-target="#modal-id" data-toggle="modal">
-                                        <span class="icon">
+                                        <span  class="icon">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <p> Se Connecter</p>
@@ -262,7 +267,18 @@
                     
                  
             </div>
-                  <input type="submit"  name="envoi" class="bouton_inscription_suite" value=" S\'inscrire">
+    
+    
+      
+    <div id="btn_inscription" class="field">
+    <button style="all: unset;"type="submit"><a class="fancy" >
+    <span class="top-key"></span>
+    <span class="text">S\'inscrire</span>
+    <span class="bottom-key-1"></span>
+    <span class="bottom-key-2"></span>
+  </a>   </button>
+       </div>
+  </div> 
                 </form>
                 
     
@@ -284,8 +300,8 @@
 
 
           <div id="secondaryNavbar" class="navbar-menu">
-            <div class="navbar-start" style="margin-left: 8vw;">
-              <a class="navbar-item" href="#" style="border-left: 1px solid white;">
+            <div class="navbar-start" >
+            <a class="navbar-item" href="./index.php" style="border-left: 1px solid white;">
                 Accueil
               </a>
 
@@ -454,8 +470,8 @@
                                    
                                
                                                        
-                            }}
-                        else{
+                              } 
+                        else {
                              $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
                              $stmt = $pdo->prepare("SELECT composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg, configurations.nomconfig AS nom
                              FROM composants_cpu
@@ -464,18 +480,24 @@
                              JOIN composants_boitier ON composants_boitier.id_comp = tj_config_comp.id_boitier
                              JOIN configurations ON configurations.id_config = tj_config_comp.id_config
                              WHERE tj_config_comp.is_selected = 1 or tj_config_comp.is_selected = 2 or tj_config_comp.is_selected = 3 order by tj_config_comp.is_selected ;");
-                            echo'<div class="columns" style="margin:15px">';
+                            echo'<div class="columns" style="margin:15px;gap:3vh">';
                             $stmt->execute();
                             while ($row = $stmt->fetch()) {
-                                echo'<div id="config_acc" class="column">
+                              
+                                echo'
+                                <div class="column" id="card">
+                                  <div class="card-details">
+                                    
+                                  
+                                <div id="config_acc" >
                                 <div class="title-3"><b>'.$row['nom'].'</b></div>
 
-                                <figure class="image is-256x256">
+                               
 
-                                <img style="mix-blend-mode: multiply;"
+                                <img class="img_boitier" style="mix-blend-mode: multiply;"
                                     src="'.$row['boitierimg'].'">
                                     
-                                </figure>
+                               
                                   <span>
                                       <span class="liste">
                                       <img class="icon" src="./images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
@@ -489,13 +511,63 @@
                                       </span>
               
                                   </span>
-                                <button class="prebuild">Voir ></button>
                             </div>
+                            </div>
+                                  <button class="card-button">+ Ajouter</button>
+                                </div>
                             
                             ';
 
                             }
-                        }
+                        }} else {
+                          $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+                          $stmt = $pdo->prepare("SELECT composants_cpu.name AS cpu, composants_gpu.name AS gpu,composants_boitier.name as boitier,composants_boitier.img as boitierimg, configurations.nomconfig AS nom
+                          FROM composants_cpu
+                          JOIN tj_config_comp ON composants_cpu.id_comp = tj_config_comp.id_cpu
+                          JOIN composants_gpu ON composants_gpu.id_comp = tj_config_comp.id_gpu
+                          JOIN composants_boitier ON composants_boitier.id_comp = tj_config_comp.id_boitier
+                          JOIN configurations ON configurations.id_config = tj_config_comp.id_config
+                          WHERE tj_config_comp.is_selected = 1 or tj_config_comp.is_selected = 2 or tj_config_comp.is_selected = 3 order by tj_config_comp.is_selected ;");
+                         echo'<div class="columns" style="margin:15px;gap:3vh">';
+                         $stmt->execute();
+                         while ($row = $stmt->fetch()) {
+                           
+                             echo'
+                             <div class="column" id="card">
+                               <div class="card-details">
+                                 
+                               
+                             <div id="config_acc" >
+                             <div class="title-3"><b>'.$row['nom'].'</b></div>
+
+                            
+
+                             <img class="img_boitier" style="mix-blend-mode: multiply;"
+                                 src="'.$row['boitierimg'].'">
+                                 
+                            
+                               <span>
+                                   <span class="liste">
+                                   <img class="icon" src="./images/icons/desktop.png">  <p>'.$row['boitier'].'</p>
+                                   </span>
+                                   <span class="liste">
+                                   <img class="icon" src="./images/icons/cpu.png">
+                                       <p> '.$row['cpu'].'</p>
+                                   </span>
+                                   <span class="liste">
+                                   <img class="icon" src="./images/icons/video-card.png">  <p> '.$row['gpu'].'</p>
+                                   </span>
+           
+                               </span>
+                         </div>
+                         </div>
+                               <button class="card-button">+ Ajouter</button>
+                             </div>
+                         
+                         ';
+
+                         }
+                     }
                              ?>
       </div>
       </div>
@@ -558,7 +630,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -571,7 +643,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cpu\"><b>".$row['brand']."</b> - ".$row['NAME']." - ".$row['puissance']."Ghz</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 
@@ -628,7 +700,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -641,7 +713,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_board\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 
@@ -698,7 +770,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -711,7 +783,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_ram\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 
@@ -768,7 +840,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -781,7 +853,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_gpu\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
         </li>
@@ -837,7 +909,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -850,7 +922,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_alim\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 
@@ -907,7 +979,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -920,7 +992,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_boitier\"><b>".$row['brand']."</b> - ".$row['NAME'].$row['type']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 
@@ -977,7 +1049,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -990,7 +1062,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_stockage\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 
@@ -1048,7 +1120,7 @@
                             </div></form> ";
                         }
 
-                            }}else{
+                            }else{
                         
 
                             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1061,7 +1133,7 @@
                                 echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cooler\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
                                 
                             }   
-                        } 
+                        } }
                     ?>
           </ol>
 

@@ -35,7 +35,7 @@ if (isset($_POST['envoi'])) {
 
         }else{
             
-            echo "Mauvais identifiant";
+            header("Location:../index.php");
 
         }
 

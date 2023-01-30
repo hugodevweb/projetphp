@@ -431,7 +431,9 @@
     <script src="../scripts/newcompo.js"></script>
     <script src="../scripts/main.js"></script>
     
-    
+  
+  <script src="../scripts/main.js"></script>
+  <script src="../scripts/recherche2.js"></script>
 </body>
 
 </html>
