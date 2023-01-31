@@ -105,14 +105,20 @@
                             </div>
                         </div>
                         <button style="margin-left:2%" id="btnpanier" class="button is-white">
-                            <span class="icon has-text-dark">
-                                <img src="./images/cart.gif" alt="cart">
-
-                            </span>
-                            <span href="">Panier</span>
-                        </button>
-                    
-                </div>';
+                        <span id="kart" class="icon has-text-dark">
+                          <img src="./images/cart.gif" alt="cart">
+                        </span>
+                        <span id="karttxt" href="">Panier</span>';
+            if(isset($_SESSION['count'])){
+              if($_SESSION['count']>=1){
+                       echo' <span id="count" class="badge">
+                          '; echo $_SESSION['count']; 
+                        echo'  
+                        </span>
+                      </button>';
+              }}
+                   
+              echo'</div>';
                         } else {
                             echo '
                             <div class="dropdown">
@@ -573,7 +579,7 @@
       </div>
   
 
-    <div id="pres" class="box has-text-centered has-background-white ">
+    <div id="pres2" class="box has-text-centered has-background-white ">
       <div class="title-1">Les composants populaires:</div>
       <hr class="dropdown-divider">
       <ul class="composants">
@@ -646,7 +652,8 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cpu\"><b>".$row['brand']."</b> - ".$row['NAME']." - ".$row['puissance']."Ghz</a></li>";
+                              echo "<li class='is-size-8'><a href='./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cpu'><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']." - ".$row['puissance']."Ghz</p></a></li>";
+
                                 
                             }   
                         } 
@@ -714,7 +721,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_board\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_board\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']."</p></a></li>";
                                 
                             }   
                         } 
@@ -783,7 +790,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_ram\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_ram\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']."</p></a></li>";
                                 
                             }   
                         } 
@@ -852,7 +859,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_gpu\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_gpu\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']."</p></a></li>";
                                 
                             }   
                         } 
@@ -920,7 +927,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_alim\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_alim\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']."</p></a></li>";
                                 
                             }   
                         } 
@@ -989,7 +996,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_boitier\"><b>".$row['brand']."</b> - ".$row['NAME'].$row['type']."</a></li>";
+                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_boitier\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME'].$row['type']."</p></a></li>";
                                 
                             }   
                         } 
@@ -1058,7 +1065,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_stockage\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                                echo "<p class='nomcompo'><li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_stockage\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']."</p></a></li>";
                                 
                             }   
                         } 
@@ -1128,7 +1135,7 @@
                             $stmt->execute();
 
                             while ($row = $stmt->fetch()) {
-                                echo "<li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cooler\"><b>".$row['brand']."</b> - ".$row['NAME']."</a></li>";
+                              echo "<p class='nomcompo'><li class=\"is-size-8\"><a href=\"./Pages/Composants.php?composant=".$row['id_comp']."&type=composants_cooler\"><p class='nomcompo'><b>".$row['brand']."</b> - ".$row['NAME']."</p></a></li>";
                                 
                             }   
                         } 

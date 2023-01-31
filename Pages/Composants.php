@@ -49,7 +49,7 @@ $is_available = $row['is_available'];
 
        
           <div class="navbar-brand">
-          <a class="navbar-item" href="./index.php">
+          <a class="navbar-item" href="../index.php">
             <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo">
           </a>
 </div>   <div class="navbar-start">
@@ -119,14 +119,20 @@ $is_available = $row['is_available'];
                             </div>
                         </div>
                         <button style="margin-left:2%" id="btnpanier" class="button is-white">
-                            <span class="icon has-text-dark">
-                                <img src="../images/cart.gif" alt="cart">
-
-                            </span>
-                            <span href="">Panier</span>
-                        </button>
-                    
-                </div>';
+                        <span id="kart" class="icon has-text-dark">
+                          <img src="../images/cart.gif" alt="cart">
+                        </span>
+                        <span href="">Panier</span>';
+            if(isset($_SESSION['count'])){
+              if($_SESSION['count']>=1){
+                       echo' <span id="count" class="badge">
+                          '; echo $_SESSION['count']; 
+                        echo'  
+                        </span>
+                      </button>';
+              }}
+                   
+              echo'</div>';
                         } else {
                             echo '
                             <div class="dropdown">
@@ -347,38 +353,28 @@ $is_available = $row['is_available'];
         <div id="pres" class="box has-text-centered has-background-white ">
         <div class="columns">
     <div class="column">
-        <img class="image_compo" alt="image composant" src="<?php echo $img;?>">
+    <?php if($is_available==1){
+       echo' <img class="image_compo" style="border: 4px solid green" alt="image composant" src="';echo $img;echo'">';}
+       else{
+        echo' <img class="image_compo" style="border: 4px solid red" alt="image composant" src="';echo $img;echo'">';}
+
        
+  ?>    
     </div>
     <div class="column is-four-fifths">
         <h1 style="font-family: 'Montserrat', sans-serif;" class="title is-2">
             <b style="color:blue;"><?php echo $brand;?></b> - <?php echo $name;?> 
+            <hr class="dropdown-divider">
+
         </h1>
-        <?php if($is_available==1){
+        <?php 
             echo '<div class="icon-text ">
-            <div class="imgcompo">
-                <span class="icon has-text-success">
-                    <img src="../images/available.png">
-                </span>
-                <span id="detailscompo" class="is-size-3">disponible</span>
-                </div>
-                <p  class="is-size-3"><b>Prix:</b> '; echo $price.'$</p>
-                <p  class="is-size-3"><b>Note:</b> '; echo $rating.'/5</p>
+            
+                <p  class="is-size-4"><b>Prix:</b> '; echo $price.'$</p>
+                <p  class="is-size-4"><b>Note:</b> '; echo $rating.'/5</p>
                  
             </div>';
-        }else {
-            echo'<div class="icon-text ">
-            <div class="imgcompo">
-                <span class="icon has-text-danger">
-                    <img src="../images/out-stock.png">
-                </span>
-                <span id="detailscompo" class="is-size-3" >Indisponible</span>
-                </div>
-                <p  class="is-size-3"><b>Prix:</b> '; echo $price.'$</p>
-                <p  class="is-size-3"><b>Note: </b>'; echo $rating.'/5</p>
-                
-            </div>';
-        }
+
         ?>
         
         </div>
@@ -488,6 +484,16 @@ if($is_available==1){
             </form>
           </div>
         </div>';
+      }else{
+        echo'
+        <div class="column">
+        <form  action ="./sup_panier.php?compo='.$compo.'&type='.$type.'" method="POST" > 
+        <button value="'.$compo.'" id="btnsuppan" class="button is-danger is-fullwidth" > Retirer Le cpu actuel du panier</button>
+        </form>
+      </div>';
+
+
+
       }
     }else{
       echo'<div class="column">

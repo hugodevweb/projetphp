@@ -86,7 +86,8 @@ border-bottom-right-radius: 20px;
 }
 .Like>button {
     border: unset;
-    background-color: unset;}
+    background-color: unset;
+cursor: pointer;}
 
 .liste {
     margin-left:unset

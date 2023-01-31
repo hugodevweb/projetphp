@@ -103,14 +103,20 @@
                             </div>
                         </div>
                         <button style="margin-left:2%" id="btnpanier" class="button is-white">
-                            <span id="kart" class="icon has-text-dark">
-                                <img src="../images/cart.gif" alt="cart">
-
-                            </span>
-                            <span href="">Panier</span>
-                        </button>
-                    
-                </div>';
+                        <span id="kart" class="icon has-text-dark">
+                          <img src="../images/cart.gif" alt="cart">
+                        </span>
+                        <span href="">Panier</span>';
+            if(isset($_SESSION['count'])){
+              if($_SESSION['count']>=1){
+                       echo' <span id="count" class="badge">
+                          '; echo $_SESSION['count']; 
+                        echo'  
+                        </span>
+                      </button>';
+              }}
+                   
+              echo'</div>';
                         } else {
                             echo '
                             <div class="dropdown">

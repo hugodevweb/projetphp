@@ -48,13 +48,15 @@
     margin-bottom: 10vh;
   }
   #pres2{
+    width: 71vw;
     margin-top: 7vh;
-    margin-left:8vw ;
+    margin-left: 16.5VW;
     margin-right: 8vw;
     border-radius: 0.5vw;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
     margin-bottom: 10vh;
+    padding-bottom: 4vh;
   }
 
  
@@ -105,4 +107,7 @@ position: relative;
 }
 .img_boitier{
   width: 10vw;
+}
+.nomcompo{
+  width: 13.5vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;    text-align: left;
 }

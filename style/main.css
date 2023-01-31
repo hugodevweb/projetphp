@@ -66,6 +66,23 @@
 button {
   transition: all 0.2s ease-in-out;
 }
+#btnpanier{
+  position: relative;
+  
+  
+}
+#btnpanier .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+.badge{
+  font-size: 10px;
+}
 
 #btnpanier:hover {
 
@@ -74,7 +91,7 @@ button {
   
 }
 
-#btnpanier:hover span {
+#btnpanier:hover #karttxt {
   text-decoration: underline;
   transition: color 0.2s ease-in-out;
 }
@@ -155,13 +172,14 @@ border: 2px solid black;
 
 .composants>li {
   display: inline-block;
-  width: 23%;
-  margin: .88%;
-  min-height: 230px;
-  padding: 10px;
-  border: 2px solid #E1E1E1;
-  vertical-align: top;
-  min-height: 42vh;
+    width: 15vw;
+    margin: .88%;
+    min-height: 230px;
+    padding: 10px;
+    border: 2px solid #E1E1E1;
+    vertical-align: top;
+    min-height: 29vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   
   
 }

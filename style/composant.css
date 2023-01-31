@@ -1,7 +1,4 @@
-.image_compo{
-        
-    border: 2px solid black;
-}
+
 .content>p{
     font-size: large;
 margin:unset}
@@ -11,7 +8,9 @@ margin:unset}
 
 div.icon-text {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    gap: 7vw;
+    margin-left: 3.2vw;
 }
 .imgcompo{
     margin-left: -4.2vw;
