@@ -133,7 +133,7 @@
        $req = $bdd->prepare($sql); 
        $req ->execute();
      
-       for($compteur = ;$donne = $req -> fetch(); $compteur ++)
+       for($compteur = 1;$donne = $req -> fetch(); $compteur ++)
                     {
                         $sql = "SELECT * FROM composants_cpu where id_comp = $compteur";  
                         $req = $bdd->prepare($sql); 

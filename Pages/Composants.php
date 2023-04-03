@@ -460,7 +460,7 @@ if($is_available==1){
     echo'
     <div class="columns">
     <div class="column">
-    <form  action ="./Pages/ajout_compo_config.php" > 
+    <form  action ="./ajout_compo_config.php" > 
     <button value="'.$compo.'" id="btnajout" class="button is-success is-fullwidth">+ Ajouter a ma configuration</button>
     </form>
     <!-------------Message succès-------------->
