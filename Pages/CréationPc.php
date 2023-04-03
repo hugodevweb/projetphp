@@ -18,7 +18,7 @@
         <div class="header-main">
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="../index.php">
+                    <a class="navbar-item" href="#">
                         <img id="logo" src="../images/diggit.png" width="200px" height="auto" alt="Bulma logo">
                     </a>
 
@@ -80,7 +80,7 @@
                                 Acceuil
                             </a>
 
-                            <a class="navbar-item" href="./CréationPc.php">
+                            <a class="navbar-item" href="CréationPc.php">
                                 Creer une configuration
                             </a>
 
@@ -103,8 +103,9 @@
 
 
     <!---------------------Création pc--------------------------------->
-    <div>
-    <button id="btn" class="button is-link">Board</button>
+    <div class="columns">
+    <div class="column">
+    <button id="btn" class="button is-link" data-target="#modal-id" data-toggle="modal">Ajouter un processeur</button>
 
     <div class="modal" id="modal-id">
         <div class="modal-background"></div>
@@ -128,25 +129,26 @@
        $compteur = 1;
        $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
     
-       $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+       $sql = "SELECT * FROM composants_cpu where id_comp = $compteur";
        $req = $bdd->prepare($sql); 
        $req ->execute();
-       while($donne = $req -> fetch())
+     
+       for($compteur = ;$donne = $req -> fetch(); $compteur ++)
                     {
-                        echo "<tr>";
-                        echo "<td>".$donne['name']."</option> ";
-                        echo "<td>".$donne['price']."</option> ";
-                        echo "<td>".$donne['brand']."</option> ";
-                        echo "<td>".$donne['ram']."</option> ";
-                        echo "<td>   <form method='post' action='CréationPc.php'>
-                        <input type='submit' name='button1' 
-                            value='Button1'/></form> </td>";
-                            $_SESSION['name']=$donne['name'];
-                            $_SESSION['price']=$donne['price'];
-                        $compteur = $compteur + 1;
-                        $sql = "SELECT * FROM composants_board where id_comp = $compteur";
+                        $sql = "SELECT * FROM composants_cpu where id_comp = $compteur";  
                         $req = $bdd->prepare($sql); 
                         $req ->execute();
+                        echo "<tr>";
+                        echo "<td>".$donne['name']."</td> ";
+                        echo "<td>".$donne['price']."</td> ";
+                        echo "<td>".$donne['brand']."</td> ";
+                        echo "<td>".$donne['puissance']."</td> ";
+                        echo "<td>   <form method='post' action='CréationPc_action.php'>
+                        <input type='submit' name='Ajouter' 
+                            value='Ajouter'/>
+                            </form> </td>";
+                            $_POST['name']=$donne['name'];
+                            $_POST['price']=$donne['price'];
                     }
 ?>
                     </tbody>
@@ -157,7 +159,8 @@
         </div>
     </div>
     </div>
-    
+    </div>
+   
     <!-------------Footer-------------->
     <div class="footer">
         <div class="container">

@@ -1,3 +1,10 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -7,6 +14,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Dumping database structure for diggit.me
+CREATE DATABASE IF NOT EXISTS `diggit.me` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `diggit.me`;
+
+-- Dumping structure for table diggit.me.adresse
 CREATE TABLE IF NOT EXISTS `adresse` (
   `id_adresse` varchar(50) NOT NULL DEFAULT 'AUTO_INCREMENT',
   `Rue` varchar(50) DEFAULT NULL,
@@ -16,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   CONSTRAINT `FK__users` FOREIGN KEY (`id_adresse`) REFERENCES `users` (`mailu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Dumping data for table diggit.me.adresse: ~8 rows (approximately)
 INSERT INTO `adresse` (`id_adresse`, `Rue`, `codepostal`, `ville`) VALUES
 	('a@gmail.com', '54 dsgf', '4455', 'sdfkqsdkf'),
 	('admin@diggit.fr', '25 rue du four', '44380', 'Nantes'),
@@ -26,6 +40,7 @@ INSERT INTO `adresse` (`id_adresse`, `Rue`, `codepostal`, `ville`) VALUES
 	('jesuisunclient@gmail.com', '25 rue du vieux four', '78442', 'chauray'),
 	('tu@gmail.com', '25 rue du vieux four', '79255', 'saint-léger');
 
+-- Dumping structure for table diggit.me.client
 CREATE TABLE IF NOT EXISTS `client` (
   `mailc` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mdp` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -33,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   PRIMARY KEY (`mailc`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Dumping data for table diggit.me.client: ~8 rows (approximately)
 INSERT INTO `client` (`mailc`, `mdp`, `statut`) VALUES
 	('a@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
 	('admin@diggit.fr', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'A'),
@@ -43,6 +59,7 @@ INSERT INTO `client` (`mailc`, `mdp`, `statut`) VALUES
 	('jesuisunclient@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C'),
 	('tu@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'C');
 
+-- Dumping structure for table diggit.me.composants_alim
 CREATE TABLE IF NOT EXISTS `composants_alim` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -57,11 +74,13 @@ CREATE TABLE IF NOT EXISTS `composants_alim` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_alim: ~3 rows (approximately)
 INSERT INTO `composants_alim` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `is_modulable`, `wattage`, `is_selected`) VALUES
 	(1, 110.00, 5, 'Corsair', 'Corsair CX750F RGB 80PLUS Bronze ', 'https://drive.google.com/uc?export=view&id=1oXhUCteS266hJmRzKXHZ1jf03eGxjHvL', 1, 2, 750, 1),
 	(2, 669.95, 5, 'Corsair', 'Corsair AX1600i 80PLUS Titanium', 'https://drive.google.com/uc?export=view&id=1S5y7x3P73Rp_kMoQQh3533VhWu4OUdU9', 1, 2, 1600, 1),
 	(3, 259.94, 5, 'Seasonic', 'Seasonic PRIME TX-750', 'https://drive.google.com/uc?export=view&id=1vXR_Qnzl-YCgB3Gl2iEwfjdkEhiAYvSk', 1, 2, 750, 1);
 
+-- Dumping structure for table diggit.me.composants_board
 CREATE TABLE IF NOT EXISTS `composants_board` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -76,12 +95,14 @@ CREATE TABLE IF NOT EXISTS `composants_board` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_board: ~4 rows (approximately)
 INSERT INTO `composants_board` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `ram`, `socket`, `is_selected`) VALUES
 	(18, 200.00, 4, 'MSI', 'MPG Z490 Gaming Edge WiFi', 'https://drive.google.com/uc?export=view&id=1pKXDy3s9xTu7Ahk8DxF6G4ExgAvb9Fyw', 1, 16, 'LGA 1200', 1),
 	(19, 400.00, 5, 'Gigabyte', 'AORUS X570 Master', 'https://drive.google.com/uc?export=view&id=1FXQmgEbQlrHgMavGvw3JCw-lUS5MB-6Q', 1, 32, 'AM4', 1),
 	(20, 200.00, 5, 'ASUS', 'ROG Strix B550-F Gaming (Wi-Fi 6)', 'https://drive.google.com/uc?export=view&id=1IoXjrw14_hDvbBr9OdaE9fJnMPZFl3NI', 1, 16, 'AM4', 0),
 	(21, 100.00, 4, 'ASRock', 'B450M Pro4', 'https://drive.google.com/uc?export=view&id=19HDX3F4EP47jqNxAggRh6lKrsEaJOgaQ', 1, 8, 'AM4', 1);
 
+-- Dumping structure for table diggit.me.composants_boitier
 CREATE TABLE IF NOT EXISTS `composants_boitier` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -95,12 +116,14 @@ CREATE TABLE IF NOT EXISTS `composants_boitier` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_boitier: ~4 rows (approximately)
 INSERT INTO `composants_boitier` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `type`, `is_selected`) VALUES
 	(1, 104.99, 4, 'Corsair', '4000D Airflow', 'https://drive.google.com/uc?export=view&id=1fpbOgFRmIfknbrwj9VYlUzRwuWvhiwcz', 1, 'ATX Mid Tower', 0),
 	(2, 129.99, 5, 'Corsair', 'iCUE 4000X RGB', 'https://drive.google.com/uc?export=view&id=1aTG6fzOgvXkfLwUKuu_iKayreqiaUwsd', 1, 'ATX Mid Tower', 1),
 	(3, 89.99, 5, 'NZXT', 'H510 Flow', 'https://drive.google.com/uc?export=view&id=1GtJ99Esono9hzyB9riMo-S4rHLzinfGo', 0, 'ATX Mid Tower', 1),
 	(4, 89.99, 5, 'NZXT', 'H510 Flow White', 'https://drive.google.com/uc?export=view&id=1pVKb0oi8w14WIobXZSM10TCDf7V4zGJf', 1, 'ATX Mid Tower', 1);
 
+-- Dumping structure for table diggit.me.composants_cooler
 CREATE TABLE IF NOT EXISTS `composants_cooler` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -117,11 +140,13 @@ CREATE TABLE IF NOT EXISTS `composants_cooler` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_cooler: ~3 rows (approximately)
 INSERT INTO `composants_cooler` (`id_comp`, `price`, `rating`, `brand`, `name`, `is_available`, `img`, `taille`, `son`, `type`, `speed`, `is_selected`) VALUES
 	(1, 44.95, 5, 'Be Quiet !', 'be quiet! Pure Rock 2 Black', 1, 'https://drive.google.com/uc?export=view&id=1R2zIJiksP9l9T8JlZ0xdbE5KH5iA6w05', '120 mm', '26.8 dB', 'VentiRad', '1500 RPM', 1),
 	(2, 97.95, 5, 'Be Quiet !', 'be quiet! Dark Rock PRO 4', 1, 'https://drive.google.com/uc?export=view&id=1YFfdv4knuOB3bzMKwDikgLr_YteNvyKh', '135 mm', '24.3 dB', 'VentiRad', '1500 RPM', 1),
 	(3, 299.95, 4, 'MSI', 'MSI MEG CORELIQUID S360', 1, 'https://drive.google.com/uc?export=view&id=1kIOyZJ35D1spIwKFGrGF7eRuixoXEmDa', '120 mm', '22.7 dB', 'waterC', '200 RPM', 1);
 
+-- Dumping structure for table diggit.me.composants_cpu
 CREATE TABLE IF NOT EXISTS `composants_cpu` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -137,6 +162,7 @@ CREATE TABLE IF NOT EXISTS `composants_cpu` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_cpu: ~6 rows (approximately)
 INSERT INTO `composants_cpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `wattage`, `nbcore`, `puissance`, `is_selected`) VALUES
 	(1, 209.38, 5, 'AMD', 'Ryzen 5 5600X', 'https://drive.google.com/uc?export=view&id=1Ok1FoNKMwdzJQYy9tU9fqr6Co9nI6vPX', 0, 65, 6, 3.7, 0),
 	(2, 134.84, 5, 'AMD', 'Ryzen 5 5600', 'https://drive.google.com/uc?export=view&id=1-A-b3yAZdF_ltquko_L-8wOc7Yv1SWe4', 1, 65, 6, 3.5, 1),
@@ -145,6 +171,7 @@ INSERT INTO `composants_cpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `im
 	(5, 450.00, 5, 'Intel', 'Core i7-9700K', 'https://drive.google.com/uc?export=view&id=1xm0tCg3eQjRadlko2EUS0D3Cmuz4qBmj', 1, 95, 8, 3.6, 1),
 	(6, 8390.00, 5, 'AMD', 'Threadripper 3990X', 'https://drive.google.com/uc?export=view&id=1RwcrOEYWcrdT7jICodUf5HKYNid6hJ5z', 1, 280, 64, 2.9, 1);
 
+-- Dumping structure for table diggit.me.composants_gpu
 CREATE TABLE IF NOT EXISTS `composants_gpu` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -159,6 +186,7 @@ CREATE TABLE IF NOT EXISTS `composants_gpu` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_gpu: ~6 rows (approximately)
 INSERT INTO `composants_gpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `ram`, `clock`, `is_available`, `is_selected`) VALUES
 	(1, 500.00, 4, 'Aorus', 'Gigabyte GTX 1080Ti', ' https://drive.google.com/uc?export=view&id=13jueBPF680fgvWnK2JImyf13PhgjsFBS', 11, 1607, 1, 1),
 	(2, 700.00, 5, 'NVIDIA', ' GeForce RTX 3080', ' https://drive.google.com/uc?export=view&id=1G15uq7aSegWRMeY3IEesiv-Kkf7nUddY', 10, 1440, 1, 0),
@@ -167,6 +195,7 @@ INSERT INTO `composants_gpu` (`id_comp`, `price`, `rating`, `brand`, `name`, `im
 	(5, 432.00, 4, 'AMD', ' Radeon RX 5700 XT', ' https://drive.google.com/uc?export=view&id=1yISIheYIGKs0QExWuAExO9-UMVv33fPc', 11, 1605, 0, 0),
 	(6, 200.00, 3, 'INTEL', 'Iris Xe', ' https://drive.google.com/uc?export=view&id=1OCjgzz5LcxZ7OkH1gl6h_OvUjjj3zsfb', 4, 1200, 1, 0);
 
+-- Dumping structure for table diggit.me.composants_ram
 CREATE TABLE IF NOT EXISTS `composants_ram` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -182,6 +211,7 @@ CREATE TABLE IF NOT EXISTS `composants_ram` (
   PRIMARY KEY (`id_comp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_ram: ~6 rows (approximately)
 INSERT INTO `composants_ram` (`id_comp`, `price`, `rating`, `brand`, `name`, `img`, `is_available`, `modules`, `capacite`, `speed`, `is_selected`) VALUES
 	(1, 130.96, 5, 'Asus', 'TUF GAMING B550-PLUS', 'https://drive.google.com/uc?export=view&id=1fJRYDdCvMWNFVd-w-qe9-j3c-_xYOYMV', 1, 'DDR4', '32', '3200', 1),
 	(2, 72.95, 5, 'Kingston', ' FURY Beast', 'https://drive.google.com/uc?export=view&id=1OJDqNmFOgLyzuANgyQDVOSuCu4fijTff', 1, 'DDR4', '16', '3200 ', NULL),
@@ -190,6 +220,7 @@ INSERT INTO `composants_ram` (`id_comp`, `price`, `rating`, `brand`, `name`, `im
 	(16, 75.00, 4, 'G.Skill', 'Ripjaws V 16 Go (2 x 8 Go) ', 'https://drive.google.com/uc?export=view&id=1UgVigx-EbKUKO3kcAE9wz4QHSULWyuut', 1, 'DDR4', '16', '3200', NULL),
 	(17, 50.00, 4, 'HyperX ', 'Fury 16 Go (2 x 8 Go) ', 'https://drive.google.com/uc?export=view&id=1b9JGPtyB-DkFgNWXGjN7LhYFDl3Oz4qZ', 1, 'DDR4', '16', '2400', NULL);
 
+-- Dumping structure for table diggit.me.composants_stockage
 CREATE TABLE IF NOT EXISTS `composants_stockage` (
   `id_comp` int NOT NULL AUTO_INCREMENT,
   `price` decimal(10,2) NOT NULL,
@@ -205,16 +236,20 @@ CREATE TABLE IF NOT EXISTS `composants_stockage` (
   PRIMARY KEY (`id_comp`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.composants_stockage: ~3 rows (approximately)
 INSERT INTO `composants_stockage` (`id_comp`, `price`, `rating`, `brand`, `img`, `name`, `capacite`, `type_comp`, `speed`, `is_available`, `is_selected`) VALUES
 	(1, 99.95, 5, 'Samsung', 'https://drive.google.com/uc?export=view&id=1PvVTmAYms5yx8SEOl4ps_7gK473VWaab', 'Samsung SSD 980 M.2  NVMe ', '1000', 'SSD', '3500', 1, 1),
 	(2, 154.95, 5, 'Samsung', 'https://drive.google.com/uc?export=view&id=1173jy4egWBl1feYnv5NDAGaOBV7LqtCA', 'Samsung SSD 980 PRO M.2  NVMe ', '1000', 'SSD', '7000', 1, 1),
 	(3, 119.95, 5, 'AORUS', 'https://drive.google.com/uc?export=view&id=1y1LQFG6atyLdQFQhdnOKYBwaXYUd1dzf', 'AORUS NVMe Gen4 SSD', '500', 'SSD', '5000', 1, 1);
 
+-- Dumping structure for view diggit.me.config
+-- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `config` (
 	`nomconfig` VARCHAR(50) NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`is_selected` INT(10) NULL
 ) ENGINE=MyISAM;
 
+-- Dumping structure for table diggit.me.configurations
 CREATE TABLE IF NOT EXISTS `configurations` (
   `id_config` int NOT NULL AUTO_INCREMENT,
   `id_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -225,6 +260,7 @@ CREATE TABLE IF NOT EXISTS `configurations` (
   CONSTRAINT `FK_configurations_client` FOREIGN KEY (`id_client`) REFERENCES `client` (`mailc`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Dumping data for table diggit.me.configurations: ~5 rows (approximately)
 INSERT INTO `configurations` (`id_config`, `id_client`, `date`, `nomconfig`) VALUES
 	(5, 'djsnake@gmail.com', '2023-01-13 21:20:24', 'Predator'),
 	(6, 'jesuisunclient@gmail.com', '2023-01-13 21:20:24', 'Hyper x'),
@@ -232,6 +268,28 @@ INSERT INTO `configurations` (`id_config`, `id_client`, `date`, `nomconfig`) VAL
 	(8, 'guigui@gmail.Com', '2023-01-13 21:20:24', 'Asus'),
 	(9, 'admin@diggit.fr', '2023-01-20 00:50:29', 'Nvidia');
 
+-- Dumping structure for table diggit.me.configurationsuser
+CREATE TABLE IF NOT EXISTS `configurationsuser` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) DEFAULT NULL,
+  `prix` int DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table diggit.me.configurationsuser: ~9 rows (approximately)
+INSERT INTO `configurationsuser` (`id`, `nom`, `prix`, `type`) VALUES
+	(27, 'test', 1, NULL),
+	(28, 'test', 1, NULL),
+	(29, 'test', 1, NULL),
+	(30, 'test', 1, NULL),
+	(31, 'test', 1, NULL),
+	(32, 'test', 1, NULL),
+	(33, 'test', 1, NULL),
+	(34, 'test', 1, NULL),
+	(35, 'test', 1, NULL);
+
+-- Dumping structure for table diggit.me.likes
 CREATE TABLE IF NOT EXISTS `likes` (
   `id_config` int NOT NULL,
   `id_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -241,6 +299,7 @@ CREATE TABLE IF NOT EXISTS `likes` (
   CONSTRAINT `FK__configurations` FOREIGN KEY (`id_config`) REFERENCES `configurations` (`id_config`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Dumping data for table diggit.me.likes: ~12 rows (approximately)
 INSERT INTO `likes` (`id_config`, `id_client`) VALUES
 	(5, 'a@gmail.com'),
 	(6, 'a@gmail.com'),
@@ -255,6 +314,7 @@ INSERT INTO `likes` (`id_config`, `id_client`) VALUES
 	(5, 'tu@gmail.com'),
 	(9, 'tu@gmail.com');
 
+-- Dumping structure for table diggit.me.tj_config_comp
 CREATE TABLE IF NOT EXISTS `tj_config_comp` (
   `id_config` int NOT NULL AUTO_INCREMENT,
   `id_alim` int DEFAULT NULL,
@@ -286,6 +346,7 @@ CREATE TABLE IF NOT EXISTS `tj_config_comp` (
   CONSTRAINT `FK_tj_config_comp_composants_stockage` FOREIGN KEY (`id_stockage`) REFERENCES `composants_stockage` (`id_comp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- Dumping data for table diggit.me.tj_config_comp: ~5 rows (approximately)
 INSERT INTO `tj_config_comp` (`id_config`, `id_alim`, `id_board`, `id_boitier`, `id_cooler`, `id_cpu`, `id_gpu`, `id_stockage`, `id_ram`, `is_selected`) VALUES
 	(5, 1, 19, 4, 1, 3, 1, 3, 15, 0),
 	(6, 1, 19, 1, 1, 1, 1, 3, 15, 3),
@@ -293,6 +354,7 @@ INSERT INTO `tj_config_comp` (`id_config`, `id_alim`, `id_board`, `id_boitier`, 
 	(8, 1, 19, 3, 1, 1, 1, 3, 15, 1),
 	(9, 2, 20, 2, 2, 2, 5, 2, 15, 0);
 
+-- Dumping structure for table diggit.me.users
 CREATE TABLE IF NOT EXISTS `users` (
   `mailu` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
   `pseudo` varchar(50) DEFAULT NULL,
@@ -302,6 +364,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`mailu`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Dumping data for table diggit.me.users: ~8 rows (approximately)
 INSERT INTO `users` (`mailu`, `pseudo`, `prenom`, `nom`, `telephone`) VALUES
 	('a@gmail.com', 'pseudo', 'pre', 'nom', '015'),
 	('admin@diggit.fr', 'Admin', 'admin', 'admin', '07844545454'),
@@ -312,8 +375,10 @@ INSERT INTO `users` (`mailu`, `pseudo`, `prenom`, `nom`, `telephone`) VALUES
 	('jesuisunclient@gmail.com', 'titi78', 'Martin', 'Garix', '07852235'),
 	('tu@gmail.com', 'psuedo', 'prenom', 'nom', '078293258');
 
+-- Dumping structure for view diggit.me.config
+-- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `config`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `config` AS select `configurations`.`nomconfig` AS `nomconfig`,`tj_config_comp`.`is_selected` AS `is_selected` from (`configurations` join `tj_config_comp` on((`tj_config_comp`.`id_config` = `configurations`.`id_config`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `config` AS select `configurations`.`nomconfig` AS `nomconfig`,`tj_config_comp`.`is_selected` AS `is_selected` from (`configurations` join `tj_config_comp` on((`tj_config_comp`.`id_config` = `configurations`.`id_config`)));
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
