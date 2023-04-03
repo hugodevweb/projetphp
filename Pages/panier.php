@@ -1,83 +1,92 @@
-<html>
- <head>
- <meta charset="utf-8">
- <link href="../style/panier.css" rel="stylesheet">
- </head>
- <body>
+<html lang="en">
 
-	<div class="ContainerPanier">
-   	   <div class="Header">
-   	   	<h3 class="Heading">Mon panier</h3>
-			<div class="about">
-				<h1 class="title">3060Ti</h1>
-				<h3 class="subtitle">Gigabyte</h3>
-			</div>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./style/panier.css" rel="stylesheet">
+  <title>Mon panier</title>
+</head>
 
-			<h5 class="supprimer">Supprimer</h5>
-
-			<div class="counter">
-						<input type="submit" name="envoi" class="" value="+">
-						<input type="submit" name="envoi" class="" value="-">
-					</div>
-   	   	 <h5 class="delete">Tout supprimer</h5> 
-   	   </div>
-	</div>
-
-
-	<div class="ContainerPrix">
-   	   <div class="Header">
-		  <div class="payement">
-                        <label class="radio">
-                            <input type="radio" name="is_available" value="1">
-                            CB
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="is_available" value="0">
-                            Paypal
-                        </label>
-                    </div>
-   	   </div>
-	</div>
-		  <!-- <div class="Cart-Items">
-   	   	  <div class="image-box">
-
-   	   	  </div>
-   	   	  <div class="about">
-   	   	  	<h1 class="title">3060Ti</h1>
-   	   	  	<h3 class="subtitle">Gigabyte</h3>
-   	   	  </div>
-
-
-   	   	  <div class="counter">
-			<input type="submit" name="envoi" class="" value="+">
-   	   	  	<input type="submit" name="envoi" class="" value="-">
-   	   	  </div>
-
-
-   	   	  <div class="prices">
-   	   	  	<div class="amount">prix</div>
-   	   	  	<div class="remove"><u>Supprimer</u></div>
-   	   	  </div>
-   	   </div>
-
-   	   <div class="Cart-Items">
-   	   	  <div class="image-box">
-
-   	   	  </div>
-   	   	  <div class="about">
-   	   	  	<h1 class="title">i5-12400F</h1>
-   	   	  	<h3 class="subtitle">Intel</h3>
-
-   	   	  </div>
-   	   	  <div class="counter">
-			<input type="submit" name="envoi" class="" value="+">
-			<input type="submit" name="envoi" class="" value="-">
-   	   	  </div>
-   	   	  <div class="prices">
-   	   	  	<div class="amount">prix</div>
-   	   	  	<div class="remove"><u>Supprimer</u></div>
-   	   	  </div>
-   	   </div> --> 
-   
+<body>
+  <main>
+    <div class="basket">
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Produit</li>
+          <li class="price">Prix</li>
+          <li class="quantity">Quantité</li>
+          <li class="subtotal">Total</li>
+        </ul>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="http://placehold.it/120x166" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> x NomMarque</strong> NomDuProduit</h1>
+            <p><strong>Detail du produit</strong></p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity">
+          <input type="number" value="4" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">104.00</div>
+        <div class="remove">
+          <button>Supprimer</button>
+        </div>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="http://placehold.it/120x166" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> x NomMarque</strong> NomDuProduit</h1>
+            <p><strong>Detail du produit</strong></p>
+          </div>
+        </div>
+        <div class="price">26.00</div>
+        <div class="quantity">
+          <input type="number" value="4" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">104.00</div>
+        <div class="remove">
+          <button>Supprimer</button>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Votre Panier</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Total</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="summary-promo hide">
+          </div>
+        </div>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Moyen de paiement</option>
+             <option value="collection">CB</option>
+             <option value="first-class">Paypal</option>
+             <option value="second-class">Bitcoin</option>
+          </select>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">130.00</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">Payer</button>
+          
+        </div>
+      </div>
+    </aside>
+  </main>
 </body>
+
 </html>
