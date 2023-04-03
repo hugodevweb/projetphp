@@ -179,111 +179,111 @@
                                     <div class="modal-content">
                                     <div class ="container_inscription">
             
-            <form class = "form_inscription" action="./Pages/inscription_action.php" method="POST">
-            <h1>Mon inscription</h1>
-                <div class="field">
-                <label class="label">Votre Email</label>
-                    <div class="control">
-                      <input class="input" name="mail" type="email" placeholder="Votre email">
-                    </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Votre mot de passe</label>
-                    <div class="control">
-                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
-                    </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Confirmer votre mot de passe</label>
-                    <div class="control">
-                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
-                    </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Pseudo</label>
-                      <div class="control">
-                        <input class="input" name="pseudo" type="text" placeholder="Votre pseudo">
-                      </div>
-                  </div>
-                  
-                 
-                  <div class="field">
-                  <label class="label">Nom</label>
-                      <div class="control">
-                        <input class="input" name="nom" type="text" placeholder="Votre email">
-                      </div>
-                  </div>
-
-                  <div class="field">
-                    <label class="label">Prénom</label>
-                      <div class="control">
-                        <input class="input" name="prenom" type="text" placeholder="Votre mot de passe">
-                      </div>
-                  </div>
-
-
-                    <div class="field">
-                       
-                        <div class="control">
-                            <label class="radio">
-                                <input type="radio" name="genre" value="Homme">
-                                Homme
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="genre" value="Femme">
-                                Femme
-                            </label>
-                        </div>
-                  
-
-                  <div class="field">
-                    <label class="label">Numéro de télephone</label>
-                      <div class="control">
-                        <input class="input" name="tel" type="tel" placeholder="Votre mot de passe">
-                      </div>
-                  </div>
-
-                  <div class="field">
-                    <label class="label">Adresse</label>
-                      <div class="control">
-                        <input class="input" name="adresse" type="text" placeholder="Votre mot de passe">
-                      </div>
-                  </div> 
-
-
-                  
-                  <div class="columns">
-                    <div class="column is-two-fifths">
-                        <label class="label">Code postal</label>
-                        <div class="control">
-                          <input class="input" name="codepostal" type="text" placeholder="Code postal">
-                        </div>
-                    </div>
-                    <div class="column"></div>
-                    <div class="column is-two-fifths"><label class="label">Ville</label>
-                        <div class="control">
-                          <input class="input" name="ville" type="text" placeholder="Ville">
-                        </div>
-                    </div>
-                    
-                 
-            </div>
-    
-    
-      
-    <div id="btn_inscription" class="field">
-    <button style="all: unset;"type="submit"><a class="fancy" >
-    <span class="top-key"></span>
-    <span class="text">S\'inscrire</span>
-    <span class="bottom-key-1"></span>
-    <span class="bottom-key-2"></span>
-  </a>   </button>
-       </div>
-  </div> 
-                </form>
+                                    <form class = "form_inscription" action="./Pages/inscription_action.php" method="POST">
+                                    <h1>Mon inscription</h1>
+                                        <div class="field">
+                                        <label class="label">Votre Email</label>
+                                            <div class="control">
+                                              <input class="input" name="mail" type="email" placeholder="Votre email">
+                                            </div>
+                                        </div>
+                        
+                                        <div class="field">
+                                          <label class="label">Votre mot de passe</label>
+                                            <div class="control">
+                                              <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
+                                            </div>
+                                        </div>
+                        
+                                        <div class="field">
+                                          <label class="label">Confirmer votre mot de passe</label>
+                                            <div class="control">
+                                              <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
+                                            </div>
+                                        </div>
+                        
+                                        <div class="field">
+                                          <label class="label">Pseudo</label>
+                                              <div class="control">
+                                                <input class="input" name="pseudo" type="text" placeholder="Votre pseudo">
+                                              </div>
+                                          </div>
+                                          
+                                         
+                                          <div class="field">
+                                          <label class="label">Nom</label>
+                                              <div class="control">
+                                                <input class="input" name="nom" type="text" placeholder="Votre email">
+                                              </div>
+                                          </div>
+                        
+                                          <div class="field">
+                                            <label class="label">Prénom</label>
+                                              <div class="control">
+                                                <input class="input" name="prenom" type="text" placeholder="Votre mot de passe">
+                                              </div>
+                                          </div>
+                        
+                        
+                                            <div class="field">
+                                               
+                                                <div class="control">
+                                                    <label class="radio">
+                                                        <input type="radio" name="genre" value="Homme">
+                                                        Homme
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="genre" value="Femme">
+                                                        Femme
+                                                    </label>
+                                                </div>
+                                          
+                        
+                                          <div class="field">
+                                            <label class="label">Numéro de télephone</label>
+                                              <div class="control">
+                                                <input class="input" name="tel" type="tel" placeholder="Votre mot de passe">
+                                              </div>
+                                          </div>
+                        
+                                          <div class="field">
+                                            <label class="label">Adresse</label>
+                                              <div class="control">
+                                                <input class="input" name="adresse" type="text" placeholder="Votre mot de passe">
+                                              </div>
+                                          </div> 
+                        
+                        
+                                          
+                                          <div class="columns">
+                                            <div class="column is-two-fifths">
+                                                <label class="label">Code postal</label>
+                                                <div class="control">
+                                                  <input class="input" name="codepostal" type="text" placeholder="Code postal">
+                                                </div>
+                                            </div>
+                                            <div class="column"></div>
+                                            <div class="column is-two-fifths"><label class="label">Ville</label>
+                                                <div class="control">
+                                                  <input class="input" name="ville" type="text" placeholder="Ville">
+                                                </div>
+                                            </div>
+                                            
+                                         
+                                    </div>
+                            
+                            
+                              
+                            <div id="btn_inscription" class="field">
+                            <button style="all: unset;"type="submit"><a class="fancy" >
+                            <span class="top-key"></span>
+                            <span class="text">S\'inscrire</span>
+                            <span class="bottom-key-1"></span>
+                            <span class="bottom-key-2"></span>
+                          </a>   </button>
+                               </div>
+                          </div> 
+                                        </form>
                 
     
                                     </div>
