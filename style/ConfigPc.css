@@ -61,3 +61,8 @@ tr{
 tr:nth-child(even){
  background-color: #eeeeee;
 }
+
+.modal-dialog.modal-800 {
+    width: 1500px;
+    margin: 30px auto;
+}
