@@ -2,9 +2,29 @@
 session_start();
 
 $id_cpu=$_GET['id_cpu'];
-$bdd = new PDO('mysql:host=localhost;dbname=diggit.me;charset=utf8;', "root", "");
-    $insert = $bdd->prepare("INSERT INTO tj_config_comp (id_alim,id_board,id_boitier,id_cooler,id_cpu,id_gpu,id_stockage,id_ram,is_selected) VALUES('1','19','1','1','$id_cpu','1','1','1','1')");
-    $insert -> execute();
-                            
+$_SESSION['cpu'] = $id_cpu;
+
+$id_ram=$_GET['id_ram'];
+$_SESSION['ram'] = $id_ram;
+
+
+$id_gpu=$_GET['id_gpu'];
+$_SESSION['gpu'] = $id_gpu;
+
+$id_alim=$_GET['id_alim'];
+$_SESSION['alim'] = $id_alim;
+                   
+$id_stockage=$_GET['id_stockage'];
+$_SESSION['stockage'] = $id_stockage;
+
+$id_board=$_GET['id_board'];
+$_SESSION['board'] = $id_board;
+
+$id_boitier=$_GET['id_boitier'];
+$_SESSION['boitier'] = $id_boitier;
+
+$id_cooler=$_GET['id_cooler'];
+$_SESSION['cooler'] = $id_cooler;
+
     header("location: ./CréationPc.php")
 ?>

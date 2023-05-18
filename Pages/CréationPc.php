@@ -19,9 +19,10 @@
 
 <body>
   <?php
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
     session_start();
-   
-    
+  
+  
     ?>
   <!-- -----------Premiere ligne du navbar------ -->
   <header>
@@ -338,111 +339,107 @@
 
     <?php
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $stmt = $pdo->prepare("SELECT * FROM configurations
-    JOIN tj_config_comp ON configurations.id_config = tj_config_comp.id_config
-    JOIN composants_alim ON tj_config_comp.id_alim = composants_alim.id_comp
-    JOIN composants_board ON tj_config_comp.id_board = composants_board.id_comp
-    JOIN composants_boitier ON tj_config_comp.id_boitier = composants_boitier.id_comp
-    JOIN composants_cooler ON tj_config_comp.id_cooler = composants_cooler.id_comp
-    JOIN composants_cpu ON tj_config_comp.id_cpu = composants_cpu.id_comp
-    JOIN composants_gpu ON tj_config_comp.id_gpu = composants_gpu.id_comp
-    JOIN composants_ram ON tj_config_comp.id_ram = composants_ram.id_comp
-    JOIN composants_stockage ON tj_config_comp.id_stockage = composants_stockage.id_comp
-    JOIN users ON configurations.id_client = users.mailu
-    JOIN client  ON configurations.id_client = client.mailc;");
 
     $_SESSION['id_config'] = null;
+
     $mail = $_SESSION['mail'] ;
+   
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
     $req = $pdo->prepare("SELECT id_config, nomconfig FROM configurations WHERE id_client = ? ");
     $req->execute(array($mail));
-    $_SESSION['mail'] = $mail;
   
+    $_SESSION['mail'] = $mail;
+
     while ($donne = $req->fetch()) {
    
     $_SESSION['id_config']=$donne['id_config'];
-    echo '<form method="POST" action="./Pages/CréationPc.php">
+   echo '<form method="POST" action="./Pages/CréationPc.php">
     <div class="select">
     <select id="select_config" name="config" onchange="this.form.submit()">
     <option class="is-size-8"><b>' .$donne['nomconfig']. '</b></option>
     ';
       
     }
-   
+
     echo '</select></div></form>
 
 </div>
 </div>';
     ?>
-
-
-    <div class="columns">
-        <div class="column">
-            <button id="btn_compo" class="button is-link" data-target="#modalId" data-toggle="modal" >Ajouter un processeur</button>
             <?php 
-            if ($_SESSION['id_config'] == null){
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
                 echo'';
+                                           
+                                        
+            
             }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo" class="button is-link" data-target="#modalId" data-toggle="modal" >Modifier</button>';
              $id =  $_SESSION['id_config'];
              $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
              $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_cpu c WHERE c.id_comp = t.id_cpu AND t.id_config = ?");
              $req->execute(array($id));
-              $_SESSION['id_config'] = $id ;
-              while ($donne = $req->fetch()) {
-                echo $donne['name'];                
-                }
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['cpu']))
+            {
+                echo $_SESSION['cpu'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
              
-            }
+             <div class="modal " id="modalId"  >
+             <div class="modal-dialog modal-1500">
+                 <div class="modal-background" ></div>
+                 <div class="modal-content" >
+                     <div id="container">
+                         <form>
+                             <table>
+                                 <thead>
+                                     <tr>
+                                         <td>Nom</td>
+                                         <td>Prix</td>
+                                         <td>brand</td>
+                                         <td>ram</td>
+                                         <td></td>
+                                     </tr>
+                                 </thead>
+                                 <tbody>';
+         
+                                 $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                                 $sql = "SELECT * FROM composants_cpu";
+                                 $req = $bdd->prepare($sql);
+                                 $req->execute();
+
+                                 while ($donne = $req->fetch()) {
+                                     echo "<tr>";
+                                     echo "<td>" . $donne['name'] . "</td> ";
+                                     echo "<td>" . $donne['price'] . "</td> ";
+                                     echo "<td>" . $donne['brand'] . "</td> ";
+                                     echo "<td>" . $donne['puissance'] . "</td> ";
+                                     echo "<td>   <form method='post' action='CréationPc_action.php?id_cpu=" . $donne['name'] . "'>
+                     <div id='btn_inscription' class='field'>
+                         <button style='all: unset;'type='submit'><a class='fancy' >
+                         <span class='top-key'></span>
+                         <span class='text'> Modifié</span>
+                         <span class='bottom-key-1'></span>
+                         <span class='bottom-key-2'></span>
+                       </a>   </button>
+                            </div>
+                         </form> </td>";
+                        } } 
             ?>
-            <div class="modal " id="modalId"  >
-            <div class="modal-dialog modal-1500">
-                <div class="modal-background" ></div>
-                <div class="modal-content" >
-                    <div id="container">
-                        <form>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>Nom</td>
-                                        <td>Prix</td>
-                                        <td>brand</td>
-                                        <td>ram</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_cpu";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['puissance'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php?id_cpu=" . $donne['id_comp'] . "'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                        $_POST['brand'] = $donne['brand'];
-                                        $_POST['puissance'] = $donne['puissance'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -454,60 +451,90 @@
             </div>
         </div>
     </div>
-    <div class="columns">
-        <div class="column">
-            <button id="btn_compo2" class="button is-link" data-target="#modalId2" data-toggle="modal">Ajouter une ram</button>
+    
+    <?php 
+            if ($_SESSION['id_config'] == null){
+              
+                                echo '';           
+                                        
+            
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo2" class="button is-link" data-target="#modalId2" data-toggle="modalId2" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_ram c WHERE c.id_comp = t.id_ram AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['ram']))
+            {
+                echo $_SESSION['ram'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+            echo'
+         
+    
+                <div class="modal" id="modalId2">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                        <div id="container">
+                            <form>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>Nom</td>
+                                            <td>Prix</td>
+                                            <td>brand</td>
+                                            <td>modules</td>
+                                            <td>capacite</td>
+                                            <td>speed</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+            
+                            
+                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-            <div class="modal" id="modalId2">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                    <div id="container">
-                        <form>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>Nom</td>
-                                        <td>Prix</td>
-                                        <td>brand</td>
-                                        <td>modules</td>
-                                        <td>capacite</td>
-                                        <td>speed</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                $sql = "SELECT * FROM composants_ram ";
+                                $req = $bdd->prepare($sql);
+                                $req->execute();
+
+                                while ($donne = $req->fetch()) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $donne['name'] . "</td> ";
+                                    echo "<td>" . $donne['price'] . "</td> ";
+                                    echo "<td>" . $donne['brand'] . "</td> ";
+                                    echo "<td>" . $donne['modules'] . "</td> ";
+                                    echo "<td>" . $donne['capacite'] . "</td> ";
+                                    echo "<td>" . $donne['speed'] . "</td> ";
+                                    echo "<td>   <form method='post' action='CréationPc_action.php?id_ram=" . $donne['name'] . "'>
+                    <div id='btn_inscription' class='field'>
+                        <button style='all: unset;'type='submit'><a class='fancy' >
+                        <span class='top-key'></span>
+                        <span class='text'> Ajouter</span>
+                        <span class='bottom-key-1'></span>
+                        <span class='bottom-key-2'></span>
+                      </a>   </button>
+                           </div>
+                        </form> </td>";
+                                       
+                                    
+                        } } 
+            
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_ram ";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['modules'] . "</td> ";
-                                        echo "<td>" . $donne['capacite'] . "</td> ";
-                                        echo "<td>" . $donne['speed'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -516,17 +543,38 @@
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
-    <div class="columns">
-        <div class="column">
+        </div>
+
+            <?php 
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
+                echo'';
+
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo3" class="button is-link" data-target="#modalId3" data-toggle="modalId3" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_gpu c WHERE c.id_comp = t.id_gpu AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['gpu']))
+            {
+                echo $_SESSION['gpu'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
+             
+          
             <div class="gpu">
-
-                <button id="btn_compo3" class="button is-link" data-target="#modalId3" data-toggle="modal ">Ajouter une carte graphique</button>
-
             </div>
-
-
             <div class="modal" id="modalId3">
                 <div class="modal-background"></div>
                 <div class="modal-content">
@@ -542,37 +590,38 @@
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>';
+         
+                                $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                                $sql = "SELECT * FROM composants_gpu";
+                                $req = $bdd->prepare($sql);
+                                $req->execute();
+
+                                while ($donne = $req->fetch()) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $donne['name'] . "</td> ";
+                                    echo "<td>" . $donne['price'] . "</td> ";
+                                    echo "<td>" . $donne['brand'] . "</td> ";
+                                    echo "<td>" . $donne['ram'] . "</td> ";
+                                    echo "<td>   <form method='post' action='CréationPc_action.php?id_gpu=" . $donne['name'] . "'>
+                    <div id='btn_inscription' class='field'>
+                        <button style='all: unset;'type='submit'><a class='fancy' >
+                        <span class='top-key'></span>
+                        <span class='text'> Ajouter</span>
+                        <span class='bottom-key-1'></span>
+                        <span class='bottom-key-2'></span>
+                      </a>   </button>
+                           </div>
+                        </form> </td>";
+                        } } 
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_gpu";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['ram'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -581,64 +630,84 @@
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 
-    <div class="columns">
-        <div class="column">
-            <div class="gpu">
-
-                <button id="btn_compo4" class="button is-link" data-target="#modalId4" data-toggle="modal">Ajouter une alimentation</button>
-
-            </div>
 
 
-            <div class="modal" id="modalId4">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                    <div id="container">
-                        <form>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>Nom</td>
-                                        <td>Prix</td>
-                                        <td>brand</td>
-                                        <td>ram</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
+    <?php 
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
+                echo'';
+
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo4" class="button is-link" data-target="#modalId4" data-toggle="modalId4" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_alim c WHERE c.id_comp = t.id_alim AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['alim']))
+            {
+                echo $_SESSION['alim'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
+                 <div class="modal" id="modalId4">
+                     <div class="modal-background"></div>
+                     <div class="modal-content">
+                         <div id="container">
+                             <form>
+                                 <table>
+                                     <thead>
+                                         <tr>
+                                             <td>Nom</td>
+                                             <td>Prix</td>
+                                             <td>brand</td>
+                                             <td>ram</td>
+                                             <td></td>
+                                         </tr>
+                                     </thead>
+                                     <tbody>';
+                                         
+     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+     $sql = "SELECT * FROM composants_alim";
+     $req = $bdd->prepare($sql);
+     $req->execute();
+
+     while ($donne = $req->fetch()) {
+
+         echo "<tr>";
+         echo "<td>" . $donne['name'] . "</td> ";
+         echo "<td>" . $donne['price'] . "</td> ";
+         echo "<td>" . $donne['brand'] . "</td> ";
+         echo "<td>" . $donne['wattage'] . "</td> ";
+         echo "<td>   <form method='post' action='CréationPc_action.php?id_alim=" . $donne['name'] . "'>
+<div id='btn_inscription' class='field'>
+<button style='all: unset;'type='submit'><a class='fancy' >
+<span class='top-key'></span>
+<span class='text'> Ajouter</span>
+<span class='bottom-key-1'></span>
+<span class='bottom-key-2'></span>
+</a>   </button>
+</div>
+</form> </td>";     
+
+                        } } 
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_alim";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['wattage'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -647,68 +716,89 @@
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 
-    <div class="columns">
-        <div class="column">
-            <div class="gpu">
-
-                <button id="btn_compo5" class="button is-link" data-target="#modalId5" data-toggle="modal">Ajouter un stockage</button>
-
-            </div>
 
 
-            <div class="modal" id="modalId5">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                    <div id="container">
-                        <form>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>Nom</td>
-                                        <td>Prix</td>
-                                        <td>brand</td>
-                                        <td>capacite</td>
-                                        <td>Type de stockage</td>
-                                        <td>Vitesse</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
+
+    <?php 
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
+                echo'';
+
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo5" class="button is-link" data-target="#modalId5" data-toggle="modalId5" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_stockage c WHERE c.id_comp = t.id_stockage AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['stockage']))
+            {
+                echo $_SESSION['stockage'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
+             <div class="modal" id="modalId5">
+             <div class="modal-background"></div>
+             <div class="modal-content">
+                 <div id="container">
+                     <form>
+                         <table>
+                             <thead>
+                                 <tr>
+                                     <td>Nom</td>
+                                     <td>Prix</td>
+                                     <td>brand</td>
+                                     <td>capacite</td>
+                                     <td>Type de stockage</td>
+                                     <td>Vitesse</td>
+                                     <td></td>
+                                 </tr>
+                             </thead>
+                             <tbody>';
+                                         
+                             $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                             $sql = "SELECT * FROM composants_stockage";
+                             $req = $bdd->prepare($sql);
+                             $req->execute();
+
+                             while ($donne = $req->fetch()) {
+
+                                 echo "<tr>";
+                                 echo "<td>" . $donne['name'] . "</td> ";
+                                 echo "<td>" . $donne['price'] . "</td> ";
+                                 echo "<td>" . $donne['brand'] . "</td> ";
+                                 echo "<td>" . $donne['capacite'] . "</td> ";
+                                 echo "<td>" . $donne['type_comp'] . "</td> ";
+                                 echo "<td>" . $donne['speed'] . "</td> ";
+                                 echo "<td>   <form method='post' action='CréationPc_action.php?id_stockage=" . $donne['name'] . "'>
+                 <div id='btn_inscription' class='field'>
+                     <button style='all: unset;'type='submit'><a class='fancy' >
+                     <span class='top-key'></span>
+                     <span class='text'> Ajouter</span>
+                     <span class='bottom-key-1'></span>
+                     <span class='bottom-key-2'></span>
+                   </a>   </button>
+                        </div>
+                     </form> </td>";     
+
+                        } } 
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_stockage";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['capacite'] . "</td> ";
-                                        echo "<td>" . $donne['type_comp'] . "</td> ";
-                                        echo "<td>" . $donne['speed'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -717,20 +807,36 @@
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 
 
-    <div class="columns">
-        <div class="column">
-            <div class="gpu">
+    <?php 
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
+                echo'';
 
-                <button id="btn_compo6" class="button is-link" data-target="#modalId6" data-toggle="modal">Ajouter un carte mère</button>
-
-            </div>
-
-
-            <div class="modal" id="modalId6">
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo6" class="button is-link" data-target="#modalId6" data-toggle="modalId6" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_board c WHERE c.id_comp = t.id_board AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['board']))
+            {
+                echo $_SESSION['board'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
+             <div class="modal" id="modalId6">
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <div id="container">
@@ -746,37 +852,40 @@
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>';
+                                         
+      
+                                $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                                $sql = "SELECT * FROM composants_board ";
+                                $req = $bdd->prepare($sql);
+                                $req->execute();
+
+                                while ($donne = $req->fetch()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $donne['name'] . "</td> ";
+                                    echo "<td>" . $donne['price'] . "</td> ";
+                                    echo "<td>" . $donne['brand'] . "</td> ";
+                                    echo "<td>" . $donne['ram'] . "</td> ";
+                                    echo "<td>" . $donne['socket'] . "</td> ";
+                                    echo "<td>   <form method='post' action='CréationPc_action.php?id_board=" . $donne['name'] . "'>
+                    <div id='btn_inscription' class='field'>
+                        <button style='all: unset;'type='submit'><a class='fancy' >
+                        <span class='top-key'></span>
+                        <span class='text'> Ajouter</span>
+                        <span class='bottom-key-1'></span>
+                        <span class='bottom-key-2'></span>
+                      </a>   </button>
+                           </div>
+                        </form> </td>";    
+
+                        } } 
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_board ";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['ram'] . "</td> ";
-                                        echo "<td>" . $donne['socket'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -785,19 +894,37 @@
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 
-    <div class="columns">
-        <div class="column">
-            <div class="gpu">
 
-                <button id="btn_compo7" class="button is-link" data-target="#modalId7" data-toggle="modal">Ajouter un boitier</button>
+    
+    <?php 
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
+                echo'';
 
-            </div>
-
-
-            <div class="modal" id="modalId7">
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo7" class="button is-link" data-target="#modalId7" data-toggle="modalId7" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_boitier c WHERE c.id_comp = t.id_boitier AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['boitier']))
+            {
+                echo $_SESSION['boitier'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
+             <div class="modal" id="modalId7">
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <div id="container">
@@ -812,36 +939,40 @@
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>';
+                                         
+      
+                              
+                                $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+
+                                $sql = "SELECT * FROM composants_boitier";
+                                $req = $bdd->prepare($sql);
+                                $req->execute();
+
+                                while ($donne = $req->fetch()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $donne['name'] . "</td> ";
+                                    echo "<td>" . $donne['price'] . "</td> ";
+                                    echo "<td>" . $donne['brand'] . "</td> ";
+                                    echo "<td>" . $donne['type'] . "</td> ";
+                                    echo "<td>   <form method='post' action='CréationPc_action.php?id_boitier=" . $donne['name'] . "'>
+                    <div id='btn_inscription' class='field'>
+                        <button style='all: unset;'type='submit'><a class='fancy' >
+                        <span class='top-key'></span>
+                        <span class='text'> Ajouter</span>
+                        <span class='bottom-key-1'></span>
+                        <span class='bottom-key-2'></span>
+                      </a>   </button>
+                           </div>
+                        </form> </td>";    
+
+                        } } 
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_boitier";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['type'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -849,68 +980,88 @@
                     </div>
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
+            </div>
             </div>
         </div>
     </div>
 
 
-    <div class="columns">
-        <div class="column">
-            <div class="gpu">
+    <?php 
+            if ($_SESSION['id_config'] == null && $_SESSION['mail'] == null){
+                echo'';
 
-                <button id="btn_compo8" class="button is-link" data-target="#modalId8" data-toggle="modal">Ajouter un ventilateur</button>
+            }else{
+                echo '    
+                <div class="columns">
+                <div class="column">
+                    <button id="btn_compo8" class="button is-link" data-target="#modalId8" data-toggle="modalId8" >Modifier</button>';
+             $id =  $_SESSION['id_config'];
+             $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+             $req = $pdo->prepare("SELECT name FROM tj_config_comp t , composants_cooler c WHERE c.id_comp = t.id_cooler AND t.id_config = ?");
+             $req->execute(array($id));
+            $_SESSION['id_config'] = $id ;
+            $donne = $req->fetch(); 
+        
+             if (isset($_SESSION['cooler']))
+            {
+                echo $_SESSION['cooler'];
+            }else{
+                echo $donne['name'];
+            };                
+                
+             echo'   
+             <div class="modal" id="modalId8">
+             <div class="modal-background"></div>
+             <div class="modal-content">
+                 <div id="container">
+                     <form>
+                         <table>
+                             <thead>
+                                 <tr>
+                                     <td>Nom</td>
+                                     <td>Prix</td>
+                                     <td>brand</td>
+                                     <td>taille</td>
+                                     <td>son</td>
+                                     <td>speed</td>
+                                     <td></td>
+                                 </tr>
+                             </thead>
+                             <tbody>';
+                                         
+      
+                             $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
-            </div>
+                             $sql = "SELECT * FROM composants_cooler";
+                             $req = $bdd->prepare($sql);
+                             $req->execute();
 
-            <div class="modal" id="modalId8">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                    <div id="container">
-                        <form>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>Nom</td>
-                                        <td>Prix</td>
-                                        <td>brand</td>
-                                        <td>taille</td>
-                                        <td>son</td>
-                                        <td>speed</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                             while ($donne = $req->fetch()) {
+                                 echo "<tr>";
+                                 echo "<td>" . $donne['name'] . "</td> ";
+                                 echo "<td>" . $donne['price'] . "</td> ";
+                                 echo "<td>" . $donne['brand'] . "</td> ";
+                                 echo "<td>" . $donne['taille'] . "</td> ";
+                                 echo "<td>" . $donne['son'] . "</td> ";
+                                 echo "<td>" . $donne['speed'] . "</td> ";
+                                 echo "<td>   <form method='post' action='CréationPc_action.php?id_cooler=" . $donne['name'] . "'>
+                 <div id='btn_inscription' class='field'>
+                     <button style='all: unset;'type='submit'><a class='fancy' >
+                     <span class='top-key'></span>
+                     <span class='text'> Ajouter</span>
+                     <span class='bottom-key-1'></span>
+                     <span class='bottom-key-2'></span>
+                   </a>   </button>
+                        </div>
+                     </form> </td>";  
+
+                        } } 
+            ?>
+
 
                                     <?php
 
 
-                                    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-
-                                    $sql = "SELECT * FROM composants_cooler";
-                                    $req = $bdd->prepare($sql);
-                                    $req->execute();
-
-                                    while ($donne = $req->fetch()) {
-                                        echo "<tr>";
-                                        echo "<td>" . $donne['name'] . "</td> ";
-                                        echo "<td>" . $donne['price'] . "</td> ";
-                                        echo "<td>" . $donne['brand'] . "</td> ";
-                                        echo "<td>" . $donne['taille'] . "</td> ";
-                                        echo "<td>" . $donne['son'] . "</td> ";
-                                        echo "<td>" . $donne['speed'] . "</td> ";
-                                        echo "<td>   <form method='post' action='CréationPc_action.php?id=" . $donne['id_comp'] . "'>
-                        <div id='btn_inscription' class='field'>
-                            <button style='all: unset;'type='submit'><a class='fancy' >
-                            <span class='top-key'></span>
-                            <span class='text'> Ajouter</span>
-                            <span class='bottom-key-1'></span>
-                            <span class='bottom-key-2'></span>
-                          </a>   </button>
-                               </div>
-                            </form> </td>";
-                                        $_POST['name'] = $donne['name'];
-                                        $_POST['price'] = $donne['price'];
-                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -919,7 +1070,11 @@
                     <button class="modal-close is-large" aria-label="close"> </button>
                 </div>
             </div>
+            </div>
         </div>
+    </div>
+
+
     </div>
 
     <!-------------Footer-------------->
