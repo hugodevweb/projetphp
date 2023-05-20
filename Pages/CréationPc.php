@@ -1059,10 +1059,7 @@
             ?>
 
 
-                                    <?php
-
-
-                                    ?>
+                                  
                                 </tbody>
                             </table>
                         </form>
@@ -1071,12 +1068,188 @@
                 </div>
             </div>
             </div>
+           
         </div>
-    </div>
-
 
     </div>
 
+
+    </div>
+        <?php
+ if (isset($_SESSION['cooler']))
+ {
+    $id_cooler = $_SESSION['cooler'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_cooler where name = '$id_cooler' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idcooler = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_cooler c WHERE c.id_comp = t.id_cooler AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idcooler = $donne['id_comp'];
+ };    
+ ?>
+ 
+ <?php
+ if (isset($_SESSION['cpu']))
+ {
+    $id_cooler = $_SESSION['cpu'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_cpu where name = '$id_cooler' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idcpu = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_cpu c WHERE c.id_comp = t.id_cpu AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idcpu = $donne['id_comp'];
+ };    
+ ?>
+
+<?php
+ if (isset($_SESSION['alim']))
+ {
+    $id_alim = $_SESSION['alim'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_alim where name = '$id_alim' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idalim = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_alim c WHERE c.id_comp = t.id_alim AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idalim = $donne['id_comp'];
+ };    
+ ?>
+ <?php
+ if (isset($_SESSION['board']))
+ {
+    $id_board = $_SESSION['board'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_board where name = '$id_board' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idboard = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_board c WHERE c.id_comp = t.id_board AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idboard = $donne['id_comp'];
+ };    
+ ?>
+
+<?php
+ if (isset($_SESSION['boitier']))
+ {
+    $id_boitier = $_SESSION['boitier'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_boitier where name = '$id_boitier' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idboitier = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_boitier c WHERE c.id_comp = t.id_boitier AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idboitier = $donne['id_comp'];
+ };    
+ ?>
+
+<?php
+ if (isset($_SESSION['gpu']))
+ {
+    $id_gpu = $_SESSION['gpu'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_gpu where name = '$id_gpu' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idgpu = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_gpu c WHERE c.id_comp = t.id_gpu AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idgpu = $donne['id_comp'];
+ };    
+ ?>
+
+<?php
+ if (isset($_SESSION['ram']))
+ {
+    $id_ram = $_SESSION['ram'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_ram where name = '$id_ram' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idram = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_ram c WHERE c.id_comp = t.id_ram AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idram = $donne['id_comp'];
+ };    
+ ?>
+
+<?php
+ if (isset($_SESSION['stockage']))
+ {
+    $id_stockage= $_SESSION['stockage'];
+    $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req2 = $bdd->prepare("SELECT id_comp FROM composants_stockage where name = '$id_stockage' ");
+    $req2->execute();
+    $donne2 = $req2->fetch();
+    $idstockage = $donne2['id_comp']; 
+ }else{
+    $id =  $_SESSION['id_config'];
+    $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
+    $req = $pdo->prepare("SELECT id_comp FROM tj_config_comp t , composants_stockage c WHERE c.id_comp = t.id_stockage AND t.id_config = ?");
+    $req->execute(array($id));
+   $_SESSION['id_config'] = $id;
+   $donne = $req->fetch(); 
+   $idstockage = $donne['id_comp'];
+ };    
+ ?>
+
+
+
+ <?php
+ echo "   <form method='post' action='CréationPc_Update.php?cooler=".$idcooler.'&cpu='.$idcpu.'&alim='.$idalim.'&board='.$idboard.'&boitier='.$idboitier.'&gpu='.$idgpu.'&stockage='.$idstockage.'&ram='.$idram."'>
+                    <div id='btn_inscription' class='field'>
+                        <button style='all: unset;'type='submit'><a class='fancy' >
+                        <span class='top-key'></span>
+                        <span class='text'> Ajouter</span>
+                        <span class='bottom-key-1'></span>
+                        <span class='bottom-key-2'></span>
+                      </a>   </button>
+                           </div>
+                        </form>
+                        <br> ";
+
+ ?>
     <!-------------Footer-------------->
     <div class="footer">
         <div class="container">

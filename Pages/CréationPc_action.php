@@ -26,5 +26,6 @@ $_SESSION['boitier'] = $id_boitier;
 $id_cooler=$_GET['id_cooler'];
 $_SESSION['cooler'] = $id_cooler;
 
-    header("location: ./CréationPc.php")
+
+header("location: ./CréationPc.php")
 ?>
