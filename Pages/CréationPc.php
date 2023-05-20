@@ -21,7 +21,11 @@
   <?php
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
     session_start();
-  
+    if ($_SESSION['mail']  == null)
+    {
+        header("location: ./inscription.php");
+       
+    }
   
     ?>
   <!-- -----------Premiere ligne du navbar------ -->

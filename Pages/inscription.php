@@ -20,7 +20,7 @@
              <img id="logo" src="../images/diggit.png" width="400px" height="auto" alt="Bulma logo" >
              </a>
      </header>
-     <canvas id="canvas" />
+     <canvas id="canvas" >
          
          </div>
          <script src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js"></script>
@@ -28,35 +28,16 @@
     <div class ="container_inscription">
             
             <form class = "form_inscription" action="inscription_action.php" method="POST">
-            <h1>Mon inscription</h1>
-                <div class="field">
-                <label class="label">Votre Email</label>
-                    <div class="control">
-                      <input class="input" name="mail" type="email" placeholder="Votre email">
-                    </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Votre mot de passe</label>
-                    <div class="control">
-                      <input class="input"  name="mdp" type="password" placeholder="Votre mot de passe">
-                    </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Confirmer votre mot de passe</label>
-                    <div class="control">
-                      <input class="input"  name="confirm_mdp" type="password" placeholder="Votre mot de passe">
-                    </div>
-                </div>
+            <h1>Connexion Obligatoire</h1>
+              
                 </form>
                 
                 
         </div>
-        
-      
+       
 
     </div>
     <script src="../scripts/login.js"></script>
+    <script src="../scripts/timer.js"></script>
 </body>
 </html>
