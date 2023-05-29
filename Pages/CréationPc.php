@@ -357,11 +357,7 @@
     while ($donne = $req->fetch()) {
    
     $_SESSION['id_config']=$donne['id_config'];
-   echo '<form method="POST" action="./Pages/CréationPc.php">
-    <div class="select">
-    <select id="select_config" name="config" onchange="this.form.submit()">
-    <option class="is-size-8"><b>' .$donne['nomconfig']. '</b></option>
-    ';
+   echo "Nom de la configuration : ".$donne['nomconfig'];
       
     }
 
@@ -402,7 +398,7 @@
                  <div class="modal-background" ></div>
                  <div class="modal-content" >
                      <div id="container">
-                         <form>
+                       
                              <table>
                                  <thead>
                                      <tr>
@@ -418,10 +414,10 @@
                                  $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
 
                                  $sql = "SELECT * FROM composants_cpu";
-                                 $req = $bdd->prepare($sql);
-                                 $req->execute();
+                                 $req2 = $bdd->prepare($sql);
+                                 $req2->execute();
 
-                                 while ($donne = $req->fetch()) {
+                                 while ($donne = $req2->fetch()) {
                                      echo "<tr>";
                                      echo "<td>" . $donne['name'] . "</td> ";
                                      echo "<td>" . $donne['price'] . "</td> ";
@@ -429,7 +425,7 @@
                                      echo "<td>" . $donne['puissance'] . "</td> ";
                                      echo "<td>   <form method='post' action='CréationPc_action.php?id_cpu=" . $donne['name'] . "'>
                      <div id='btn_inscription' class='field'>
-                         <button style='all: unset;'type='submit'><a class='fancy' >
+                         <button style='all: unset;'type='submit'><a class='fancy'>
                          <span class='top-key'></span>
                          <span class='text'> Modifié</span>
                          <span class='bottom-key-1'></span>
@@ -488,7 +484,7 @@
                     <div class="modal-background"></div>
                     <div class="modal-content">
                         <div id="container">
-                            <form>
+                           
                                 <table>
                                     <thead>
                                         <tr>
@@ -583,7 +579,7 @@
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <div id="container">
-                        <form>
+                      
                             <table>
                                 <thead>
                                     <tr>
@@ -668,7 +664,7 @@
                      <div class="modal-background"></div>
                      <div class="modal-content">
                          <div id="container">
-                             <form>
+                            
                                  <table>
                                      <thead>
                                          <tr>
@@ -755,7 +751,7 @@
              <div class="modal-background"></div>
              <div class="modal-content">
                  <div id="container">
-                     <form>
+                   
                          <table>
                              <thead>
                                  <tr>
@@ -844,7 +840,7 @@
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <div id="container">
-                        <form>
+                      
                             <table>
                                 <thead>
                                     <tr>
@@ -932,7 +928,7 @@
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <div id="container">
-                        <form>
+                     
                             <table>
                                 <thead>
                                     <tr>
@@ -1018,7 +1014,7 @@
              <div class="modal-background"></div>
              <div class="modal-content">
                  <div id="container">
-                     <form>
+                    
                          <table>
                              <thead>
                                  <tr>
@@ -1084,10 +1080,10 @@
  {
     $id_cooler = $_SESSION['cooler'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_cooler where name = '$id_cooler' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idcooler = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_cooler where name = '$id_cooler' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idcooler = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1104,10 +1100,10 @@
  {
     $id_cooler = $_SESSION['cpu'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_cpu where name = '$id_cooler' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idcpu = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_cpu where name = '$id_cooler' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idcpu = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1124,10 +1120,10 @@
  {
     $id_alim = $_SESSION['alim'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_alim where name = '$id_alim' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idalim = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_alim where name = '$id_alim' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idalim = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1143,10 +1139,10 @@
  {
     $id_board = $_SESSION['board'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_board where name = '$id_board' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idboard = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_board where name = '$id_board' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idboard = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1163,10 +1159,10 @@
  {
     $id_boitier = $_SESSION['boitier'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_boitier where name = '$id_boitier' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idboitier = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_boitier where name = '$id_boitier' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idboitier = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1183,10 +1179,10 @@
  {
     $id_gpu = $_SESSION['gpu'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_gpu where name = '$id_gpu' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idgpu = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_gpu where name = '$id_gpu' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idgpu = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1203,10 +1199,10 @@
  {
     $id_ram = $_SESSION['ram'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_ram where name = '$id_ram' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idram = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_ram where name = '$id_ram' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idram = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
@@ -1223,10 +1219,10 @@
  {
     $id_stockage= $_SESSION['stockage'];
     $bdd = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
-    $req2 = $bdd->prepare("SELECT id_comp FROM composants_stockage where name = '$id_stockage' ");
-    $req2->execute();
-    $donne2 = $req2->fetch();
-    $idstockage = $donne2['id_comp']; 
+    $req = $bdd->prepare("SELECT id_comp FROM composants_stockage where name = '$id_stockage' ");
+    $req->execute();
+    $donne = $req->fetch();
+    $idstockage = $donne['id_comp']; 
  }else{
     $id =  $_SESSION['id_config'];
     $pdo = new PDO('mysql:host=localhost;dbname=diggit.me', 'root', '');
